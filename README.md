@@ -48,39 +48,28 @@ The rules follow two books. Section numbers in the code refer to the Gramática.
 
 ## Evaluation
 
-`gold/books.tsv` holds 307 Portuguese and Barranquenho pairs. Each one is printed in the books, and `scripts/verify_gold.py` checks every row against the page it cites. Each row has a kind (word, phrase, sentence) and a class:
+Four gold files test the translator. Each has the same columns; `gold/README.md` describes them.
 
-- **regular**: the rules can predict it.
-- **syntax**: it needs a construction rule.
-- **lexical**: Barranquenho uses a different word, such as *cucarabacha* for *barata*.
-- **idiom**: a fixed expression.
-
-| Subset | Rows | Copy the Portuguese: exact | chrF2 | pt2barranquenho: exact | chrF2 |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| all | 307 | 0.091 | 40.5 | 0.811 | 82.3 |
-| words | 212 | 0.123 | 44.2 | 0.877 | 81.4 |
-| phrases | 42 | 0.048 | 37.6 | 0.857 | 90.2 |
-| sentences | 53 | 0.000 | 39.5 | 0.509 | 80.6 |
-| regular | 228 | 0.123 | 45.1 | 0.939 | 94.6 |
-| syntax | 44 | 0.000 | 39.9 | 0.636 | 83.9 |
-| lexical | 32 | 0.000 | 26.3 | 0.219 | 44.0 |
-| idiom | 3 | 0.000 | 28.9 | 0.000 | 31.5 |
+| Set | Rows | What it is | Copy the Portuguese: chrF2 | pt2barranquenho: exact | pt2barranquenho: chrF2 |
+| --- | ---: | --- | ---: | ---: | ---: |
+| `convention_text.tsv` | 8 | the text the Convenção uses to show the norm applied: a municipal description of the Igreja Matriz, in Portuguese and in Barranquenho | 59.1 | 0.250 | 94.0 |
+| `books.tsv` | 321 | the examples of the two books, each verified on its page | 40.3 | 0.801 | 81.6 |
+| `external_respelled.tsv` | 34 | sentences from other sources, respelled into the 2025 norm | 34.2 | 0.059 | 59.3 |
+| `external.tsv` | 36 | the same sentences in their published spelling | 37.1 | 0.000 | 39.1 |
 
 "Exact" accepts the reference or any alternative printed in the books, after lowercasing. chrF2 is corpus chrF from sacrebleu.
 
 ```bash
-uv run --with sacrebleu --with-editable . python scripts/evaluate.py gold/books.tsv --errors
+uv run --with sacrebleu --with-editable . python scripts/evaluate.py gold/convention_text.tsv --errors
 ```
 
-**This gold set is a development set, not a test set.** The rules were written from the same books, so these numbers show how well the rules cover the books' own examples. They do not measure translation of unseen text.
+**`convention_text.tsv` is the best test of running text.** The rules were not written from it. It was first scored at chrF2 92.1 before any fix it prompted (Roman numerals, hyphenated compounds, *tamén*). It is short, and its Barranquenho is the authors' own rendering of a Portuguese original.
 
-`gold/external.tsv` holds 36 pairs from outside the books: a municipal language study, community sayings, field transcriptions, press quotes and a blog. The rules never saw them. They are a weak test. They use older or personal spellings (*xobe* for *chobi*, *-om* for *-on*), and their Portuguese is often a free gloss. No row matches exactly.
+**`books.tsv` is a development set.** The rules come from the same books, so it measures how well the rules cover the books' own examples.
 
-| Subset | Rows | Copy the Portuguese: chrF2 | pt2barranquenho: chrF2 |
-| --- | ---: | ---: | ---: |
-| external | 36 | 37.1 | 39.2 |
+**The external sets test unseen speech.** The sources predate the 2025 norm and use their own spelling, and their Portuguese is often a free gloss. `external_respelled.tsv` keeps each speaker's words and grammar and changes only the spelling, following the Convenção. An independent review checked every row against the Convenção and the Gramática (`gold/external_respelled_review.tsv`). The respelling follows the same norm as the rules, so its scores are higher than `external.tsv`. Only the differences in words and grammar are evidence the respelling did not create.
 
-A real test needs everyday Portuguese sentences that native speakers translate into the 2025 spelling.
+A full test needs everyday Portuguese sentences that native speakers translate into the 2025 spelling.
 
 ## Limits
 

@@ -2,11 +2,11 @@
 
 ## books.tsv
 
-`books.tsv` holds 307 pairs of European Portuguese and Barranquenho. Every pair is an example printed in the *Convenção Ortográfica do Barranquenho* (2025) or the *Gramática Básica de Barranquenho* (2025).
+`books.tsv` holds 321 pairs of European Portuguese and Barranquenho. Every pair is an example printed in the *Convenção Ortográfica do Barranquenho* (2025) or the *Gramática Básica de Barranquenho* (2025).
 
 | Column | Content |
 | --- | --- |
-| `id` | `b001` to `b307` |
+| `id` | `b001` to `b321` |
 | `pt` | the Portuguese, as the book glosses it |
 | `barr` | the Barranquenho, as printed |
 | `alt` | other forms the books print for the same Portuguese, separated by `|` |
@@ -32,6 +32,16 @@ python scripts/verify_gold.py gold/books.tsv convencao=<Convenção PDF> gramati
 ## external.tsv
 
 `external.tsv` holds 36 pairs from sources outside the 2025 books, in the same columns. `pages` holds the source URL. `note` names the source and its spelling. The sources are a study published by the Câmara Municipal de Barrancos, sayings printed on sugar packets (cited in *Estudis Romànics*, 2021), field transcriptions (CILFR 2018), press quotes and a local blog. Most predate the 2025 convention and use their own spelling, and the Portuguese is often a free gloss. Score this set with chrF only.
+
+## convention_text.tsv
+
+`convention_text.tsv` holds the eight sentences of the text that the Convenção prints under "Aplicação da Convenção" (PDF pages 38 to 40). The Portuguese is a description of the Igreja Matriz from the Câmara Municipal de Barrancos website. The Barranquenho is the authors' rendering in the 2025 spelling. The Portuguese keeps two misprints from the book (*doc.*, *laterias*).
+
+## external_respelled.tsv
+
+`external_respelled.tsv` holds 34 of the 36 rows of `external.tsv`, respelled into the 2025 norm. The respelling changes spelling only and keeps each speaker's words, word order and agreement. `note` keeps the published form. Two rows are left out: x006 has an unreadable word in its source, and x033 is a garbled copy of the saying in x022.
+
+`external_respelled_review.tsv` holds the verdicts of an independent review of every row against the Convenção, the Gramática and the dictionary: 28 OK, 2 FIX, 4 DOUBT. Both FIX rows were corrected. The DOUBT rows keep the speaker's published form where the norm does not require a change.
 
 ## passing.txt
 

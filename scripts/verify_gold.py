@@ -21,6 +21,7 @@ def main():
         text = subprocess.run(["pdftotext", "-layout", pdf, "-"], capture_output=True, text=True, check=True).stdout
         for i, page in enumerate(text.split("\f"), 1):
             page = re.sub(r"(Gramática Básica de Barranquenho|Convenção Ortográfica do Barranquenho)\s*\n", "", page)
+            page = re.sub(r"(?m)^\s*\d+\s*$", "", page)              # page numbers
             pages[f"{name[0]}{i}"] = norm(page)
     rows = list(csv.DictReader(open(gold, encoding="utf-8"), delimiter="\t"))
     bad = 0

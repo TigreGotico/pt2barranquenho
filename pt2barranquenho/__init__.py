@@ -31,7 +31,7 @@ CLOSED = {
     "outra": "otra", "outros": "otruh", "outras": "otrah", "todos": "toduh", "todas": "todah",
     "certos": "certuh", "certas": "certah", "muito": "muntu", "muita": "munta", "muitos": "muntuh",
     "muitas": "muntah", "pouco": "pocu", "pouca": "poca", "poucos": "pocuh", "poucas": "pocah",
-    "qualquer": "qualqué", "quaisquer": "quaihqué", "alguém": "alguén", "ninguém": "ninguén", "tudo": "tudu",
+    "qualquer": "qualqué", "quaisquer": "quaihqué", "alguém": "alguén", "ninguém": "ninguén", "tudo": "tudu", "também": "tamén",
     "cujos": "cujuh", "cujas": "cujah", "quantos": "quantuh", "quantas": "quantah", "qual": "quà",
     "quais": "quaih", "dois": "doih", "duas": "duah", "três": "trêh", "seis": "seih", "dez": "déh",
     "dezasseis": "dezassei", "dezassete": "dezasseti", "mais": "maih", "mas": "mah", "sob": "so", "me": "me", "te": "te", "se": "se", "si": "si",
@@ -62,7 +62,7 @@ IR = r"(?:vou|vais|vai|vamos|vão|ia|ias|íamos|iam|fui|foste|foi|fomos|foram)"
 CLITIC_WORDS = "me|te|se|nos|vos|lhe|lhes"
 CLITIC_OUTPUT = {"me", "te", "se", "nuh", "buh", "le", "leh", "m'", "t'", "s'"}
 # Verbs that take a pseudo-reflexive se in their finite forms (IV 1.4): casar, cair, dormir, ir, morrer, sair.
-PSEUDO_REFLEXIVE = re.compile(r"^(?:cas(?:ou|aram|ei|aste)|ca(?:iu|íram|í|íste)|morr(?:eu|eram|i|este)|"
+PSEUDO_REFLEXIVE = re.compile(r"^(?:cas(?:ou|aram|ei|aste)|ca(?:iu|íram|í|íste)|morr(?:eu|eram|i|este|ia|iam)|"
                               r"sa(?:iu|íram|í|íste)|dorm(?:iu|iram)|foram)$")
 
 
@@ -157,12 +157,12 @@ def translate(text):
     text = re.sub(rf"\b({IR}) (\w+[aeiô]r)\b", r"\1 a \2", text, flags=re.I)
     text = re.sub(r"\b(tenho|tens|tem|temos|têm|tinha|tinham|ter) de\b", r"\1 que", text, flags=re.I)
     text = re.sub(r"\b(como )se\b", r"\1si", text, flags=re.I)
-    text = re.sub(r"\b([Ss])e (?=(?:o|a|os|as|eu|tu|ele|ela|nós|você|vocês)\b)", lambda m: ("S" if m.group(1) == "S" else "s") + "i ", text, flags=re.I)
+    text = re.sub(r"(?<!-)\b([Ss])e (?=(?:o|a|os|as|eu|tu|ele|ela|nós|você|vocês)\b)", lambda m: ("S" if m.group(1) == "S" else "s") + "i ", text, flags=re.I)
     text = re.sub(r"^(\W*)ainda\b", r"\1inda", text, flags=re.I)
     out = []
     for tok in re.findall(r"\w+(?:-\w+)*|[^\w\s]", text):
-        if not tok[0].isalnum():
-            out.append(tok)
+        if not tok[0].isalnum() or re.fullmatch(r"[IVXLCDM]+|\d+", tok):
+            out.append(tok)                                              # punctuation, numbers, Roman numerals
             continue
         low = tok.lower()
         verb, *clitics = low.split("-")
@@ -178,7 +178,9 @@ def translate(text):
             if out and out[-1].lower() in ARTICLE_FLIP[gender]:
                 out[-1] = ARTICLE_FLIP[gender][out[-1].lower()]
         else:
-            res = " ".join(word(t) for t in low.split("-"))
+            res = "-".join(word(t) for t in low.split("-"))
+            if out and out[-1].lower() == "tú" and low.endswith("s") and low not in CLOSED and not res.endswith("h"):
+                res += "h"                                                # tú labah, ela laba (Convenção 2.1)
             if PSEUDO_REFLEXIVE.match(low) and not (out and out[-1].lower() in CLITIC_OUTPUT):
                 res = "se " + res                                         # já se morreu (IV 1.4)
         out.append(res[0].upper() + res[1:] if tok[0].isupper() else res)

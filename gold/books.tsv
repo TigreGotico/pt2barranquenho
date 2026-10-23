@@ -215,7 +215,7 @@ b213	pequena porção	migalha		g20	word	lexical
 b214	nádegas	nalga		g20	word	lexical	
 b215	dedo mínimo	menhiqui		g20	word	lexical	
 b216	se o senhor quer ir caçar connosco	si u senhô què í caçá connóh		g24	sentence	syntax	
-b217	também lhas levou a minha filha	tambén sah lebô a minha filha		g24	sentence	syntax	
+b217	também lhas levou a minha filha	tambén sah lebô a minha filha		g24	sentence	syntax	the Gramática writes tambén; the Convenção writes tamén (c21, c39)
 b218	vocês a viram	bocedi a biron		g24;g25	sentence	syntax	
 b219	a vocês vos conheço por acaso	a bocé buh conheçu de sorti		g25	sentence	lexical	
 b220	me apetece	m'apeteci		g25	phrase	regular	
@@ -282,8 +282,8 @@ b280	tia Conceição já morreu	tia Conceçãu já se morreu		g43	sentence	synta
 b281	e logo foram à missa	i logu entãu se foron à missa		g43	sentence	syntax	
 b282	puseram-se os fatinhos domingueiros	se puseron uh fatinhu dominguêru		g43	sentence	syntax	
 b283	as pernas eram mais rápidas	ah perna eron maih lihta		g43	sentence	lexical	
-b284	tu cantas	tú canta		g43	phrase	regular	
-b285	tu sabes	tú sabi		g43	phrase	regular	
+b284	tu cantas	tú canta		g43	phrase	regular	the Gramática drops the 2nd person -h; the Convenção keeps it (c30, b312)
+b285	tu sabes	tú sabi		g43	phrase	regular	the Gramática drops the 2nd person -h; the Convenção keeps it (c30, b312)
 b286	duas meninas	duah menina		g43	phrase	regular	
 b287	três curros	trêh curru		g43	phrase	regular	
 b288	dez animais	déh animai		g43	phrase	regular	
@@ -306,3 +306,17 @@ b304	a laranjeira	u laranju	u laranjêru	g48;g29	phrase	syntax
 b305	cem damas em castelo, todas vestem de amarelo	Cen dama en cahtelu, todah behten d'amarelu		g48	sentence	regular	riddle
 b306	entre lapa e lapa está uma abóbora que, chova ou não chova, sempre está molhada	Antre lapa i lapa tá uma calabaça que, choba o nãu choba, sempre ehtá molhada		g48	sentence	lexical	riddle
 b307	Branca como o leite, preta como o pé, cabeça de cabaça, dentes de turquês	Branca comu a lêti, preta com'u peh, cabeça de calabaça, denti di turqueh		g48	sentence	syntax	riddle
+b308	colher	colhê		c22	word	regular	the verb; the noun is colhé
+b309	olha, já os fez	olha já fêh		c30	sentence	syntax	
+b310	tem oitenta e oito [anos]	ten oitenta i oitu [anu]		c30	sentence	regular	
+b311	vai fazer	bai a fazê		c30	phrase	syntax	
+b312	tu lavas	tú labah		c30	phrase	regular	the Convenção keeps -h on the 2nd person singular; the Gramática (g43) drops it
+b313	ela lava	ela laba		c30	phrase	regular	
+b314	tu comes	tú comih		c30	phrase	regular	
+b315	ela come	ela comi		c30	phrase	regular	
+b316	tu vives	tú bibih		c30	phrase	regular	
+b317	ela vive	ela bibi		c30	phrase	regular	
+b318	vou passar o Natal com ela	bô a passá u Natá con ela		c34	sentence	syntax	
+b319	Aqui tratei da vida	Aquí me tenhu gobernadu		c34	sentence	lexical	
+b320	Aqui conheci muita gente	Aquí tenhu conhecidu muita genti		c34	sentence	syntax	compound perfect for a finished action
+b321	Morria muita gente	Se morria muita genti		c34	sentence	syntax	pseudo-reflexive
