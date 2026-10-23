@@ -219,14 +219,14 @@ b217	também lhas levou a minha filha	tambén sah lebô a minha filha		g24	sente
 b218	vocês a viram	bocedi a biron		g24;g25	sentence	syntax	
 b219	a vocês vos conheço por acaso	a bocé buh conheçu de sorti		g25	sentence	lexical	
 b220	me apetece	m'apeteci		g25	phrase	regular	
-b221	se usavam	s'usabon		g25	phrase	regular	
+b221	se usavam	s'usabon		g25	phrase	regular	the Portuguese gloss keeps the Barranquenho word order; pt-PT writes usavam-se
 b222	isto	ihtu		g26	word	regular	
 b223	isso	issu		g26	word	regular	
 b224	aquilo	aquilu		g26	word	regular	
 b225	a gente nunca sabe a que horas chega a camioneta	un nunca sabi a quê hora chega a comioneta		g28	sentence	syntax	
 b226	quanto custa?	quantu cohta?		g28	sentence	regular	
 b227	quem casou?	quén se casô?		g28	sentence	syntax	
-b228	qual é a casa?	quà é a casa?		g28	sentence	regular	
+b228	qual é a casa?	quà é a casa?		g28	sentence	regular	the Gramática prints quà; Convenção 2.6 writes cual
 b229	o mel	a mé		g29	phrase	syntax	gender follows Spanish
 b230	o sangue	a sangui		g29	phrase	syntax	gender follows Spanish
 b231	o riso	a risa		g29	phrase	syntax	gender follows Spanish

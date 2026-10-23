@@ -26,7 +26,7 @@ CLOSED = {
     "duns": "dunh", "duma": "duma", "dumas": "dumah",
     # Personal pronouns and their contractions, Gramática III 1.1.2.
     "eu": "eu", "tu": "tú", "ele": "eli", "ela": "ela", "nós": "nóh", "vós": "bóh", "eles": "elih",
-    "elas": "elah", "você": "bocê", "vocês": "bocedi", "mim": "min", "comigo": "comigu", "contigo": "contigu",
+    "elas": "elah", "vocês": "bocedi", "mim": "min", "comigo": "comigu", "contigo": "contigu",
     "connosco": "connóh", "lhe": "le", "lhes": "leh", "vos": "buh", "dele": "deli", "deles": "delih",
     "delas": "delah", "nele": "neli", "neles": "nelih", "nelas": "nelah", "me": "me", "te": "te", "se": "se",
     "si": "si", "lho": "su", "lha": "sa", "lhos": "suh", "lhas": "sah",
@@ -44,8 +44,9 @@ CLOSED = {
     "muitos": "muntuh", "muitas": "muntah", "pouco": "pocu", "pouca": "poca", "poucos": "pocuh", "poucas": "pocah",
     "qualquer": "qualqué", "quaisquer": "quaihqué", "alguém": "alguén", "ninguém": "ninguén", "tudo": "tudu",
     # Interrogatives, Gramática III 1.1.7.
-    "quanto": "quantu", "quanta": "quanta", "quantos": "quantuh", "quantas": "quantah", "qual": "quà",
-    "quais": "quaih",
+    "quanto": "quantu", "quanta": "quanta", "quantos": "quantuh", "quantas": "quantah", "quais": "quaih",
+    # qual keeps its -l and takes cu, Convenção 2.6 (mal, tal, cual); the Gramática tables print quà.
+    "qual": "cual",
     # Numerals, Gramática III 1.1.8.
     "dois": "doih", "duas": "duah", "três": "trêh", "seis": "seih", "dez": "déh", "dezasseis": "dezassei",
     "dezassete": "dezasseti",
@@ -84,22 +85,37 @@ LABIOVELAR = {"cinquent": "cincuent", "frequent": "frecuent", "frequênc": "frec
               "delinquent": "delincuent", "eloquent": "elocuent", "consequent": "consecuent",
               "consequênc": "consecuênc", "sequestr": "secuestr", "aguent": "agüent", "linguíst": "lingüíst",
               "ungu": "ungü", "pinguim": "pingüim", "ensanguent": "ensangüent", "arguir": "argüir"}
-IR = r"(?:vou|vais|vai|vamos|vão|ia|ias|íamos|iam|fui|foste|foi|fomos|foram)"
-CLITIC_WORDS = "me|te|se|nos|vos|lhe|lhes"
-# Verbs that take a pseudo-reflexive se, Gramática IV 1.4: casar, cair, dormir, ir, morrer, sair.
+# Monosyllables that keep the final -l, Convenção 2.6.
+KEEP_L = {"mal", "tal", "qual"}
+# The present and imperfect of ir are always ir. The preterite fui, foi, foram is also the preterite of ser
+# (foi criar emprego), so it counts as ir only at the start of a clause or after a subject pronoun or an adverb.
+IR = r"(?:vou|vais|vai|vamos|vão|ia|ias|íamos|iam)"
+IR_PAST = r"(?:fui|foste|foi|fomos|foram)"
+IR_PAST_AFTER = {"eu", "tu", "ele", "ela", "nós", "eles", "elas", "você", "vocês", "e", "já", "logo", "depois",
+                 "então", "ontem", "hoje", "também"}
+ESTAR = (r"(?:estou|estás|está|estamos|estão|estava|estavas|estávamos|estavam|esteve|estive|estiveram|estar|estará|"
+         r"estaria|esteja|estejam|estivesse|estivessem|estando)")
+CLITIC_WORDS = "me|te|se|nos|vos|lhe|lhes|o|a|os|as"
+# Verbs that take a pseudo-reflexive pronoun, Gramática IV 1.4: casar, cair, dormir, ir, morrer, sair. The pronoun
+# agrees with the person: me casê (Convenção 1.7), já se morreu.
 PSEUDO_REFLEXIVE = re.compile(r"^(?:cas(?:ou|aram|ei|aste)|ca(?:iu|íram|í|íste)|morr(?:eu|eram|i|este|ia|iam)|"
                               r"sa(?:iu|íram|í|íste)|dorm(?:iu|iram)|foram)$")
-# Portuguese: words after which pt-PT puts an object pronoun before the verb. After them a free-standing se is the
-# pronoun.
-PROCLISIS = {"não", "nunca", "jamais", "já", "também", "só", "ainda", "sempre", "bem", "mal", "talvez", "que",
-             "quem", "onde", "quando", "porque", "qual", "quanto", "tudo", "nada", "alguém", "ninguém", "todos",
-             "para", "de", "sem", "por", "se", "logo", "assim", "aqui", "lá", "cá", "ali", "aí", "hoje", "ontem",
-             "amanhã"}
-# Portuguese: elsewhere se is the conjunction when the next word cannot follow the pronoun: a determiner, a subject
-# pronoun, a preposition, a negation, or a subjunctive or infinitive (se fosse, se chover).
-CONJUNCTION_NEXT = {"o", "a", "os", "as", "um", "uma", "uns", "umas", "eu", "tu", "ele", "ela", "nós", "vós", "eles",
-                    "elas", "você", "vocês", "isto", "isso", "aquilo", "este", "esta", "esse", "essa", "aquele",
-                    "aquela", "por", "calhar", "não", "nunca", "alguém", "ninguém", "tudo", "nada"}
+MOTION = {"a", "à", "ao", "aos", "às", "para", "pra", "embora"}
+# Portuguese: the pronoun se and the conjunction se are spelt alike, and the Convenção writes them se and si
+# (Convenção 1.1). pt-PT never opens a clause with an atonic pronoun, so se at the start of a clause is the
+# conjunction. After a subject pronoun or a word that draws the pronoun before the verb, se is the pronoun, unless the
+# next word is one the pronoun cannot precede.
+SUBJECTS = {"eu", "tu", "ele", "ela", "nós", "vós", "eles", "elas", "você", "vocês"}
+PROCLISIS = SUBJECTS | {"não", "nunca", "jamais", "já", "também", "só", "ainda", "sempre", "bem", "mal", "talvez",
+                        "que", "quem", "onde", "quando", "porque", "qual", "quanto", "tudo", "nada", "alguém",
+                        "ninguém", "todos", "para", "de", "sem", "por", "logo", "assim", "aqui", "lá", "cá", "ali",
+                        "aí", "hoje", "ontem", "amanhã"}
+CONJUNCTION_NEXT = SUBJECTS | {"o", "a", "os", "as", "um", "uma", "uns", "umas", "isto", "isso", "aquilo", "este",
+                               "esta", "esse", "essa", "aquele", "aquela", "por", "calhar", "não", "nunca", "alguém",
+                               "ninguém", "tudo", "nada", "me", "te", "lhe", "lhes", "nos", "vos", "é",
+                               "for", "fosse", "tiver", "tivesse", "houver", "estiver"}
+# Verbs after which se opens an indirect question: não sei se vem.
+QUESTION_VERBS = re.compile(r"^(?:sei|sabe|sabes|sabemos|sabem|saber|sabia|pergunt\w*|ver|vê|veja|vejo|depende|duvido)$")
 SUBJUNCTIVE = re.compile(r"(?:ss(?:e|es|em|emos)|[aeiô]r|[aeiô]res|[aeiô]rem|[aeiô]rmos)$")
 
 
@@ -156,7 +172,7 @@ def word(w: str) -> str:
     if not final_stress:
         w = re.sub(r"am$", "on", w)                                  # Convenção 1.8.2: canton, ehtabon
     w = re.sub(f"(?<=[{VOWELS}])m$", "n", w)                         # Convenção 1.8.1: quen, bon
-    w = re.sub(r"ui(?=t)", "un", w)                                  # Convenção 1.8.3: muntu
+    w = re.sub(r"ã$", "án", w)                                       # Convenção 1.8.1: manhán
     for pt, barr in LABIOVELAR.items():                              # Convenção 2.4 and 2.5
         if w.startswith(pt):
             w = barr + w[len(pt):]
@@ -174,13 +190,15 @@ def word(w: str) -> str:
     # A final -l, -r or -z after the stressed vowel is silent and the vowel takes an accent: Convenção 2.6 (ehpanhó),
     # Convenção 2.7 (cantá, senhô), Convenção 1.2 (colhê, azú). Monosyllables keep -l (mal, tal) and -z.
     m = re.search(r"([aeiouêô])([lrz])$", w)
-    if m and final_stress and not (mono and m.group(2) in "lz"):
+    if m and final_stress and not (mono and (m.group(2) == "z" or orig in KEEP_L)):
         v, c = m.groups()
         w = w[:m.start()] + ({"e": "ê", "o": "ô"} if c == "r" else {"ê": "ê"}).get(v, ACUTE.get(v, v))
     elif m and not final_stress and m.group(1) in "ae" and m.group(2) in "lr":
         # Convenção 1.1 and Convenção 4: an unstressed open final vowel before a lost -l or -r takes the grave
         # accent, and it carries no other accent (açucà, amabè).
         w = strip_accents(w[:m.start()]) + {"a": "à", "e": "è"}[m.group(1)]
+    elif not final_stress and w.endswith("il"):
+        w = strip_accents(w[:-1])                                    # Gramática III 1.2.3: difici
     w = re.sub(f"n?[sz](?=[^{VOWELS}s])", "h", w)                    # Convenção 2.1: Lihboa, ihtrumentu
     if w.endswith(("s", "z")):
         if mono and (w.endswith("z") or any(c in ACCENTED for c in w)):
@@ -199,15 +217,29 @@ def word(w: str) -> str:
 
 def translate(text: str) -> str:
     """Translate pt-PT text to Barranquenho, one sentence or line at a time. Spacing and punctuation are kept."""
-    # Periphrases, Gramática IV 1.3 and Convenção 3.1: estar a + infinitive takes the gerund (nuh ehtá bendu);
-    # ir + infinitive takes a (bô a fazê), and a pronoun on the infinitive climbs before ir (me bô a labá).
-    text = re.sub(r"\b(est\w+(?:-\w+)?) a (\w+?)([aei])r\b", r"\1 \2\3ndo", text, flags=re.IGNORECASE)
-    text = re.sub(rf"\b({IR}) (\w+[aeiô]r)-({CLITIC_WORDS})\b", r"\3 \1 a \2", text, flags=re.IGNORECASE)
+    if text.isupper():
+        return translate(text.lower()).upper()
+    # Periphrases, Gramática IV 1.3 and Convenção 3.1. A pronoun on the infinitive climbs before the auxiliary
+    # (me bô a labá, nuh ehtá bendu); estar a + infinitive takes the gerund; ir + infinitive takes a (bô a fazê).
+    def climb(aux: str, verb: str, pronoun: str) -> str:
+        if aux[0].isupper():
+            aux, pronoun = aux[0].lower() + aux[1:], pronoun.capitalize()
+        return f"{pronoun} {aux} {verb}"
+
+    text = re.sub(rf"\b({ESTAR} a) (\w+[aei]r)-({CLITIC_WORDS})\b", lambda m: climb(m[1], m[2], m[3]), text,
+                  flags=re.IGNORECASE)
+    text = re.sub(rf"\b({ESTAR}(?:-\w+)?) a (\w+?)([aei])r\b", r"\1 \2\3ndo", text, flags=re.IGNORECASE)
+    text = re.sub(rf"\b({IR}) (\w+[aeiô]r)-({CLITIC_WORDS})\b", lambda m: climb(m[1], "a " + m[2], m[3]), text,
+                  flags=re.IGNORECASE)
     text = re.sub(rf"\b({IR}) (\w+[aeiô]r)\b", r"\1 a \2", text, flags=re.IGNORECASE)
-    # Convenção 2.7: a genti ten que tê fé.
-    text = re.sub(r"\b(tenho|tens|tem|temos|têm|tinha|tinham|ter|terá|terão) de\b", r"\1 que", text, flags=re.IGNORECASE)
-    # Convenção 1.6: inda at the start of a sentence, ainda at the end.
-    text = re.sub(r"^(\W*)ainda\b", r"\1inda", text, flags=re.IGNORECASE)
+    text = re.sub(rf"(\w*)(\W*)\b({IR_PAST}) (\w+[aeiô]r)\b",
+                  lambda m: f"{m[1]}{m[2]}{m[3]} a {m[4]}" if not m[1] or m[1].lower() in IR_PAST_AFTER
+                  or m[2].strip() else m[0], text, flags=re.IGNORECASE)
+    # Convenção 2.7 prints ter que before an infinitive: a genti ten que tê fé.
+    text = re.sub(r"\b(tenho|tens|tem|temos|têm|tinha|tinham|ter|terá|terão) de (?=\w+[aeiô]r\b)", r"\1 que ",
+                  text, flags=re.IGNORECASE)
+    # Convenção 1.6: ainda loses its first vowel, except at the end of a sentence.
+    text = re.sub(r"\b([Aa])inda\b(?!\s*(?:[.!?…]|$))", lambda m: ("I" if m.group(1) == "A" else "i") + "nda", text)
     parts = re.split(r"(\w+(?:-\w+)*)", text)                      # separators at even indices, words at odd
     prev = None                          # index in parts of the previous word, when only spaces separate them
     prev_src = ""                        # that word in Portuguese, lowercased
@@ -222,13 +254,19 @@ def translate(text: str) -> str:
             continue
         verb, *clitics = low.split("-")
         if clitics and all(c in CLITICS for c in clitics):
-            # Gramática IV 1.1: the pronoun goes before the verb (elih u torrabon lá), me before se (me se meti).
             if clitics[-1] in ("lo", "la", "los", "las"):
                 verb += "s" if verb.endswith("mo") else "r"            # Portuguese: entendêmo-lo, fazê-lo
             clitics.sort(key=lambda c: c not in ("me", "te"))
-            res = " ".join(CLITICS[c] for c in clitics) + " " + word(verb)
-        elif low == "se" and prev_src not in PROCLISIS and (next_src in CONJUNCTION_NEXT or SUBJUNCTIVE.search(next_src)):
-            res = "si"                                                  # Convenção 1.1: comu si fossi
+            pronouns = " ".join(CLITICS[c] for c in clitics)
+            if verb.endswith("r"):
+                res = word(verb) + "-" + pronouns.replace(" ", "-")    # Gramática IV 1.1: not before an infinitive
+            else:
+                res = pronouns + " " + word(verb)                       # Gramática IV 1.1: elih u torrabon lá
+        elif low == "se":
+            res = "se" if prev_src in PROCLISIS and next_src not in CONJUNCTION_NEXT else "si"
+            if prev is not None and prev_src not in PROCLISIS and not QUESTION_VERBS.match(prev_src) and \
+                    next_src not in CONJUNCTION_NEXT and not SUBJUNCTIVE.search(next_src):
+                res = "se"                                              # Convenção 1.1: i se paraba
         elif low in TONIC_POSSESSIVE and before and (not next_src or next_src in CLOSED):
             res = TONIC_POSSESSIVE[low][:-1] if before.endswith("h") and low.endswith("s") else TONIC_POSSESSIVE[low]
         elif low == "quem" and prev is None and "?" in "".join(parts[i:]).split(".")[0]:
@@ -244,12 +282,17 @@ def translate(text: str) -> str:
             res = "-".join(word(t) for t in low.split("-"))
             if before == "tú" and low.endswith("s") and low not in CLOSED and not res.endswith("h"):
                 res += "h"                                                # Convenção 2.1: tú labah, ela laba
-            if PSEUDO_REFLEXIVE.match(low) and before not in CLITIC_OUTPUT:
-                res = "se " + res                                         # Gramática IV 1.4: já se morreu
-        parts[i] = res[0].upper() + res[1:] if tok[0].isupper() else res
+            if PSEUDO_REFLEXIVE.match(low) and before not in CLITIC_OUTPUT and (low != "foram" or next_src in MOTION):
+                pronoun = "me" if re.search(r"(?:ei|í|i)$", low) else "te" if low.endswith("ste") else "se"
+                res = f"{pronoun} {res}"                                 # Gramática IV 1.4: já se morreu
+        if tok[0].isupper():
+            res = "-".join(r[:1].upper() + r[1:] if t[:1].isupper() else r
+                           for t, r in zip(tok.split("-"), res.split("-"))) if tok.count("-") == res.count("-") \
+                else res[0].upper() + res[1:]
+        parts[i] = res
         prev, prev_src = i, low
     # Convenção 1.5: me, te, se lose their vowel before a vowel (m'apeteci, s'usabon).
-    return re.sub(r"\b([mts])e ([aeiouáéíóúâêôãõ])", r"\1'\2", "".join(parts))
+    return re.sub(r"(?<![\w-])([MmTtSs])e ([aeiouáéíóúâêôãõAEIOUÁÉÍÓÚÂÊÔ])", r"\1'\2", "".join(parts))
 
 
 def main() -> None:
