@@ -42,6 +42,22 @@ CASES = {
     "circuito": "circuitu",
     # -ãos takes the plural -õi of the nouns in -ãu (Gramática III 1.2.3).
     "irmãos": "irmõi",
+    # A noun whose gender differs from the Portuguese one flips its determiner, in the singular and the plural, and
+    # in the contractions and demonstratives (Gramática III 1.1.1, III 1.1.4, III 1.2.2.1).
+    "nos seixos": "nah china",
+    "pelos amendoins": "pelah arbelhana",
+    "pela bebedeira": "pela chihpa",
+    "esses leques": "essih abanicu",
+    "As laranjeiras": "Uh laranjêru",
+    "esta macieira": "ehti maçanêru",
+    "numas cerejeiras": "nunh cerejêru",
+    "daquela macieira": "daqueli maçanêru",
+    "a casa das macieiras": "a casa duh maçanêru",
+    # Words the books print in place of the Portuguese word.
+    "numa azinheira": "numa azenhêra",
+    "vinte javalis": "binti jabardu",
+    "Tenho cócegas": "Tenhu cohquilha",
+    "o advogado": "u abogadu",
     # Case.
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",

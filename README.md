@@ -48,6 +48,8 @@ The rules follow two books. Each rule in the code names the section it comes fro
 | Possessives | before a noun; tonic | *mê*, *tê*, *sê*; *meu*, *teu*, *seu*: *os meus também* > *uh meu tamén* |
 | [kw], [gw] before *e*, *i* | *cinquenta*, *aguentar* | *cincuenta*, *agüentá* |
 | Closed classes | articles, contractions, pronouns, possessives, demonstratives, indefinites, interrogatives, numerals | the tables of the Gramática |
+| Noun gender | nouns whose gender follows Spanish | the article or demonstrative takes the other gender, singular and plural: *as laranjeiras* > *uh laranjêru*, *nos seixos* > *nah china* |
+| Words | 13 nouns the books print in place of the Portuguese word, each also in the 2025 dictionary | *cócegas* > *cohquilha*, *javali* > *jabardu*, *pessegueiro* > *melacatonêru* |
 
 ## Evaluation
 
@@ -56,9 +58,9 @@ Four gold files test the translator. Each has the same columns; `gold/README.md`
 | Set | Rows | What it is | Copy the Portuguese: chrF2 | pt2barranquenho: exact | pt2barranquenho: chrF2 |
 | --- | ---: | --- | ---: | ---: | ---: |
 | `convention_text.tsv` | 8 | the text the Convenção uses to show the norm applied: a municipal description of the Igreja Matriz, in Portuguese and in Barranquenho | 59.1 | 0.250 | 94.0 |
-| `books.tsv` | 321 | the examples of the two books, each verified on its page | 40.3 | 0.816 | 82.5 |
-| `external_respelled.tsv` | 34 | sentences from other sources, respelled into the 2025 norm | 34.2 | 0.088 | 59.5 |
-| `external.tsv` | 36 | the same sentences in their published spelling | 37.1 | 0.000 | 38.9 |
+| `books.tsv` | 321 | the examples of the two books, each verified on its page | 40.3 | 0.832 | 84.0 |
+| `external_respelled.tsv` | 34 | sentences from other sources, respelled into the 2025 norm | 34.2 | 0.088 | 60.3 |
+| `external.tsv` | 36 | the same sentences in their published spelling | 37.1 | 0.000 | 39.4 |
 
 "Exact" accepts the reference or any alternative printed in the books, after lowercasing. chrF2 is corpus chrF from sacrebleu.
 
@@ -77,8 +79,8 @@ A full test needs everyday Portuguese sentences that native speakers translate i
 ## Limits
 
 - Barranquenho has more variation than the books record. The books themselves disagree in places: *aqui* and *aquí*, *treh* and *trêh*, *ele* and *eli*.
-- The rules do not choose Barranquenho-specific words. The 2025 dictionary lists them beside their Portuguese cognates, and context decides which one a speaker uses.
-- Gender changes that follow Spanish (*o leite* > *a lêti*) cover only the nouns the Gramática names.
+- The rules choose a Barranquenho-specific word only for the 13 nouns the books print. The 2025 dictionary lists many more beside their Portuguese cognates, and context decides which one a speaker uses. Used as a word list, the dictionary lowers the scores.
+- Gender changes that follow Spanish (*o leite* > *a lêti*) cover only the nouns the books name. The change reaches the determiner just before the noun, not an adjective or a possessive: *a minha macieira* keeps *minha*.
 - Stress comes from the Portuguese accent rules. A word with irregular stress can get the wrong final vowel.
 - The Portuguese spelling does not show vowel quality, so a final stressed *e* or *o* can take the wrong accent: *calor* gives *calô*, and the books print *caló*.
 - The pronoun *se* and the conjunction *se* are told apart from the neighbouring words. A sentence fragment, or a pronoun at the start of a clause, gets *si*.

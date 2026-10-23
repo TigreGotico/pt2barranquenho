@@ -70,9 +70,30 @@ CLITIC_OUTPUT = {"me", "te", "se", "nuh", "buh", "le", "leh", "m'", "t'", "s'"}
 GENDER = {"leite": ("lêti", "f"), "mel": ("mé", "f"), "sangue": ("sangui", "f"), "riso": ("risa", "f"),
           "laranjeira": ("laranjêru", "m"), "macieira": ("maçanêru", "m"), "amendoeira": ("amendoêru", "m"),
           "cerejeira": ("cerejêru", "m"), "tangerineira": ("tangerinêru", "m"), "romãzeira": ("romanêru", "m"),
-          "ameixieira": ("amexêru", "m")}
-ARTICLE_FLIP = {"m": {"a": "u", "uma": "un", "da": "du", "na": "nu", "à": "ò", "pela": "pelu"},
-                "f": {"u": "a", "un": "uma", "du": "da", "nu": "na", "ò": "à", "pelu": "pela"}}
+          "ameixieira": ("amexêru", "m"), "pessegueiro": ("melacatonêru", "m")}  # Gramática V 1.2: melacatonêru
+# Words the books print in place of the Portuguese word, each also an entry of the Dicionário de Barranquenho (2025).
+LEXICON = {
+    "azinheira": ("azenhêra", "f"), "seixo": ("china", "f"), "bebedeira": ("chihpa", "f"),   # Gramática III 1.1.1
+    "amendoim": ("arbelhana", "f"),                                                            # and Gramática V 1.1
+    "leque": ("abanicu", "m"),                                                                 # Gramática III 1.1.4
+    "advogado": ("abogadu", "m"),                                                              # Gramática III 1.1.5
+    "javali": ("jabardu", "m"),                                                                # Gramática III 1.1.8
+    "cãozinho": ("canitu", "m"),                                                               # Gramática III 1.2.4
+    "nádega": ("nalga", "f"),                                                                  # Gramática II 1.6
+    "bisca": ("brihca", "f"),                                                                  # Gramática IV 1.2
+    "cócega": ("cohquilha", "f"),                                                              # Gramática V 1.2
+    "terçol": ("terzuelu", "m"), "terçolho": ("terzuelu", "m"),                                # Gramática V 1.3
+}
+NOUNS = GENDER | LEXICON
+# Determiners, masculine and feminine, in the forms word() gives them (Gramática III 1.1.1, III 1.1.4). A noun whose
+# gender differs from the Portuguese one takes the other form: nah china (pt. 'nos seixos').
+ARTICLES = [("u", "a"), ("uh", "ah"), ("un", "uma"), ("unh", "umah"), ("ò", "à"), ("auh", "àh"), ("du", "da"),
+            ("duh", "dah"), ("nu", "na"), ("nuh", "nah"), ("pelu", "pela"), ("peluh", "pelah"), ("dun", "duma"),
+            ("dunh", "dumah"), ("nun", "numa"), ("nunh", "numah")]
+DEMONSTRATIVES = [("ehti", "ehta"), ("ehtih", "ehtah"), ("essi", "essa"), ("essih", "essah"), ("aqueli", "aquela"),
+                  ("aquelih", "aquelah")]
+DETERMINERS = ARTICLES + [(prep + m, prep + f) for prep in ("", "d", "n") for m, f in DEMONSTRATIVES]
+ARTICLE_FLIP = {"m": {f: m for m, f in DETERMINERS}, "f": dict(DETERMINERS)}
 # After a plural determiner the possessive loses its own -h, Convenção 3: ah minha prima, uh tê pai.
 POSSESSIVE_PLURAL = {"meus": "mê", "teus": "tê", "seus": "sê", "minhas": "minha", "tuas": "tua", "suas": "sua",
                      "nossos": "nossu", "nossas": "nossa"}
@@ -122,6 +143,13 @@ SUBJUNCTIVE = re.compile(r"(?:ss(?:e|es|em|emos)|[aeiô]r|[aeiô]res|[aeiô]rem|
 def strip_accents(s: str) -> str:
     """Remove the acute and circumflex accents."""
     return unicodedata.normalize("NFC", "".join(c for c in unicodedata.normalize("NFD", s) if c not in "́̂"))
+
+
+def singular(w: str) -> str:
+    """Portuguese: the singular of a regular plural noun (seixos, amendoins, javalis), or the word itself."""
+    if w.endswith("ns"):
+        return w[:-2] + "m"
+    return w[:-1] if w.endswith("s") and w[:-1] in NOUNS else w
 
 
 def nuclei(w: str) -> list[re.Match]:
@@ -273,8 +301,8 @@ def translate(text: str) -> str:
             res = "quén"                                                # Gramática III 1.1.7: quén se casô?
         elif low in POSSESSIVE_PLURAL and before.endswith("h"):
             res = POSSESSIVE_PLURAL[low]
-        elif low in GENDER:
-            res, gender = GENDER[low]
+        elif (noun := singular(low)) in NOUNS:
+            res, gender = NOUNS[noun]                       # Convenção 2.1: the plural -h only on the determiner
             if before in ARTICLE_FLIP[gender]:
                 flipped = ARTICLE_FLIP[gender][before]
                 parts[prev] = flipped[0].upper() + flipped[1:] if parts[prev][0].isupper() else flipped
