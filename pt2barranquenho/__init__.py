@@ -108,6 +108,7 @@ def word(w):
     if w.endswith("ámos") and len(groups) > 2 and not re.search(r"[áí]", w[:-4]):
         return re.sub(r"ámos$", "amu", w)
     w = re.sub(r"amos$", "emos", w) if len(groups) > 2 and not any(c in ACCENTED for c in w) else w
+    w = re.sub(r"ãos$", "õi", w)                                     # irmãos > irmõi: plural of -ãu is -õi (1.2.3)
     w = w.replace("ão", "ãu")
     w = re.sub(r"ães$", "ãi", w)
     w = re.sub(r"ões$", "õi", w)
@@ -155,8 +156,8 @@ def translate(text):
     text = re.sub(rf"\b({IR}) (\w+[aeiô]r)-({CLITIC_WORDS})\b", r"\3 \1 a \2", text, flags=re.I)
     text = re.sub(rf"\b({IR}) (\w+[aeiô]r)\b", r"\1 a \2", text, flags=re.I)
     text = re.sub(r"\b(tenho|tens|tem|temos|têm|tinha|tinham|ter) de\b", r"\1 que", text, flags=re.I)
-    text = re.sub(r"\bcomo se\b", "como si", text, flags=re.I)
-    text = re.sub(r"\bse (?=(?:o|a|os|as|eu|tu|ele|ela|nós|você|vocês)\b)", "si ", text, flags=re.I)
+    text = re.sub(r"\b(como )se\b", r"\1si", text, flags=re.I)
+    text = re.sub(r"\b([Ss])e (?=(?:o|a|os|as|eu|tu|ele|ela|nós|você|vocês)\b)", lambda m: ("S" if m.group(1) == "S" else "s") + "i ", text, flags=re.I)
     text = re.sub(r"^(\W*)ainda\b", r"\1inda", text, flags=re.I)
     out = []
     for tok in re.findall(r"\w+(?:-\w+)*|[^\w\s]", text):

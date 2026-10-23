@@ -29,6 +29,10 @@ python scripts/verify_gold.py gold/books.tsv convencao=<Convenção PDF> gramati
 
 **Use.** This is a development set. The rules of `pt2barranquenho` come from the same books, so a score on this set measures coverage of the books, not translation of unseen text.
 
+## external.tsv
+
+`external.tsv` holds 36 pairs from sources outside the 2025 books, in the same columns. `pages` holds the source URL. `note` names the source and its spelling. The sources are a study published by the Câmara Municipal de Barrancos, sayings printed on sugar packets (cited in *Estudis Romànics*, 2021), field transcriptions (CILFR 2018), press quotes and a local blog. Most predate the 2025 convention and use their own spelling, and the Portuguese is often a free gloss. Score this set with chrF only.
+
 ## passing.txt
 
 `passing.txt` lists the ids that `pt2barranquenho` translates correctly. `tests/test_gold.py` fails when one of them breaks. When a change fixes more rows, add their ids to the list.

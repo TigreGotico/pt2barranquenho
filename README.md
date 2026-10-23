@@ -72,7 +72,15 @@ The rules follow two books. Section numbers in the code refer to the Gramática.
 uv run --with sacrebleu --with-editable . python scripts/evaluate.py gold/books.tsv --errors
 ```
 
-**This gold set is a development set, not a test set.** The rules were written from the same books, so these numbers show how well the rules cover the books' own examples. They do not measure translation of unseen text. A held-out test needs sentences that native speakers translate, or texts published in both languages.
+**This gold set is a development set, not a test set.** The rules were written from the same books, so these numbers show how well the rules cover the books' own examples. They do not measure translation of unseen text.
+
+`gold/external.tsv` holds 36 pairs from outside the books: a municipal language study, community sayings, field transcriptions, press quotes and a blog. The rules never saw them. They are a weak test. They use older or personal spellings (*xobe* for *chobi*, *-om* for *-on*), and their Portuguese is often a free gloss. No row matches exactly.
+
+| Subset | Rows | Copy the Portuguese: chrF2 | pt2barranquenho: chrF2 |
+| --- | ---: | ---: | ---: |
+| external | 36 | 37.1 | 39.2 |
+
+A real test needs everyday Portuguese sentences that native speakers translate into the 2025 spelling.
 
 ## Limits
 
