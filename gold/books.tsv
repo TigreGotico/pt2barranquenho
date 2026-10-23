@@ -239,7 +239,7 @@ b237	eu sou	eu sô		g31	phrase	regular
 b238	tu és	tú eri		g31	phrase	lexical	
 b239	ele é	ele é		g31	phrase	regular	printed with ele; the pronoun table gives eli
 b240	estive	ehtubi		g31	word	lexical	
-b241	se não tivesses vindo	se nãu te tibera bindu		g32	sentence	syntax	the Gramática prints the conjunction as se; Convenção 2.2 writes it si
+b241	se não tivesses vindo	se nãu te tibera bindu		g32	sentence	syntax	the Gramática prints the conjunction as se; Convenção 1.1 writes it si (c20)
 b242	amar	amá		g33	word	regular	
 b243	comer	comê		g34	word	regular	
 b244	partir	partí		g35	word	regular	
