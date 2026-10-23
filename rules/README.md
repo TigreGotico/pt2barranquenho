@@ -49,4 +49,8 @@ The ledger cites the Convenção where the two books differ, because the Conven�
 | qual | *cual* (2.6) | *quà* (III 1.1.7, Tabela 10) | *cual* |
 | também | *tamén* (sound table) | *tambén* (III 1.1.2) | *tamén* |
 | quatro | *cuatru* (2.4) | *quatru* (III 1.1.8) | *cuatru* |
+| estou | *tô* (1.7) | *ehtô* (the ehtá table) | *tô* |
+| estive | no example | *ehtubi* (III 1.2.5), *ehtibi* (the ehtá table) | *ehtubi*, as the III 1.2.5 text prints |
+| tenhamos, estejamos | no example | *tenhamu* (compound tenses), *tenhemu*, *ehtejemu* (simple tenses); *comamu*, *sejamu*, *ajamu* | *tenhemu*, *ehtejemu*, as the simple-tense tables print |
+| comam, partam | no example | *coman*, *partan* (regular tables); *sejon*, *tenhon*, *ehtejon* (irregular tables) | *-on*. The tests leave this person out. |
 | está a perceber-me | no example | *m'ehtá a percebé*, and *nuh ehtá bendu* for *está-nos a ver* (IV 1.1, IV 1.3) | the gerund, as IV 1.3 states |

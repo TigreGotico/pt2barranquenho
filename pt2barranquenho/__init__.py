@@ -53,6 +53,8 @@ CLOSED = {
     # Prepositions and conjunctions, Gramática III 1.2.6; e > i, Convenção 1.3; ou > o, Convenção 1.7; por > pur,
     # Convenção 2.7; também > tamén, Convenção sound table.
     "em": "en", "por": "pur", "sob": "so", "e": "i", "ou": "o", "mas": "mah", "também": "tamén",
+    # até > ahta, the one preposition that differs, Gramática III 1.2.6.
+    "até": "ahta",
     # Monosyllables keep the aspirated -h, Convenção 2.1.
     "mais": "maih", "pois": "poih", "deus": "deuh", "depois": "dehpoi",
     # Irregular verb forms, Gramática III 1.2.5; quer > què, Gramática III 1.1.2; sou, estou, Convenção 1.7;
@@ -60,6 +62,15 @@ CLOSED = {
     # rules out the Gramática's hai.
     "somos": "semu", "és": "eri", "sou": "sô", "estou": "tô", "estive": "ehtubi", "andei": "andubi", "há": "ai",
     "quer": "què", "vir": "bi",
+    # 3pl presents that keep their nasal, Gramática III 1.2.5: tenhen, ponhen, benhen.
+    "têm": "tenhen", "põem": "ponhen", "vêm": "benhen", "veem": "benhen",
+    # The tables of ser, estar, haver and ter, Gramática III 1.2.5.4: the 2sg keeps its -h (Convenção 2.1) in forms
+    # no noun shares, and haver drops its h.
+    "hei": "ê", "hás": "áh", "estás": "ehtáh", "tinhas": "tinhah", "havias": "abiah", "sejas": "sejah",
+    "tenhas": "tenhah", "estejas": "ehtejah", "hajas": "ajah", "fosses": "fossih", "tivesses": "tibessih",
+    "estivesses": "ehtibessih", "houvesses": "obessih", "tiveras": "tiberah", "estiveras": "ehtiberah",
+    "houveras": "oberah", "fores": "forih", "tiveres": "tiberih", "estiveres": "ehtiberih", "houveres": "oberih",
+    "serias": "seriah", "terias": "teriah", "estarias": "ehtariah", "haverias": "aberiah",
 }
 # Object pronouns before the verb, Gramática IV 1.1, in their Gramática III 1.1.2 forms.
 CLITICS = {"me": "me", "te": "te", "se": "se", "lhe": "le", "lhes": "leh", "nos": "nuh", "vos": "buh", "o": "u",
@@ -137,6 +148,14 @@ CONJUNCTION_NEXT = SUBJECTS | {"o", "a", "os", "as", "um", "uma", "uns", "umas",
                                "for", "fosse", "tiver", "tivesse", "houver", "estiver"}
 # Verbs after which se opens an indirect question: não sei se vem.
 QUESTION_VERBS = re.compile(r"^(?:sei|sabe|sabes|sabemos|sabem|saber|sabia|pergunt\w*|ver|vê|veja|vejo|depende|duvido)$")
+# Portuguese: present subjunctive stems of -er and -ir verbs, whose 1pl in -amos is not the -emu present of -ar verbs
+# (Gramática III 1.2.5.4: comamu, partamu, sejamu, ajamu).
+SUBJUNCTIVE_STEM = re.compile(r"^(?:sej|haj|faç|dig|vej|poss|queir|saib|trag|ouç|peç|sig|consig|sint|durm|sirv|"
+                              r"prefir|ponh|venh|caib|valh|perc|fuj|cubr|com|beb|escrev|viv|aprend|vend|corr|receb|"
+                              r"respond|part|abr|decid|exist|permit|discut|insist|assist|sub|cumpr|resolv|conheç)amos$")
+# Portuguese: the future subjunctive of a strong preterite stem, whose -er is not an infinitive (Gramática III
+# 1.2.5.4: tibé, ehtibé, obé).
+STRONG_FUTURE = re.compile(r"^(?:(?:es)?tiv|houv|fiz|pud|quis|diss|soub|troux|pus|coub)er$")
 SUBJUNCTIVE = re.compile(r"(?:ss(?:e|es|em|emos)|[aeiô]r|[aeiô]res|[aeiô]rem|[aeiô]rmos)$")
 
 
@@ -150,6 +169,12 @@ def singular(w: str) -> str:
     if w.endswith("ns"):
         return w[:-2] + "m"
     return w[:-1] if w.endswith("s") and w[:-1] in NOUNS else w
+
+
+def second_singular(pt: str, barr: str) -> bool:
+    """Portuguese: whether a verb after tu or te is a 2sg form that lost its -s. A final nasal takes no -h: tú ten,
+    Gramática III 1.2.5.4."""
+    return pt.endswith("s") and not pt.endswith("mos") and pt not in CLOSED and not barr.endswith(("h", "n"))
 
 
 def nuclei(w: str) -> list[re.Match]:
@@ -191,8 +216,11 @@ def word(w: str) -> str:
     # -emu (Gramática III 1.2.5.2). The final -s goes below (Convenção 2.1).
     if w.endswith("ámos") and len(groups) > 2 and not re.search(r"[áí]", w[:-4]):
         return w[:-4] + "amu"
-    if len(groups) > 2 and not any(c in ACCENTED for c in w):
+    if len(groups) > 2 and not any(c in ACCENTED for c in w) and not SUBJUNCTIVE_STEM.match(orig):
         w = re.sub(r"amos$", "emos", w)
+    # The 1pl of the past subjunctive and the pluperfect is written with an acute: fóssemu, coméramu (Gramática III
+    # 1.2.5.4).
+    w = re.sub(r"[êô](?=(?:ssemos|ramos)$)", lambda m: {"ê": "é", "ô": "ó"}[m[0]], w)
     w = re.sub(r"ãos$", "õi", w)                                     # Gramática III 1.2.3: plural in -õi
     w = w.replace("ão", "ãu")                                        # Convenção 1.8.3: fejãu, leãu
     w = re.sub(r"ãe$|ães$", "ãi", w)                                 # Convenção 1.8.3: mãi, pãi
@@ -220,7 +248,8 @@ def word(w: str) -> str:
     m = re.search(r"([aeiouêô])([lrz])$", w)
     if m and final_stress and not (mono and (m.group(2) == "z" or orig in KEEP_L)):
         v, c = m.groups()
-        w = w[:m.start()] + ({"e": "ê", "o": "ô"} if c == "r" else {"ê": "ê"}).get(v, ACUTE.get(v, v))
+        closed = {"e": "ê", "o": "ô"} if c == "r" and not STRONG_FUTURE.match(orig) else {"ê": "ê"}
+        w = w[:m.start()] + closed.get(v, ACUTE.get(v, v))
     elif m and not final_stress and m.group(1) in "ae" and m.group(2) in "lr":
         # Convenção 1.1 and Convenção 4: an unstressed open final vowel before a lost -l or -r takes the grave
         # accent, and it carries no other accent (açucà, amabè).
@@ -229,8 +258,8 @@ def word(w: str) -> str:
         w = strip_accents(w[:-1])                                    # Gramática III 1.2.3: difici
     w = re.sub(f"n?[sz](?=[^{VOWELS}s])", "h", w)                    # Convenção 2.1: Lihboa, ihtrumentu
     if w.endswith(("s", "z")):
-        if mono and (w.endswith("z") or any(c in ACCENTED for c in w)):
-            w = w[:-1] + "h"                                         # Convenção 2.1: trêh, Deuh
+        if mono and (w.endswith("z") or any(c in ACCENTED for c in w)) or orig.endswith("rás"):
+            w = w[:-1] + "h"                       # Convenção 2.1: trêh, Deuh; the 2sg future, Gramática amaráh
         else:
             w = w[:-1]                                               # Convenção 2.1: Barrancu, ehpanhói
             if orig.endswith("ês"):
@@ -283,13 +312,16 @@ def translate(text: str) -> str:
         verb, *clitics = low.split("-")
         if clitics and all(c in CLITICS for c in clitics):
             if clitics[-1] in ("lo", "la", "los", "las"):
-                verb += "s" if verb.endswith("mo") else "r"            # Portuguese: entendêmo-lo, fazê-lo
+                # Portuguese: entendêmo-lo, fazê-lo. The accent before -mo marks the stress for the clitic only.
+                verb = re.sub(r"[êô](?=mo$)", lambda m: strip_accents(m[0]), verb) + "s" if verb.endswith("mo") else verb + "r"
             clitics.sort(key=lambda c: c not in ("me", "te"))
             pronouns = " ".join(CLITICS[c] for c in clitics)
             if verb.endswith("r"):
                 res = word(verb) + "-" + pronouns.replace(" ", "-")    # Gramática IV 1.1: not before an infinitive
             else:
                 res = pronouns + " " + word(verb)                       # Gramática IV 1.1: elih u torrabon lá
+                if "te" in clitics and second_singular(verb, res):
+                    res += "h"                                          # Convenção 2.1: te lembrah
         elif low == "se":
             res = "se" if prev_src in PROCLISIS and next_src not in CONJUNCTION_NEXT else "si"
             if prev is not None and prev_src not in PROCLISIS and not QUESTION_VERBS.match(prev_src) and \
@@ -308,7 +340,7 @@ def translate(text: str) -> str:
                 parts[prev] = flipped[0].upper() + flipped[1:] if parts[prev][0].isupper() else flipped
         else:
             res = "-".join(word(t) for t in low.split("-"))
-            if before == "tú" and low.endswith("s") and low not in CLOSED and not res.endswith("h"):
+            if before in ("tú", "te") and second_singular(low, res):
                 res += "h"                                                # Convenção 2.1: tú labah, ela laba
             if PSEUDO_REFLEXIVE.match(low) and before not in CLITIC_OUTPUT and (low != "foram" or next_src in MOTION):
                 pronoun = "me" if re.search(r"(?:ei|í|i)$", low) else "te" if low.endswith("ste") else "se"

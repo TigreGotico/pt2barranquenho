@@ -58,7 +58,7 @@ Four gold files test the translator. Each has the same columns; `gold/README.md`
 | Set | Rows | What it is | Copy the Portuguese: chrF2 | pt2barranquenho: exact | pt2barranquenho: chrF2 |
 | --- | ---: | --- | ---: | ---: | ---: |
 | `convention_text.tsv` | 8 | the text the Convenção uses to show the norm applied: a municipal description of the Igreja Matriz, in Portuguese and in Barranquenho | 59.1 | 0.250 | 94.0 |
-| `books.tsv` | 321 | the examples of the two books, each verified on its page | 40.3 | 0.832 | 84.0 |
+| `books.tsv` | 321 | the examples of the two books, each verified on its page | 40.3 | 0.838 | 84.3 |
 | `external_respelled.tsv` | 34 | sentences from other sources, respelled into the 2025 norm | 34.2 | 0.088 | 60.3 |
 | `external.tsv` | 36 | the same sentences in their published spelling | 37.1 | 0.000 | 39.4 |
 
@@ -84,8 +84,10 @@ A full test needs everyday Portuguese sentences that native speakers translate i
 - Stress comes from the Portuguese accent rules. A word with irregular stress can get the wrong final vowel.
 - The Portuguese spelling does not show vowel quality, so a final stressed *e* or *o* can take the wrong accent: *calor* gives *calô*, and the books print *caló*.
 - The pronoun *se* and the conjunction *se* are told apart from the neighbouring words. A sentence fragment, or a pronoun at the start of a clause, gets *si*.
-- The 2nd person singular keeps its *-h* only after *tú*. Without the pronoun, *comes* and *come* look alike to the rules.
-- *-amos* becomes *-emu* on every verb, so the present subjunctive *comamos* also gives *comemu*.
+- The 2nd person singular keeps its *-h* only after *tú* or *te*, and in the irregular forms no noun shares (*ehtáh*, *tinhah*). Without the pronoun, *comes* and *come* look alike to the rules. *eras*, *foras* and *estavas* need *tú* too, because *eras* and *foras* are also nouns.
+- The 2nd person plural (*vós*) is not translated. Portuguese from Portugal uses *vocês* in its place, and the tables print the *vós* forms with variants.
+- `tests/test_paradigms.py` checks every person the Gramática tables print for *amá*, *comê*, *partí*, *sê*, *ehtá*, *abê* and *tê*, except the forms where the books disagree.
+- *-amos* becomes *-emu*, except in the present subjunctive of the verbs in a closed list of stems (*comamu*, *partamu*). A subjunctive outside the list gets *-emu*.
 - *foi*, *foram* + infinitive count as *ir* only at the start of a clause or after a subject pronoun or an adverb, because they are also forms of *ser*.
 - No native speaker has reviewed the output.
 

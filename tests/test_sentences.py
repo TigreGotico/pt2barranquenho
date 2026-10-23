@@ -10,7 +10,7 @@ CASES = {
     "Se é assim": "Si é assin",
     "Se tens fome": "Si ten fomi",
     "Não sei se vem": "Nãu sê si ben",
-    "Só se ele quiser": "Só si eli quisê",
+    "Só se ele quiser": "Só si eli quisé",          # the future subjunctive by analogy with tibé, obé (Gramática III 1.2.5.4)
     "Queria que eles se casassem": "Queria que elih se casassen",
     "Se ele se lembrar": "Si eli se lembrá",
     "e se parava": "i se paraba",
