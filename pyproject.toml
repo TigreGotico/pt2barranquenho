@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pt2barranquenho"
+dynamic = ["version"]
+description = "Rule-based translator from European Portuguese to Barranquenho"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "JarbasAi", email = "jarbasai@mailfence.com" }]
+requires-python = ">=3.9"
+dependencies = []
+keywords = ["barranquenho", "portuguese", "machine-translation", "rule-based", "minority-language"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Intended Audience :: Science/Research",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+eval = ["sacrebleu"]
+
+[project.scripts]
+pt2barranquenho = "pt2barranquenho:main"
+
+[project.urls]
+Homepage = "https://github.com/TigreGotico/pt2barranquenho"
+Repository = "https://github.com/TigreGotico/pt2barranquenho"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pt2barranquenho*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "pt2barranquenho.version.VERSION_STR"}

@@ -1,0 +1,308 @@
+id	pt	barr	alt	pages	kind	class	note
+b001	experiência	ehperimentu		c7	word	lexical	
+b002	os rapazes	uh rapazi		c7;g20	phrase	regular	
+b003	viva	biba		c7;g18	word	regular	
+b004	livro	libru		c7;g14	word	regular	
+b005	cantar	cantá		c7;g12;g14	word	regular	
+b006	fazer	fazê		c7	word	regular	
+b007	espanhol	ehpanhó		c7;g19	word	regular	
+b008	Isabel	Isabé		c7	word	regular	
+b009	mesa	mesa		c19	word	regular	
+b010	terra	terra		c19;g14	word	regular	
+b011	sempre	sempri		c20	word	regular	
+b012	sociedade	sociedadi		c20;g14	word	regular	
+b013	antigamente	antigamenti		c20	word	regular	
+b014	hoje	oji		c20;g18	word	regular	
+b015	saúde	saúdi		c20	word	regular	
+b016	gente	genti		c20;g18	word	regular	
+b017	tive	tibi		c20;g18	word	regular	
+b018	meningite	meningiti		c20	word	regular	
+b019	dezanove meses	dezanobi mesi		c20;g14	phrase	regular	
+b020	este	ehti		c20	word	regular	
+b021	ele	eli		c20	word	regular	
+b022	Fernandes	Fernandi		c20;g14	word	regular	
+b023	Lourenço Marques	Lorençu Marqui		c20	phrase	regular	
+b024	do senhor António Vasques	du senhô Antóniu Bahqui		c20	phrase	regular	
+b025	e se parava	i se paraba		c20	phrase	regular	
+b026	como se fosse	comu si fossi		c20	phrase	regular	
+b027	alto	altu		c20;g14	word	regular	"the Gramática prints the pair reversed: ""alto (pt. 'altu')"""
+b028	faço	façu		c20	word	regular	
+b029	âmbar	ambà		c21	word	regular	
+b030	amável	amabè		c21;g12	word	regular	
+b031	impossível	impossibè		c21	word	regular	
+b032	meu pai	mê pai		c21	phrase	regular	
+b033	meus pais	mêh pai		c21	phrase	regular	
+b034	o seu a seu dono	u seu a sê donu		c21	phrase	regular	
+b035	os meus também	uh meu tamén		c21	phrase	regular	the Gramática writes tambén elsewhere
+b036	enxada	enxá		c22	word	lexical	
+b037	avó	abó		c22;g14	word	regular	
+b038	aqui	aquí	aqui	c22;g14;g18	word	regular	the Gramática writes aqui in one list (g18)
+b039	azul	azú		c22;g14	word	regular	
+b040	casa	casa		c22;g19	word	regular	
+b041	pássaro	pássaru		c22;g14	word	regular	
+b042	à porta	à porta		c22;g14	phrase	regular	
+b043	perna	perna		c22;g14	word	regular	
+b044	pétala	pétala		c22;g14	word	regular	
+b045	vejo	beju		c22	word	regular	
+b046	beijo	bêju		c22;g12	word	regular	
+b047	porca	porca		c22	word	regular	
+b048	rolo	rolu		c23	word	regular	
+b049	livre	libri		c23	word	regular	
+b050	fumo	fumu	sumu	g14;c23	word	regular	the Convenção prints sumu, probably a misprint
+b051	cadeira	cadêra		c23;g15	word	regular	
+b052	pequeno	pequenu		c23;g15	word	regular	
+b053	chegávamos	chegábamu		c23;g12	word	regular	
+b054	fechada	fechada		c23	word	regular	
+b055	estavam	ehtabon		c23;g15	word	regular	
+b056	piloto	pilotu		c23;g15	word	regular	
+b057	tortilha	tortilha		c23	word	regular	
+b058	oliveira	olibêra		c23;g15	word	regular	
+b059	chouriço	choriçu		c23	word	regular	
+b060	que a mim me apetece	que a min m'apeteci		c24;g17	sentence	syntax	
+b061	arranjavam-te	t'arranjabon		c24;c36;g12	word	syntax	
+b062	usavam-se	s'usabon		c24;c36;g12	word	syntax	
+b063	Ainda hoje são amigos	Inda oji sãu amigu		c24;g16	sentence	regular	
+b064	Ainda não vi o João	Inda nãu bi u Joãu		c24	sentence	regular	
+b065	Não vi o João ainda	Nãu bi u Joãu ainda		c24;g16	sentence	regular	
+b066	ceia	cêa		c25;g16	word	regular	
+b067	ideia	idêa		c25;g16	word	regular	
+b068	recheio	rechêu		c25;g16	word	regular	
+b069	abaixo	abaxu		c25;g16	word	regular	
+b070	casei-me	me casê		c25;g16	word	syntax	
+b071	primeira	primêra		c25;g16	word	regular	
+b072	que sei eu?	que sê eu?		c25;g16	sentence	regular	
+b073	estou reformada	tô reformada		c25;g16	phrase	lexical	
+b074	lavou-se	se labô		c25;g16	word	syntax	
+b075	vou fazer setenta e nove	bô a fazê setenta i nobi		c25;g16	sentence	syntax	
+b076	estreou	ehtreô		c25;g16	word	regular	
+b077	oito ou nove	oitu o nobi		c25;g16	phrase	regular	
+b078	campo	campu		c26;g15	word	regular	
+b079	cantam	canton		c26;g15	word	regular	
+b080	tempo	tempu		c26;g15	word	regular	
+b081	tento	tentu		c26;g15	word	regular	
+b082	quem	quen		c26;g15	word	regular	
+b083	simples	simpli		c26;g15	word	regular	
+b084	sinto	sintu		c26;g15	word	regular	
+b085	mim	min		c26;g15	word	regular	
+b086	pomba	pomba		c26;g15	word	regular	
+b087	ponta	ponta		c26	word	regular	
+b088	pronto	prontu		g15	word	regular	
+b089	bom	bon		c26;g15	word	regular	
+b090	chumbo	chumbu		c26;g15	word	regular	
+b091	assunto	assuntu		c26;g15	word	regular	
+b092	um	un		c26;g15	word	regular	
+b093	eram	eron		c27;g15	word	regular	
+b094	contam	conton		c27;g15	word	regular	
+b095	casaram	se casaron		c27;g15	word	syntax	pseudo-reflexive
+b096	trouxeram	troxeron		c27;g15	word	regular	
+b097	comunhão	comunhãu		c27;g16	word	regular	
+b098	grão	grãu		c27;g16	word	regular	
+b099	feijão	fejãu		c27;g16	word	regular	
+b100	são coisas	sãu coisa		c27;g16	phrase	regular	
+b101	não	nãu	nan	c27;g17	word	regular	
+b102	mãe	mãi		c27;g12	word	regular	
+b103	pães	pãi		c27;g17	word	regular	
+b104	patrões	patrõi		c27;g12	word	regular	
+b105	lições	liçõi		c27;g17	word	regular	
+b106	era muito dinheiro	era muntu dinhêru		c27;g17	phrase	regular	
+b107	leão	leãu		c27;g12	word	regular	
+b108	vassoura	bassora		c28	word	regular	
+b109	vivo	bibu		c28	word	regular	
+b110	trabalhava	trabalhaba		c28	word	regular	
+b111	zebra	zebra		c28;g19	word	regular	
+b112	exame	exami		c28;g19	word	regular	
+b113	homem	omen		c28	word	regular	
+b114	mesmo	mehmu		c29	word	regular	
+b115	Lisboa	Lihboa		c29;g19	word	regular	
+b116	visto	bihtu		c29	word	regular	
+b117	Talisca	Talihca		c29	word	regular	
+b118	depois	dehpoi		c29	word	lexical	
+b119	bisneto	bihnetu		c29	word	regular	
+b120	felizmente	felihmenti		c29	word	regular	
+b121	texto	tehtu		c29	word	regular	
+b122	instrumento	ihtrumentu		c29	word	regular	
+b123	demonstrações	demohtraçõi		c29	word	regular	
+b124	louros	loru		c29	word	regular	
+b125	após	apó		c29;g19	word	regular	
+b126	espanhóis	ehpanhói		c29;g19	word	regular	
+b127	Barrancos	Barrancu		c29;g19	word	regular	
+b128	Deus	Deuh		c29;g19	word	regular	
+b129	mais	maih		c29	word	regular	
+b130	pois	poih		c29;g19	word	regular	
+b131	trás	tráh		c29;g40	word	regular	
+b132	os meninos	uh meninu		c29;g18	phrase	regular	
+b133	mais velha	maih belha		c29	phrase	regular	
+b134	pois fomos	poih fomu		c29;g19	phrase	regular	
+b135	as uvas	ah uba		c29;g19	phrase	regular	
+b136	dois ou três anos	doih o trêh anu	doih o treh anu	g19;c29	phrase	regular	the Convenção prints treh
+b137	mete-me medo	me fah medu		c30	sentence	lexical	
+b138	a Talisca a abrimos nós	a Talihca a abrimu nóh		c30	sentence	syntax	
+b139	cinquenta escudos por mês	cincuenta ehcudu pur mêh		c30	phrase	regular	
+b140	apanhou o tifo	apanhô u tifu		c30	sentence	regular	
+b141	aqui casaram as minhas filhas	aquí se casaron ah minha filha		c30	sentence	syntax	
+b142	fiz o almoço para oito ou nove	fih almoçu para oitu o nobi		c30	sentence	syntax	
+b143	e a fiz com feijão	i a fih con fejãu		c30	sentence	regular	
+b144	os meus tios compraram	mêh tiu compraron		c30	sentence	syntax	
+b145	e eles estavam lá	i eli ehtabon lá		c30	sentence	regular	the Gramática table gives elih for eles
+b146	íamos	íamu		c30;g19	word	regular	
+b147	apanhávamos	apanhábamu		c30	word	regular	
+b148	abrimos	abrimu		c30;g19	word	regular	
+b149	xaile	xaili		c31;g18	word	regular	
+b150	crucifixo	crucifixu		c31;g20	word	regular	
+b151	conseguinte	conseguinti		c32	word	regular	
+b152	guerra	guerra		c32	word	regular	
+b153	água	água		c32	word	regular	
+b154	aguentar	agüentá		c32	word	regular	
+b155	linguística	lingüíhtica		c32	word	regular	
+b156	Brasil	Brasí		c32	word	regular	
+b157	numeral	numerá		c32;g12	word	regular	
+b158	Guarda Fiscal	a Guarda Fihcá		c32	phrase	syntax	
+b159	Natal	Natá		c32	word	regular	
+b160	Manuel	Manué		c32	word	regular	
+b161	apesar	apesá		c32	word	regular	
+b162	senhor	senhô		c32	word	regular	
+b163	olhar	olhá		c32;g20	word	regular	
+b164	doutor	dotô		c32;g12	word	regular	
+b165	vir	bi		c32;g31	word	lexical	
+b166	a gente tem de ter fé	a genti ten que tê fé		c32	sentence	syntax	
+b167	açúcar	açucà		c33;g12	word	regular	
+b168	as minhas primas	ah minha prima		c33	phrase	regular	
+b169	os teus pais	uh tê pai		c33	phrase	regular	
+b170	tenho setenta e sete anos	tenhu setenta i seti anu		c33	sentence	regular	
+b171	são novinhas	sãu nobinha		c33	phrase	regular	
+b172	púnhamos uns alfinetes	nuh púnhamu un apentibli		c33	sentence	lexical	
+b173	Gosto de comunicar com as pessoas	A min me gohta comunicá con ah pessoa		c34	sentence	syntax	
+b174	Não está a pensar	Nãu ehtá pensandu		c34	sentence	syntax	
+b175	Nós chamávamos-lhe Joãozinho	Joãuzinhu le chamábamu nóh		c35	sentence	syntax	
+b176	nós	nóh		c35	word	regular	
+b177	Miguel	Migué		c35;g12	word	regular	
+b178	Raul	Raú		c35;g12	word	regular	
+b179	três	trêh		c36;g12	word	regular	
+b180	sonhou	sonhô		c36;g12	word	regular	
+b181	teu	tê		c36;g12	word	regular	
+b182	andei	andê	andubi	c36;g12;g31	word	regular	the Gramática also gives andubi
+b183	catalão	catalãu		c36;g12	word	regular	
+b184	telemóvel	telemobè		g12	word	regular	
+b185	colher	culhé		g14	word	lexical	
+b186	ter	tê		g14;g39	word	regular	
+b187	tomou	tomô		g14	word	regular	
+b188	porco	porcu		g14;g18	word	regular	
+b189	porta	porta		g14	word	regular	
+b190	ò contrário	ò contráriu		g17	phrase	regular	
+b191	verde	berdi		g17	word	regular	
+b192	Valverde	Valverde		g17	word	regular	imported toponyms keep v
+b193	pedra	pedra		g18	word	regular	
+b194	calor	caló		g18	word	regular	
+b195	quando	cuandu		g18	word	regular	
+b196	chove	chobi		g18	word	regular	
+b197	janela	janela		g18	word	regular	
+b198	jogo	jogu		g18	word	regular	
+b199	junho	junhu		g18	word	regular	
+b200	gigante	giganti		g18	word	regular	
+b201	certo	certu		g19	word	regular	
+b202	cabeça	cabeça		g19	word	regular	
+b203	serviço	serbiçu		g19	word	regular	
+b204	passo	passu		g19	word	regular	
+b205	próximo	próximu		g19	word	regular	
+b206	mal	mal		g19	word	regular	
+b207	tal	tal		g19	word	regular	
+b208	qual	cual	quà	g19;g28	word	regular	
+b209	ruela	calheha		g19	word	lexical	
+b210	ervilha	erbilha		g19	word	regular	
+b211	bailar	balá		g20	word	regular	
+b212	por	pur		g20;g40	word	regular	
+b213	pequena porção	migalha		g20	word	lexical	
+b214	nádegas	nalga		g20	word	lexical	
+b215	dedo mínimo	menhiqui		g20	word	lexical	
+b216	se o senhor quer ir caçar connosco	si u senhô què í caçá connóh		g24	sentence	syntax	
+b217	também lhas levou a minha filha	tambén sah lebô a minha filha		g24	sentence	syntax	
+b218	vocês a viram	bocedi a biron		g24;g25	sentence	syntax	
+b219	a vocês vos conheço por acaso	a bocé buh conheçu de sorti		g25	sentence	lexical	
+b220	me apetece	m'apeteci		g25	phrase	regular	
+b221	se usavam	s'usabon		g25	phrase	regular	
+b222	isto	ihtu		g26	word	regular	
+b223	isso	issu		g26	word	regular	
+b224	aquilo	aquilu		g26	word	regular	
+b225	a gente nunca sabe a que horas chega a camioneta	un nunca sabi a quê hora chega a comioneta		g28	sentence	syntax	
+b226	quanto custa?	quantu cohta?		g28	sentence	regular	
+b227	quem casou?	quén se casô?		g28	sentence	syntax	
+b228	qual é a casa?	quà é a casa?		g28	sentence	regular	
+b229	o mel	a mé		g29	phrase	syntax	gender follows Spanish
+b230	o sangue	a sangui		g29	phrase	syntax	gender follows Spanish
+b231	o riso	a risa		g29	phrase	syntax	gender follows Spanish
+b232	o leite	a lêti		g29	phrase	syntax	gender follows Spanish
+b233	Célia	Zelilha		g31	word	lexical	diminutive
+b234	somos	semu		g31	word	lexical	
+b235	pôr	pô		g31	word	regular	
+b236	e adiantei alguma coisa	i adianté alguma coisa		g31	sentence	regular	
+b237	eu sou	eu sô		g31	phrase	regular	
+b238	tu és	tú eri		g31	phrase	lexical	
+b239	ele é	ele é		g31	phrase	regular	printed with ele; the pronoun table gives eli
+b240	estive	ehtubi		g31	word	lexical	
+b241	se não tivesses vindo	se nãu te tibera bindu		g32	sentence	syntax	
+b242	amar	amá		g33	word	regular	
+b243	comer	comê		g34	word	regular	
+b244	partir	partí		g35	word	regular	
+b245	ser	sê		g36	word	regular	
+b246	estar	ehtá		g37	word	regular	
+b247	haver	abê		g38	word	regular	
+b248	a	a		g40	word	regular	
+b249	antes	anti		g40	word	regular	
+b250	com	con		g40	word	regular	
+b251	contra	contra		g40	word	regular	
+b252	de	de		g40	word	regular	
+b253	desde	dehdi		g40	word	regular	
+b254	em	en		g40	word	regular	
+b255	entre	entri		g40	word	regular	
+b256	para	para		g40	word	regular	
+b257	sem	sen		g40	word	regular	
+b258	sob	so		g40	word	regular	
+b259	sobre	sobri		g40	word	regular	
+b260	e	i		g40	word	regular	
+b261	nem	nen		g40	word	regular	
+b262	ou	o		g40	word	regular	
+b263	que	que		g40	word	regular	
+b264	mas	mah	peru	g40	word	regular	
+b265	até	ahta		g40	word	lexical	
+b266	está a perceber-me?	m'ehtá a percebé?		g42	sentence	syntax	
+b267	eles torravam-no lá	elih u torrabon lá		g42	sentence	syntax	
+b268	veem os espanhóis, entendêmo-lo	benhen uh ehpanhói, lu entendemu		g42	sentence	syntax	
+b269	mete-se-me na cabeça	me se meti na cabeça		g42	sentence	syntax	
+b270	partiu-se-me uma perna	me se partiu uma perna		g42	sentence	syntax	
+b271	onde comeu o pinhonate de que tanto gostava	ondi comeu u pinhonati que tantu le gohtaba		g42	sentence	syntax	
+b272	porque gostamos dela	porqui nuh guhtô		g42	sentence	syntax	
+b273	porque era assim clarinha	porqui era assin clarinha		g42	sentence	regular	
+b274	ele foi jogar à bisca	eli foi a jugá à brihca		g42	sentence	syntax	
+b275	foi ver os pais	foi a bê uh pai		g42	sentence	syntax	
+b276	vou lavar-me	me bô a labá		g42	sentence	syntax	
+b277	está-nos a ver	nuh ehtá bendu		g42	sentence	syntax	
+b278	e caiu para dentro da panela	i se caiu para dentru da panela		g43	sentence	syntax	
+b279	já morreu	já se morreu		g43	sentence	syntax	
+b280	tia Conceição já morreu	tia Conceçãu já se morreu		g43	sentence	syntax	
+b281	e logo foram à missa	i logu entãu se foron à missa		g43	sentence	syntax	
+b282	puseram-se os fatinhos domingueiros	se puseron uh fatinhu dominguêru		g43	sentence	syntax	
+b283	as pernas eram mais rápidas	ah perna eron maih lihta		g43	sentence	lexical	
+b284	tu cantas	tú canta		g43	phrase	regular	
+b285	tu sabes	tú sabi		g43	phrase	regular	
+b286	duas meninas	duah menina		g43	phrase	regular	
+b287	três curros	trêh curru		g43	phrase	regular	
+b288	dez animais	déh animai		g43	phrase	regular	
+b289	farturas	heringu		g45	word	lexical	
+b290	amendoim	arbelhana		g45	word	lexical	
+b291	carpinteiro	abegãu		g45	word	lexical	
+b292	rendeiro	rederu		g45	word	lexical	
+b293	pálpebra	párpadu		g45	word	lexical	
+b294	barriga da perna	pantorrilha		g45	word	lexical	
+b295	cócegas	cohquilha		g45	word	lexical	
+b296	amendoeira	almendru	amendoêru	g45;g29	word	lexical	
+b297	pessegueiro	melacatonêru		g45	word	lexical	
+b298	nu	dehnú		g45	word	lexical	
+b299	terçol	terzuelu		g45	word	lexical	
+b300	barata	cucarabacha		g45	word	lexical	
+b301	falar mal	Falá ah treh da tardi		g48	phrase	idiom	
+b302	não consigo fazer tanta coisa	Nãu dô abadu a tanta coisa		g48	sentence	idiom	
+b303	isso também eu queria	A bé		g48	sentence	idiom	
+b304	a laranjeira	u laranju	u laranjêru	g48;g29	phrase	syntax	
+b305	cem damas em castelo, todas vestem de amarelo	Cen dama en cahtelu, todah behten d'amarelu		g48	sentence	regular	riddle
+b306	entre lapa e lapa está uma abóbora que, chova ou não chova, sempre está molhada	Antre lapa i lapa tá uma calabaça que, choba o nãu choba, sempre ehtá molhada		g48	sentence	lexical	riddle
+b307	Branca como o leite, preta como o pé, cabeça de cabaça, dentes de turquês	Branca comu a lêti, preta com'u peh, cabeça de calabaça, denti di turqueh		g48	sentence	syntax	riddle
