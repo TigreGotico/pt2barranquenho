@@ -13,7 +13,8 @@ def norm(s):
 
 
 def test_passing_rows_still_pass():
-    rows = {r["id"]: r for r in csv.DictReader(open(GOLD / "books.tsv", encoding="utf-8"), delimiter="\t")}
+    lines = (GOLD / "books.tsv").read_text(encoding="utf-8").splitlines()
+    rows = {r["id"]: r for r in csv.DictReader(lines, delimiter="\t")}
     expected = set(GOLD.joinpath("passing.txt").read_text().split())
     assert expected <= set(rows)
     broken = [i for i in sorted(expected)

@@ -8,6 +8,7 @@ normalisation. chrF2 is corpus chrF from sacrebleu against the main reference.
 import csv
 import sys
 from collections import defaultdict
+from pathlib import Path
 
 from sacrebleu.metrics import CHRF
 
@@ -26,7 +27,7 @@ def score(rows, hyps):
 
 
 def main():
-    rows = list(csv.DictReader(open(sys.argv[1], encoding="utf-8"), delimiter="\t"))
+    rows = list(csv.DictReader(Path(sys.argv[1]).read_text(encoding="utf-8").splitlines(), delimiter="\t"))
     systems = {"copy": [r["pt"] for r in rows], "rules": [translate(r["pt"]) for r in rows]}
     groups = defaultdict(list)
     for i, r in enumerate(rows):

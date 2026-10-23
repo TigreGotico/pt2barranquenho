@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use pt2barranquenho, cite it and the two books its rules come from."
+title: "pt2barranquenho: rule-based translation from European Portuguese to Barranquenho"
+type: software
+authors:
+  - name: "TigreGotico"
+license: Apache-2.0
+repository-code: "https://github.com/TigreGotico/pt2barranquenho"
+keywords:
+  - Barranquenho
+  - Portuguese
+  - machine translation
+  - rule-based
+  - minority language
+references:
+  - type: book
+    title: "Convenção Ortográfica do Barranquenho"
+    authors:
+      - family-names: "Gonçalves"
+        given-names: "Maria Filomena"
+      - family-names: "Navas"
+        given-names: "María Victoria"
+      - family-names: "Correia"
+        given-names: "Victor M. Diogo"
+    publisher:
+      name: "Universidade de Évora"
+    year: 2025
+    isbn: "978-972-778-463-9"
+  - type: book
+    title: "Gramática Básica de Barranquenho"
+    authors:
+      - family-names: "Gonçalves"
+        given-names: "Maria Filomena"
+      - family-names: "Navas"
+        given-names: "María Victoria"
+      - family-names: "Correia"
+        given-names: "Victor M. Diogo"
+    publisher:
+      name: "Universidade de Évora"
+    year: 2025
+    isbn: "978-972-778-464-6"

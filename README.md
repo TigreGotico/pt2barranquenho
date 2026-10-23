@@ -24,7 +24,7 @@ word("espanhol")   # 'ehpanhó'
 
 ## Sources
 
-The rules follow two books. Section numbers in the code refer to the Gramática.
+The rules follow two books. Each rule in the code names the section it comes from, and `rules/citations.tsv` quotes that section with its page; `rules/README.md` explains the checks and lists the places where the two books disagree.
 
 - Gonçalves, M. F., Navas, M. V. and Correia, V. M. D. (2025). *Convenção Ortográfica do Barranquenho*. Évora: Universidade de Évora. ISBN 978-972-778-463-9.
 - Gonçalves, M. F., Navas, M. V. and Correia, V. M. D. (2025). *Gramática Básica de Barranquenho*. Évora: Universidade de Évora. ISBN 978-972-778-464-6.
@@ -44,7 +44,10 @@ The rules follow two books. Section numbers in the code refer to the Gramática.
 | Pronouns | enclitic after a hyphen | proclitic: *casei-me* > *me casê*; elided before a vowel |
 | Periphrases | *estar a* + infinitive; *ir* + infinitive | gerund; *í a* + infinitive |
 | Pseudo-reflexives | *casar*, *cair*, *morrer*, *sair*, *dormir*, *ir* | take *se*: *já morreu* > *já se morreu* |
-| Closed classes | articles, contractions, pronouns, possessives, demonstratives, indefinites, numerals | the tables of the Gramática |
+| Conjunction *se* | *se* that is not an object pronoun | *si*: *como se fosse* > *comu si fossi* |
+| Possessives | before a noun; tonic | *mê*, *tê*, *sê*; *meu*, *teu*, *seu*: *os meus também* > *uh meu tamén* |
+| [kw], [gw] before *e*, *i* | *cinquenta*, *aguentar* | *cincuenta*, *agüentá* |
+| Closed classes | articles, contractions, pronouns, possessives, demonstratives, indefinites, interrogatives, numerals | the tables of the Gramática |
 
 ## Evaluation
 
@@ -53,8 +56,8 @@ Four gold files test the translator. Each has the same columns; `gold/README.md`
 | Set | Rows | What it is | Copy the Portuguese: chrF2 | pt2barranquenho: exact | pt2barranquenho: chrF2 |
 | --- | ---: | --- | ---: | ---: | ---: |
 | `convention_text.tsv` | 8 | the text the Convenção uses to show the norm applied: a municipal description of the Igreja Matriz, in Portuguese and in Barranquenho | 59.1 | 0.250 | 94.0 |
-| `books.tsv` | 321 | the examples of the two books, each verified on its page | 40.3 | 0.801 | 81.6 |
-| `external_respelled.tsv` | 34 | sentences from other sources, respelled into the 2025 norm | 34.2 | 0.059 | 59.3 |
+| `books.tsv` | 321 | the examples of the two books, each verified on its page | 40.3 | 0.819 | 82.6 |
+| `external_respelled.tsv` | 34 | sentences from other sources, respelled into the 2025 norm | 34.2 | 0.088 | 59.3 |
 | `external.tsv` | 36 | the same sentences in their published spelling | 37.1 | 0.000 | 39.1 |
 
 "Exact" accepts the reference or any alternative printed in the books, after lowercasing. chrF2 is corpus chrF from sacrebleu.
@@ -77,6 +80,8 @@ A full test needs everyday Portuguese sentences that native speakers translate i
 - The rules do not choose Barranquenho-specific words. The 2025 dictionary lists them beside their Portuguese cognates, and context decides which one a speaker uses.
 - Gender changes that follow Spanish (*o leite* > *a lêti*) cover only the nouns the Gramática names.
 - Stress comes from the Portuguese accent rules. A word with irregular stress can get the wrong final vowel.
+- The Portuguese spelling does not show vowel quality, so a final stressed *e* or *o* can take the wrong accent: *calor* gives *calô*, and the books print *caló*.
+- The pronoun *se* and the conjunction *se* are told apart from the neighbouring words. A sentence fragment can get the wrong one.
 - No native speaker has reviewed the output.
 
 ## Licence

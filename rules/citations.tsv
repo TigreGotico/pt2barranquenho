@@ -1,0 +1,77 @@
+rule	book	section	pages	quote	pt	barr
+final -o > -u	Convenção	1.1	c20	a vogal átona [-u] representa-se como <-u>	alto	altu
+final -e > -i	Convenção	1.1	c20	A átona final em port. [-ɨ], grafada com <-e>, é sempre representada com <-i>	sempre	sempri
+conjunction se > si	Convenção	1.1	c20	<se> pronome e <si> conjunção	como se fosse	comu si fossi
+pronoun se stays se	Convenção	1.1	c20	<se> pronome e <si> conjunção	e se parava	i se paraba
+open final vowel before a lost consonant: à, è	Convenção	1.1	c21	marcado com acento grave	amável	amabè
+contracted possessive mê, tê, sê	Convenção	1.1	c21	têm realização contraída em <mê, tê, sê>	meu pai	mê pai
+tonic possessive keeps the diphthong	Convenção	1.1	c21	Quando os pronomes possessivos são tónicos não há redução do ditongo	os meus também	uh meu tamén
+final stressed -ar > -á	Convenção	1.2	c21	<á> cantá (port. ‘cantar’)	cantar	cantá
+final stressed -er > -ê in verbs	Convenção	1.2	c22	<ê> colhê (verbo port. ‘colher’)	colher	colhê
+final stressed i, u take the acute	Convenção	1.2	c22	[i] e [u] tónicos grafam-se com <í> aquí (port. ‘aqui’) e <ú> azú	azul	azú
+conjunction e > i	Convenção	1.3	c23	A conjunção “e” representa-se com <i>		
+pretonic ou > o	Convenção	1.4	c23	A átona pretónica mantém o timbre [o]	chouriço	choriçu
+elision m', t', s' before a vowel	Convenção	1.5	c24	Nos pronomes <me, te, se> elide-se a vogal quando se segue palavra começada por vogal	arranjavam-te	t’arranjabon
+a + o > ò, a + a > à	Convenção	1.6	c24;g23	grafa-se como <ò>: ò contráriu	ao contrário	ò contráriu
+ainda > inda at the start of a sentence	Convenção	1.6	c24	No advérbio ‘ainda’ não se pronuncia a vogal inicial	Ainda hoje são amigos	Inda oji sãu amigu
+ei before a or o > ê	Convenção	1.7	c25	em que existe monotongação, não se representa o <i>	ideia	idêa
+ai before x > a	Convenção	1.7	c25	Há redução do ditongo [aj] antes de fricativa palatal [ʃ]	abaixo	abaxu
+stressed ei > ê	Convenção	1.7	c25	O ditongo oral tónico [ej], grafado com <ei> em port., monotonga em [e]	primeira	primêra
+final stressed ou > ô in verbs	Convenção	1.7	c25	representa-se com <ô> em barranquenho em certas formas verbais	lavou-se	se labô
+conjunction ou > o	Convenção	1.7	c25	A conjunção “ou” grafa-se com <o>	oito ou nove	oitu o nobi
+final m > n	Convenção	1.8.1	c26	[õ] representa-se com <om, on>	bom	bon
+unstressed -am > -on	Convenção	1.8.2	c26;c27	é grafado com <-on> no presente e no pretérito do indicativo	estavam	ehtabon
+-ão > -ãu; unstressed ei > e	Convenção	1.8.3	c27	O ditongo [ɐ͂w] nasal tónico final representa-se com <-ãu>	feijão	fejãu
+-ãe, -ães > -ãi	Convenção	1.8.3	c27	O ditongo [ɐ͂j] grafa-se com <ãi>	pães	pãi
+-ões > -õi	Convenção	1.8.3	c27	O ditongo [õj] representa-se com <õi>	patrões	patrõi
+ui before t > un	Convenção	1.8.3	c27	O ditongo [ũj], reduzido a [ũ], grafa-se com <-un>	era muito dinheiro	era muntu dinhêru
+-ão after i > -eãu	Convenção	1.8.3	c27	A sequência [jɐ͂w] é grafada com <eãu>	leão	leãu
+v > b	Convenção	2	c28	realizam-se como [b] (fenómeno de betacismo), grafando-se com <b>	trabalhava	trabalhaba
+etymological h is dropped	Convenção	2.1	c28	O <h> etimológico latino não tem representação gráfica	homem	omen
+syllable-final s, z, x > h	Convenção	2.1	c29	em posição final de sílaba é aspirada e representa-se com <h>	texto	tehtu
+vowel + ns > vowel + h	Convenção	2.1	c29	A sequência de vogal + <ns> reduz-se a vogal seguida de aspiração	instrumento	ihtrumentu
+final s is dropped	Convenção	2.1	c29	Em final absoluto, a sibilante não se pronuncia	Barrancos	Barrancu
+monosyllables keep final -h	Convenção	2.1	c29	Nos monossílabos, em final absoluto de palavra mantém-se a marca da aspiração	três	trêh
+plural -h on the first word of the phrase only	Convenção	2.1	c29	Nos contextos sintáticos a representação da sibilante segue a mesma regra	os meninos	uh meninu
+possessive after a plural determiner drops -h	Convenção	3	c33	o plural marca-se com aspiração no primeiro elemento	os teus pais	uh tê pai
+1pl -mos > -mu	Convenção	2.1	c30	Na 1ª pessoa do plural dos verbos, a sibilante elide-se	chegávamos	chegábamu
+2sg keeps -h after tú	Convenção	2.1	c30	Na 2ª pessoa do singular, a marca da sibilante está presente	tu lavas	tú labah
+qu before a, o > cu	Convenção	2.4	c31	<c + a, o, u> e <qu + e, i>	quatro	cuatru
+[kw] before e > cu	Convenção	2.1	c30	cincuenta ehcudu pur mêh	cinquenta escudos por mês	cincuenta ehcudu pur mêh
+[gw] before e, i > gü	Convenção	2.5	c32	mantendo o suporte vocálico com o trema apenas quando é pronunciado	aguentar	agüentá
+final stressed -l is dropped	Convenção	2.6	c32	A líquida lateral em sílaba tónica final [-l], que não se pronuncia, não se representa	espanhol	ehpanhó
+monosyllables keep -l	Convenção	2.6	c32	Grafa-se a lateral dos monossílabos mal, tal, cual		
+final stressed -r is dropped	Convenção	2.7	c32	em sílaba tónica final elide-se	senhor	senhô
+ter de > ter que	Convenção	2.7	c32	a genti ten que tê fé	a gente tem de ter fé	a genti ten que tê fé
+final unstressed -ar > -à	Convenção	2.7	c33	Também se elide em sílaba átona final com vogal aberta	açúcar	açucà
+ir + a + infinitive	Convenção	3.1	c34	Ir + a + infinitivo	Vou fazer	Bô a fazê
+pseudo-reflexive se	Gramática	IV 1.4	g43	com verbos como caí, casá, dormí, í, morré, saí	já morreu	já se morreu
+há > ai	Convenção	3.1	c34	Construções com formas verbais específicas	Há pelo menos	Ai pelu menu
+estar a + infinitive > estar + gerund	Convenção	3.1	c34	Estar + gerúndio	Não está a pensar	Nãu ehtá pensandu
+acute on proparoxytones	Convenção	4	c35	O acento agudo (´) assinala a posição da tónica e a sua abertura em palavras proparoxítonas	chegávamos	chegábamu
+circumflex on reduced ou, eu, ei	Convenção	4	c36	O acento circunflexo (^) marca a vogal tónica fechada	doutor	dotô
+articles and their contractions	Gramática	III 1.1.1	g22;g23	Tabela 1 – Artigos definidos e indefinidos	pelos cabeços	peluh cabeçu
+personal pronouns	Gramática	III 1.1.2	g24	Tabela 4 – Pronomes pessoais		
+lhe > le; lho, lha > su, sa	Gramática	III 1.1.2	g24	em vez de lhu, lha, em barranquenho podem realizar-se como su, sa; suh, sah		
+dele, nele contractions	Gramática	III 1.1.2	g24	deli, dela; delih, delah; neli, nela; nelih, nelah		
+possessives	Gramática	III 1.1.3	g25	Tabela 5 – Possessivos: um possuidor		
+demonstratives	Gramática	III 1.1.4	g26	Tabela 7 – Demonstrativos: variáveis	essa esmola	essa ehmola
+indefinites	Gramática	III 1.1.6	g27	Tabela 9 – Indefinidos: variáveis		
+interrogative quén	Gramática	III 1.1.7	g28	Interrogativos invariáveis: que?, quén?	quem casou?	quén se casô?
+numerals	Gramática	III 1.1.8	g28	zeru, un, uma, doih, duah, trêh		
+gender of fruit trees and some nouns follows Spanish	Gramática	III 1.2.2.1	g29	especialmente no nome das árvores frutíferas	o leite	a lêti
+-ãos > -õi	Gramática	III 1.2.3	g30	o plural forma-se em -õi		
+há > hai, as the Gramática writes it	Gramática	III 1.2.5	g31	a 3ª pessoa do verbo abê, hai		
+somos > semu	Gramática	III 1.2.5	g31	É o caso de semu (pt. ‘somos’)	somos	semu
+és > eri	Gramática	III 1.2.5	g31	eu sô, tú eri, ele é		
+andei > andubi, estive > ehtubi	Gramática	III 1.2.5	g31	é andubi (pt. ‘andei’, esp. ‘anduve’)		
+1pl present -amos > -emu	Gramática	III 1.2.5.2	g32	costuma ser -emu (pt. ‘-amos’)		
+1pl preterite -ámos > -amu	Gramática	III 1.2.5.4	g33	amamu amahtih amaron		
+object pronouns go before the verb	Gramática	IV 1.1	g42	a colocação do pronome átono em posição proclítica	eles torravam-no lá	elih u torrabon lá
+me before se	Gramática	IV 1.1	g42	coloca-se em primeiro lugar o pronome de 1ª pessoa	mete-se-me na cabeça	me se meti na cabeça
+ir + a + infinitive; a clitic climbs before ir	Gramática	IV 1.3	g42	a estrutura inclui sempre a preposição a	vou lavar-me	me bô a labá
+estar + gerund	Gramática	IV 1.3	g42	o verbo ehtá exige o gerúndio	está-nos a ver	nuh ehtá bendu
+também > tamén	Convenção	sound table	c17	tamén, parabén		
+relatives	Gramática	III 1.1.5	g27	cujuh abogadu		
+-ês > -é	Gramática	III 1.2.1	g29	camponé / camponesa		
+prepositions and conjunctions	Gramática	III 1.2.6	g40	i, nen, o, que, mah		
