@@ -68,8 +68,10 @@ CASES = {
     "William Shakespeare": "William Shakespeare",
     "Manuel e Raúl": "Manué i Raú",
     "Joseph E. Johnston e Alfred O'Keeffe": "Joseph E. Johnston i Alfred O'Keeffe",
+    "Stefan e William McMaster": "Stefan i William McMaster",
     # Template slots stay as they are.
     "Eu sou {name}": "Eu sô {name}",
+    "para o seu {kind}": "para u sê {kind}",
     "Prioridade ajustada para {num}.": "Prioridadi ajuhtada para {num}.",
     # Case.
     "ÉS TU?": "ERI TÚ?",
