@@ -452,8 +452,9 @@ def translate(text: str) -> str:
         next_src = parts[i + 2].lower() if i + 2 < len(parts) and parts[i + 1].strip() in ("", "{") else ""
         if parts[i - 1].endswith("{") and parts[i + 1].startswith("}"):
             continue                                                     # a template slot: {location}
-        name_part = tok.isupper() and parts[i + 1].startswith(".") or tok[0].isupper() and "'" in (parts[i - 1][-1:], parts[i + 1][:1]) \
-            or not tok.isupper() and any(c.isupper() for t in tok.split("-") for c in t[1:])
+        joined = i > 1 and parts[i - 1] == "'" or i + 2 < len(parts) and parts[i + 1] == "'"    # O'Neill, not 'Rei'
+        name_part = tok.isupper() and parts[i + 1].startswith(".") or tok[0].isupper() and joined \
+            or any(c.isupper() for t in tok.split("-") if not t.isupper() for c in t[1:])
         if any(c.isdigit() for c in tok) or re.fullmatch(r"[IVXLCDM]+", tok) or (len(tok) > 1 and tok.isupper()) \
                 or "-" not in low and FOREIGN.search(low) or name_part:
             prev, prev_src = i, low      # numbers, Roman numerals, acronyms, imported words, initials, O'Neill, McMaster
@@ -490,7 +491,8 @@ def translate(text: str) -> str:
                 flipped = ARTICLE_FLIP[gender][before]
                 parts[prev] = flipped[0].upper() + flipped[1:] if parts[prev][0].isupper() else flipped
         else:
-            res = "-".join(t if FOREIGN.search(t.lower()) else word(t.lower()) for t in tok.split("-"))
+            res = "-".join(t if len(t) > 1 and t.isupper() or FOREIGN.search(t.lower()) else word(t.lower())
+                           for t in tok.split("-"))
             if before in ("tú", "te") and second_singular(low, res):
                 res += "h"                                                # Convenção 2.1: tú labah, ela laba
             if PSEUDO_REFLEXIVE.match(low) and before not in CLITIC_OUTPUT and (low != "foram" or next_src in MOTION):

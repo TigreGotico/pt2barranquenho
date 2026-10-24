@@ -69,13 +69,18 @@ CASES = {
     "vinte javalis": "binti jabardu",
     "Tenho cócegas": "Tenhu cohquilha",
     "o advogado": "u abogadu",
-    # Imported words keep their spelling (Gramática II 2); a Portuguese part of a compound changes.
+    # Imported words keep their spelling (Gramática II 2); a Portuguese part of a compound changes, and an acronym
+    # stays. An apostrophe inside a word marks a name, a quotation mark does not.
     "o primeiro membro não-Ford": "u primêru membru nãu-Ford",
     "William Shakespeare": "William Shakespeare",
     "Manuel e Raúl": "Manué i Raú",
     "Joseph E. Johnston e Alfred O'Keeffe": "Joseph E. Johnston i Alfred O'Keeffe",
     "Stefan e William McMaster": "Stefan i William McMaster",
     "ele disse 'leite'": "eli dissi 'lêti'",
+    "o título de 'Rei da Inglaterra'": "u títulu de 'Rê da Inglaterra'",
+    "a 'Expedição dos Vinte'": "a 'Ehpediçãu duh Binti'",
+    "Joana d'Arc": "Joana d'Arc",
+    "o tratado EUA-Japão": "u tratadu EUA-Japãu",
     # Template slots stay as they are.
     "Eu sou {name}": "Eu sô {name}",
     "para o seu {kind}": "para u sê {kind}",
