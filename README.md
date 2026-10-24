@@ -87,7 +87,7 @@ A full test needs everyday Portuguese sentences that native speakers translate i
 - The pronoun *se* and the conjunction *se* are told apart from the neighbouring words. A sentence fragment, or a pronoun at the start of a clause, gets *si*.
 - The 2nd person singular keeps its *-h* only after *tú* or *te*, and in the irregular forms no noun shares (*ehtáh*, *tinhah*). Without the pronoun, *comes* and *come* look alike to the rules. *eras*, *foras* and *estavas* need *tú* too, because *eras* and *foras* are also nouns.
 - The 2nd person plural (*vós*) is not translated. Portuguese from Portugal uses *vocês* in its place, and the tables print the *vós* forms with variants.
-- `tests/test_paradigms.py` checks every person the Gramática tables print for *amá*, *comê*, *partí*, *sê*, *ehtá*, *abê* and *tê*, except the forms where the books disagree.
+- `tests/test_paradigms.py` checks every person the Gramática tables print for *amá*, *comê*, *partí*, *sê*, *ehtá*, *abê* and *tê*, except the forms where the books disagree. `tests/test_closed_classes.py` does the same for the pronoun, possessive, demonstrative, relative, indefinite and numeral tables.
 - *-amos* becomes *-emu*, except in the present subjunctive of the verbs in a closed list of stems (*comamu*, *partamu*). A subjunctive outside the list gets *-emu*.
 - *foi*, *foram* + infinitive count as *ir* only at the start of a clause or after a subject pronoun or an adverb, because they are also forms of *ser*.
 - No native speaker has reviewed the output.

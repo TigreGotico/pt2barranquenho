@@ -48,6 +48,8 @@ CLOSED = {
     # qual keeps its -l and takes cu, Convenção 2.6 (mal, tal, cual); the Gramática tables print quà.
     "qual": "cual",
     # Numerals, Gramática III 1.1.8.
+    # outrem is oxytone: otrén, Gramática III 1.1.6.
+    "outrem": "otrén",
     "dois": "doih", "duas": "duah", "três": "trêh", "seis": "seih", "dez": "déh", "dezasseis": "dezassei",
     "dezassete": "dezasseti",
     # Prepositions and conjunctions, Gramática III 1.2.6; e > i, Convenção 1.3; ou > o, Convenção 1.7; por > pur,
@@ -120,6 +122,9 @@ LABIOVELAR = {"cinquent": "cincuent", "frequent": "frecuent", "frequênc": "frec
               "ungu": "ungü", "pinguim": "pingüim", "ensanguent": "ensangüent", "arguir": "argüir"}
 # Monosyllables that keep the final -l, Convenção 2.6.
 KEEP_L = {"mal", "tal", "qual"}
+VINTE = {"um": "un", "uma": "uma", "dois": "doi", "duas": "dua", "três": "tré", "quatro": "cuatru", "cinco": "cincu",
+         "seis": "sei", "sete": "seti", "oito": "oitu", "nove": "nobi"}
+CLOSED.update({f"vinte_e_{pt}": "binti" + barr for pt, barr in VINTE.items()})
 # The present and imperfect of ir are always ir. The preterite fui, foi, foram is also the preterite of ser
 # (foi criar emprego), so it counts as ir only at the start of a clause or after a subject pronoun or an adverb.
 IR = r"(?:vou|vais|vai|vamos|vão|ia|ias|íamos|iam)"
@@ -301,6 +306,9 @@ def translate(text: str) -> str:
     # Convenção 2.7 prints ter que before an infinitive: a genti ten que tê fé.
     text = re.sub(r"\b(tenho|tens|tem|temos|têm|tinha|tinham|ter|terá|terão) de (?=\w+[aeiô]r\b)", r"\1 que ",
                   text, flags=re.IGNORECASE)
+    # Gramática III 1.1.8 writes vinte e um as one word, and the unit loses its final -h: bintiun, bintidoi, bintitré.
+    text = re.sub(r"\b([Vv])inte e (um|uma|dois|duas|três|quatro|cinco|seis|sete|oito|nove)\b",
+                  lambda m: m[1] + "inte_e_" + m[2], text)
     # Convenção 1.6: ainda loses its first vowel, except at the end of a sentence.
     text = re.sub(r"\b([Aa])inda\b(?!\s*(?:[.!?…]|$))", lambda m: ("I" if m.group(1) == "A" else "i") + "nda", text)
     parts = re.split(r"(\w+(?:-\w+)*)", text)                      # separators at even indices, words at odd
