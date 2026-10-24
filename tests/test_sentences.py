@@ -40,6 +40,8 @@ CASES = {
     "mal": "mal",
     "difícil": "difici",
     "circuito": "circuitu",
+    # An unstressed open final vowel before a lost -l or -r takes the grave accent (Convenção 1.1).
+    "Vítor": "Bitò",
     # -ãos takes the plural -õi of the nouns in -ãu (Gramática III 1.2.3).
     "irmãos": "irmõi",
     # A noun whose gender differs from the Portuguese one flips its determiner, in the singular and the plural, and
@@ -53,6 +55,9 @@ CASES = {
     "numas cerejeiras": "nunh cerejêru",
     "daquela macieira": "daqueli maçanêru",
     "a casa das macieiras": "a casa duh maçanêru",
+    # todos before a determiner leaves the plural -h to the determiner (Convenção 2.1, Aplicação da Convenção).
+    "de todos os outros": "de todu uh otru",
+    "todas as casas": "toda ah casa",
     # Words the books print in place of the Portuguese word.
     "numa azinheira": "numa azenhêra",
     "vinte javalis": "binti jabardu",

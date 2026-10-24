@@ -12,8 +12,8 @@ import re
 import sys
 import unicodedata
 
-VOWELS = "aeiouáéíóúâêôãõàèü"
-ACCENTED = "áéíóúâêôãõàè"
+VOWELS = "aeiouáéíóúâêôãõàèòü"
+ACCENTED = "áéíóúâêôãõàèò"
 ACUTE = {"a": "á", "e": "é", "i": "í", "o": "ó", "u": "ú"}
 
 # Closed classes. The plural keeps the aspirated -h on these words, and on the first word of a noun phrase.
@@ -105,9 +105,10 @@ DEMONSTRATIVES = [("ehti", "ehta"), ("ehtih", "ehtah"), ("essi", "essa"), ("essi
                   ("aquelih", "aquelah")]
 DETERMINERS = ARTICLES + [(prep + m, prep + f) for prep in ("", "d", "n") for m, f in DEMONSTRATIVES]
 ARTICLE_FLIP = {"m": {f: m for m, f in DETERMINERS}, "f": dict(DETERMINERS)}
-# After a plural determiner the possessive loses its own -h, Convenção 3: ah minha prima, uh tê pai.
-POSSESSIVE_PLURAL = {"meus": "mê", "teus": "tê", "seus": "sê", "minhas": "minha", "tuas": "tua", "suas": "sua",
-                     "nossos": "nossu", "nossas": "nossa"}
+# After a plural determiner a possessive or outro loses its own -h, Convenção 3: ah minha prima, uh tê pai; the
+# Convenção text: todu uh otru.
+AFTER_PLURAL = {"meus": "mê", "teus": "tê", "seus": "sê", "minhas": "minha", "tuas": "tua", "suas": "sua",
+                "nossos": "nossu", "nossas": "nossa", "outros": "otru", "outras": "otra"}
 # After a determiner and with no noun after it, the possessive is tonic and keeps the diphthong, Convenção 1.1:
 # uh meu tamén, u seu a sê donu.
 TONIC_POSSESSIVE = {"meu": "meu", "teu": "teu", "seu": "seu", "meus": "meuh", "teus": "teuh", "seus": "seuh"}
@@ -132,6 +133,8 @@ CLITIC_WORDS = "me|te|se|nos|vos|lhe|lhes|o|a|os|as"
 # agrees with the person: me casê (Convenção 1.7), já se morreu.
 PSEUDO_REFLEXIVE = re.compile(r"^(?:cas(?:ou|aram|ei|aste)|ca(?:iu|íram|í|íste)|morr(?:eu|eram|i|este|ia|iam)|"
                               r"sa(?:iu|íram|í|íste)|dorm(?:iu|iram)|foram)$")
+PLURAL_DETERMINERS = {"os", "as", "estes", "estas", "esses", "essas", "aqueles", "aquelas", "meus", "teus", "seus",
+                      "minhas", "tuas", "suas", "nossos", "nossas"}
 MOTION = {"a", "à", "ao", "aos", "às", "para", "pra", "embora"}
 # Portuguese: the pronoun se and the conjunction se are spelt alike, and the Convenção writes them se and si
 # (Convenção 1.1). pt-PT never opens a clause with an atonic pronoun, so se at the start of a clause is the
@@ -250,10 +253,10 @@ def word(w: str) -> str:
         v, c = m.groups()
         closed = {"e": "ê", "o": "ô"} if c == "r" and not STRONG_FUTURE.match(orig) else {"ê": "ê"}
         w = w[:m.start()] + closed.get(v, ACUTE.get(v, v))
-    elif m and not final_stress and m.group(1) in "ae" and m.group(2) in "lr":
+    elif m and not final_stress and m.group(1) in "aeo" and m.group(2) in "lr":
         # Convenção 1.1 and Convenção 4: an unstressed open final vowel before a lost -l or -r takes the grave
-        # accent, and it carries no other accent (açucà, amabè).
-        w = strip_accents(w[:m.start()]) + {"a": "à", "e": "è"}[m.group(1)]
+        # accent, and it carries no other accent (açucà, amabè, Bitò).
+        w = strip_accents(w[:m.start()]) + {"a": "à", "e": "è", "o": "ò"}[m.group(1)]
     elif not final_stress and w.endswith("il"):
         w = strip_accents(w[:-1])                                    # Gramática III 1.2.3: difici
     w = re.sub(f"n?[sz](?=[^{VOWELS}s])", "h", w)                    # Convenção 2.1: Lihboa, ihtrumentu
@@ -331,8 +334,10 @@ def translate(text: str) -> str:
             res = TONIC_POSSESSIVE[low][:-1] if before.endswith("h") and low.endswith("s") else TONIC_POSSESSIVE[low]
         elif low == "quem" and prev is None and "?" in "".join(parts[i:]).split(".")[0]:
             res = "quén"                                                # Gramática III 1.1.7: quén se casô?
-        elif low in POSSESSIVE_PLURAL and before.endswith("h"):
-            res = POSSESSIVE_PLURAL[low]
+        elif low in ("todos", "todas") and next_src in PLURAL_DETERMINERS:
+            res = low[:-2] + "u" if low == "todos" else low[:-1]       # Convenção 2.1: todu uh otru
+        elif low in AFTER_PLURAL and before.endswith("h"):
+            res = AFTER_PLURAL[low]
         elif (noun := singular(low)) in NOUNS:
             res, gender = NOUNS[noun]                       # Convenção 2.1: the plural -h only on the determiner
             if before in ARTICLE_FLIP[gender]:
