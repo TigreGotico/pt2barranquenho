@@ -127,6 +127,9 @@ LABIOVELAR = {"cinquent": "cincuent", "frequent": "frecuent", "frequênc": "frec
               "equestr": "ecuestr"}
 # Monosyllables that keep the final -l, Convenção 2.6.
 KEEP_L = {"mal", "tal", "qual"}
+# Words whose stressed final e or o before -r is open in pt-PT. The spelling marks the quality: colhé (the noun) beside
+# colhê (the verb), Convenção 1.2; aquela mulhé, Gramática III 1.1.4. A final -er or -or is closed elsewhere.
+OPEN_R = {"mulher", "talher", "melhor", "pior", "maior", "menor", "flor", "suor", "redor"}
 VINTE = {"um": "un", "uma": "uma", "dois": "doi", "duas": "dua", "três": "tré", "quatro": "cuatru", "cinco": "cincu",
          "seis": "sei", "sete": "seti", "oito": "oitu", "nove": "nobi"}
 CLOSED.update({f"vinte_e_{pt}": "binti" + barr for pt, barr in VINTE.items()})
@@ -264,7 +267,7 @@ def word(w: str) -> str:
     m = re.search(r"([aeiouáéíóúêô])([lrz])$", w)
     if m and final_stress and not (mono and (m.group(2) == "z" or orig in KEEP_L)):
         v, c = m.groups()
-        closed = {"e": "ê", "o": "ô"} if c == "r" and not STRONG_FUTURE.match(orig) else {"ê": "ê"}
+        closed = {"e": "ê", "o": "ô"} if c == "r" and not STRONG_FUTURE.match(orig) and orig not in OPEN_R else {"ê": "ê"}
         w = w[:m.start()] + closed.get(v, ACUTE.get(v, v))
     elif m and not final_stress and (m.group(1) in "ae" and m.group(2) in "lr" or m.groups() == ("o", "r")):
         # Convenção 1.1 and Convenção 4: an unstressed open final vowel before a lost -l or -r takes the grave

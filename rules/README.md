@@ -1,6 +1,6 @@
 # Rule citations
 
-`citations.tsv` gives the source of each rule in `pt2barranquenho`. It has 101 rows: 56 cite the *Convenção Ortográfica do Barranquenho* and 45 cite the *Gramática Básica de Barranquenho*.
+`citations.tsv` gives the source of each rule in `pt2barranquenho`. It has 103 rows: 57 cite the *Convenção Ortográfica do Barranquenho* and 46 cite the *Gramática Básica de Barranquenho*.
 
 | Column | Content |
 | --- | --- |
@@ -15,7 +15,7 @@
 Three checks keep the ledger and the code together:
 
 - `scripts/verify_citations.py` checks that the quote and the example pair appear on a cited page.
-- `tests/test_citations.py` translates each of the 77 example pairs and expects the printed Barranquenho.
+- `tests/test_citations.py` translates each of the 78 example pairs and expects the printed Barranquenho.
 - The same test checks both directions between code and ledger. Every section the ledger names must appear in a code comment. Every "Convenção" or "Gramática" section a comment names must appear in the ledger.
 
 ```bash

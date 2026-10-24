@@ -42,6 +42,10 @@ CASES = {
     "circuito": "circuitu",
     # An unstressed open final vowel before a lost -l or -r takes the grave accent (Convenção 1.1).
     "Vítor": "Bitò",
+    # A final stressed e or o keeps its Portuguese quality: open é, ó, closed ê, ô (Convenção 1.2, Gramática III 1.1.4).
+    "aquela mulher": "aquela mulhé",
+    "o melhor e o pior": "u melhó i u pió",
+    "o senhor doutor": "u senhô dotô",
     # A polysyllable loses its final -s with no -h: apó (Convenção 2.1); atrás is not a future.
     "atrás": "atrá",
     # -ãos takes the plural -õi of the nouns in -ãu (Gramática III 1.2.3).
