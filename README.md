@@ -81,7 +81,7 @@ A full test needs everyday Portuguese sentences that native speakers translate i
 - Barranquenho has more variation than the books record. The books themselves disagree in places: *aqui* and *aquí*, *treh* and *trêh*, *ele* and *eli*.
 - The rules choose a Barranquenho-specific word only for the 13 nouns the books print. The 2025 dictionary lists many more beside their Portuguese cognates, and context decides which one a speaker uses. Used as a word list, the dictionary lowers the scores.
 - Gender changes that follow Spanish (*o leite* > *a lêti*) cover only the nouns the books name. The change reaches the determiner just before the noun, not an adjective or a possessive: *a minha macieira* keeps *minha*.
-- A word keeps its spelling when it has a letter or a sequence Portuguese does not use (*k*, *w*, *y*, *th*, *ll*, a final *t*), because the Gramática keeps the spelling of imported names. An imported name spelled like a Portuguese word still changes: *Lars* gives *Lar*.
+- A word keeps its spelling when it has a letter or a sequence Portuguese does not use (*k*, *w*, *y*, *ll*, *th*, *hn*, a final *t*), because the Gramática keeps the spelling of imported names. Initials (*E.*) and names with an apostrophe (*O'Neill*) also stay. An imported name spelled like a Portuguese word still changes: *Lars* gives *Lar*.
 - Stress comes from the Portuguese accent rules. A word with irregular stress can get the wrong final vowel.
 - The Portuguese spelling does not show vowel quality, so a final stressed *e* or *o* can take the wrong accent: *calor* gives *calô*, and the books print *caló*.
 - The pronoun *se* and the conjunction *se* are told apart from the neighbouring words. A sentence fragment, or a pronoun at the start of a clause, gets *si*.

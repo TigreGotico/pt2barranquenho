@@ -137,7 +137,7 @@ PLURAL_DETERMINERS = {"os", "as", "estes", "estas", "esses", "essas", "aqueles",
                       "minhas", "tuas", "suas", "nossos", "nossas"}
 # Letters and sequences Portuguese spelling does not use: a word with one is imported and keeps its spelling,
 # Gramática II 2 (Valverde keeps its v).
-FOREIGN = re.compile(r"[kwyäëïöüåøñłčšžăőűæœß]|([bdfgpt])\1|l{2}|sh|th|ph|gh|tz|[^aeiouáéíóúâêôãõblrsmnxz]$")
+FOREIGN = re.compile(r"[kwyäëïöüåøñłčšžăőűæœß]|([bdfgpt])\1|l{2}|[^\Wcln]h|tz|[^aeiouáéíóúâêôãõblrsmnxz]$")
 MOTION = {"a", "à", "ao", "aos", "às", "para", "pra", "embora"}
 # Portuguese: the pronoun se and the conjunction se are spelt alike, and the Convenção writes them se and si
 # (Convenção 1.1). pt-PT never opens a clause with an atonic pronoun, so se at the start of a clause is the
@@ -314,9 +314,10 @@ def translate(text: str) -> str:
         next_src = parts[i + 2].lower() if i + 2 < len(parts) and not parts[i + 1].strip() else ""
         if parts[i - 1].endswith("{") and parts[i + 1].startswith("}"):
             continue                                                     # a template slot: {location}
+        name_part = tok.isupper() and parts[i + 1].startswith(".") or "'" in (parts[i - 1][-1:], parts[i + 1][:1])
         if any(c.isdigit() for c in tok) or re.fullmatch(r"[IVXLCDM]+", tok) or (len(tok) > 1 and tok.isupper()) \
-                or "-" not in low and FOREIGN.search(low):
-            prev, prev_src = i, low                              # numbers, Roman numerals, acronyms, imported words
+                or "-" not in low and FOREIGN.search(low) or name_part:
+            prev, prev_src = i, low      # numbers, Roman numerals, acronyms, imported words, initials, O'Neill
             continue
         verb, *clitics = low.split("-")
         if clitics and all(c in CLITICS for c in clitics):

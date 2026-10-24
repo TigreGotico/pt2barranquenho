@@ -67,6 +67,7 @@ CASES = {
     "o primeiro membro não-Ford": "u primêru membru nãu-Ford",
     "William Shakespeare": "William Shakespeare",
     "Manuel e Raúl": "Manué i Raú",
+    "Joseph E. Johnston e Alfred O'Keeffe": "Joseph E. Johnston i Alfred O'Keeffe",
     # Template slots stay as they are.
     "Eu sou {name}": "Eu sô {name}",
     "Prioridade ajustada para {num}.": "Prioridadi ajuhtada para {num}.",
