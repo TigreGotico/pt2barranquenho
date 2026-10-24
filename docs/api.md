@@ -11,7 +11,7 @@ translate("Estou a ver-te")       # 'Te tô bendu'
 translate("Ainda hoje são amigos") # 'Inda oji sãu amigu'
 ```
 
-Give it one sentence or one line at a time. Several rules look at the neighbouring words in the same clause: the pronoun *se* against the conjunction *se*, the place of a clitic, the determiner before a noun whose gender changes, and the constructions on the [Constructions page](constructions.md). A text with many sentences works, but a rule never looks past a full stop, a semicolon, a colon, a question mark or an exclamation mark.
+Give it one sentence or one line at a time. Several rules look at the neighbouring words in the same clause: the pronoun *se* against the conjunction *se*, the place of a clitic, the determiner before a noun whose gender changes, and the constructions on the [Constructions page](constructions.md). A text with many sentences works, but a rule never looks past a full stop, a semicolon, a colon, a question mark or an exclamation mark. A text with several lines is translated line by line, so each line keeps its own case.
 
 **Case.** A capital at the start of a word stays (*Ontem* > *Onten*). A line in capitals is converted in lowercase and given back in capitals (*ÉS TU?* > *ERI TÚ?*).
 
