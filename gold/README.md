@@ -43,6 +43,23 @@ python scripts/verify_gold.py gold/books.tsv convencao=<Convenção PDF> gramati
 
 `external_respelled_review.tsv` holds the verdicts of an independent review of every row against the Convenção, the Gramática and the dictionary: 28 OK, 2 FIX, 4 DOUBT. Both FIX rows were corrected. The DOUBT rows keep the speaker's published form where the norm does not require a change.
 
+## native_todo.tsv
+
+`native_todo.tsv` is a sheet for a native speaker. It holds 150 everyday pt-PT sentences from the OVOS voice assistant: what a user says to the assistant, and what the assistant answers. The sentences come from the pt-PT `.dialog` and `.intent` files of the OVOS skills. The sheet leaves out the joke and quote skills and the history skill, and it leaves out lines with pt-BR forms.
+
+| Column | Content |
+| --- | --- |
+| `id` | `n001` to `n150` |
+| `pt` | the Portuguese sentence |
+| `rules` | the output of `pt2barranquenho` for that sentence |
+| `barr` | empty: the speaker writes the Barranquenho here |
+| `area` | the rule area the sentence tests: `gostar`, `faz`, `perfect`, `periphrasis`, `pronoun` or `spelling` |
+| `source` | the OVOS skill |
+
+The speaker writes how a person from Barrancos says the sentence. The `rules` column is only a starting point and can be wrong.
+
+`scripts/native_sheet.py` builds the sheet from the dialog and intent files. It prints the number of files and lines it read and the rows per area. The same files always give the same sheet. When the rows come back, they go into `native.tsv` in the columns of `books.tsv`. That file is the first test set that the rules did not see.
+
 ## passing.txt
 
 `passing.txt` lists the ids that `pt2barranquenho` translates correctly. `tests/test_gold.py` fails when one of them breaks. When a change fixes more rows, add their ids to the list.
