@@ -45,6 +45,7 @@ CASES = {
     # A final stressed e or o keeps its Portuguese quality: open é, ó, closed ê, ô (Convenção 1.2, Gramática III 1.1.4).
     "aquela mulher": "aquela mulhé",
     "o melhor e o pior": "u melhó i u pió",
+    "uma flor": "uma flô",
     "o senhor doutor": "u senhô dotô",
     # A polysyllable loses its final -s with no -h: apó (Convenção 2.1); atrás is not a future.
     "atrás": "atrá",
@@ -88,12 +89,19 @@ CASES = {
     # A spoken u after q or g: cu and gü (Convenção 2.4, 2.5).
     "os pinguins": "uh pingüin",
     "a sequência": "a secuência",
-    # gostar takes no de and a dative pronoun (Gramática IV 1.2, Convenção 3.1); a person liked keeps de.
+    # gostar takes no de and a dative pronoun (Gramática IV 1.2, Convenção 3.1); a 3rd person pronoun liked goes.
     "gosta de tomar umas chispas": "le gohta tomá umah chihpa",
     "Eu não gosto do mar": "A min nãu me gohta u má",
     "Gostei daquele filme": "Me gohtô aqueli filmi",
     "com muito gosto": "con muntu gohtu",
-    "porque gostamos dela": "porqui nuh gohta ela",
+    "porque gostamos dela": "porqui nuh gohta",
+    "O meu avô gostava de pescar": "U mê abô le gohtaba pehcá",
+    "Agora gosto de chocolate": "Agora me gohta chocolati",
+    "Que gosto tem a sopa?": "Que gohtu ten a sopa?",
+    "Gosto é gosto.": "Gohtu é gohtu.",
+    "Até ele gosta de futebol": "Ahta a eli le gohta futebó",
+    "Perguntei-lhe, gosta de vinho?": "Le perguntê, le gohta binhu?",
+    "Ele tem a certeza de que gosta dela.": "Eli ten a certeza de que le gohta.",
     "Gostava de saber isso": "Me gohtaba sabê issu",
     "De que gostas?": "Que te gohta?",
     "O gosto do vinho é bom": "U gohtu du binhu é bon",
@@ -102,6 +110,13 @@ CASES = {
     # faz + a span of time takes haver (Convenção 3.1); faz + an object stays fazer.
     "pois faz vinte anos": "poih ai binti anu",
     "Faz muito tempo": "Ai muntu tempu",
+    "Já faz anos que não o vejo": "Já ai anu que nãu u beju",
+    "Faz quase um ano": "Ai cuasi un anu",
+    "Faz meia hora": "Ai mêa ora",
+    "Já faz mais de um mês": "Já ai maih de un mêh",
+    "Hoje faz um dia lindo": "Oji fah un dia lindu",
+    "faz duas horas de ginástica por dia": "fah duah ora de gináhtica pur dia",
+    "Hoje faz vinte anos o João": "Oji fah binti anu u Joãu",
     "faz o almoço": "fah u almoçu",
     "O João faz trinta anos": "U Joãu fah trinta anu",
     "Hoje faz anos o João": "Oji fah anu u Joãu",
@@ -117,6 +132,11 @@ CASES = {
     "Hoje farei isso": "Oji farê issu",
     "Hoje vi um javali e descobri o pneu": "Oji tenhu bihtu un jabardu i tenhu dehcobertu u pneu",
     "Acordei hoje": "Tenhu acordadu oji",
+    "Romeu hoje chegou tarde.": "Romeu oji ten chegadu tardi.",
+    "Hoje o João levantou-se cedo": "Oji u Joãu se ten lebantadu cedu",
+    "Hoje é o dia, o meu pai morreu há dez anos.": "Oji é u dia, u mê pai se morreu ai déh anu.",
+    "Hoje vi um colibri": "Oji tenhu bihtu un colibrí",
+    "Hoje porei a mesa": "Oji porê a mesa",
     # Case.
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",

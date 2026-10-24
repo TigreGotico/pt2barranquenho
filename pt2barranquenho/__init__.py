@@ -129,7 +129,7 @@ LABIOVELAR = {"cinquent": "cincuent", "frequent": "frecuent", "frequênc": "frec
 KEEP_L = {"mal", "tal", "qual"}
 # Words whose stressed final e or o before -r is open in pt-PT. The spelling marks the quality: colhé (the noun) beside
 # colhê (the verb), Convenção 1.2; aquela mulhé, Gramática III 1.1.4. A final -er or -or is closed elsewhere.
-OPEN_R = {"mulher", "talher", "melhor", "pior", "maior", "menor", "flor", "suor", "redor"}
+OPEN_R = {"mulher", "talher", "melhor", "pior", "maior", "menor", "suor", "redor"}
 VINTE = {"um": "un", "uma": "uma", "dois": "doi", "duas": "dua", "três": "tré", "quatro": "cuatru", "cinco": "cincu",
          "seis": "sei", "sete": "seti", "oito": "oitu", "nove": "nobi"}
 CLOSED.update({f"vinte_e_{pt}": "binti" + barr for pt, barr in VINTE.items()})
@@ -307,8 +307,8 @@ GOSTAR = {"gosto": ("me", "gosta"), "gostas": ("te", "gosta"), "gosta": (None, "
 LIKER = {"eu": ("a mim", "me"), "tu": ("a ti", "te"), "ele": ("a ele", "lhe"), "ela": ("a ela", "lhe"),
          "você": ("a você", "lhe"), "nós": ("a nós", "nos"), "eles": ("a eles", "lhes"), "elas": ("a elas", "lhes"),
          "vocês": ("a vocês", "lhes")}
-# The thing liked loses de (gostamos dela > nuh guhtô). The books print no form for a 1st or 2nd person liked, so
-# gostas de mim keeps de.
+# The thing liked loses de, and a 3rd person pronoun liked goes too: gostamos dela > nuh guhtô. The books print no
+# form for a 1st or 2nd person liked, so gostas de mim keeps de.
 LIKED = "e|o|a|os|as|um|uma|uns|umas|est[eao]s?|ess[eao]s?|aquel[ea]s?|aquilo|isto|isso|el[ea]s?"
 DEGREE = "muito|mais|tanto|bastante|imenso|pouco|menos"
 GOSTAR_PHRASE = re.compile(rf"\b(?:({'|'.join(LIKER)})\s+)?(?:(não|nunca|já|também)\s+)?({'|'.join(GOSTAR)})\b(?!-)"
@@ -316,23 +316,26 @@ GOSTAR_PHRASE = re.compile(rf"\b(?:({'|'.join(LIKER)})\s+)?(?:(não|nunca|já|ta
                            rf"(\s+(?:{DEGREE}))?(?:\s+d({LIKED})\b)?", re.IGNORECASE)
 
 
-PREPOSITIONS = {"a", "à", "para", "de", "com", "por", "sem", "contra", "entre", "sobre", "até", "perante"}
-CLAUSE_OPENERS = {"que", "e", "mas", "porque", "se", "também", "já", "ainda", "não", "pois", "quando", "eu"}
+PREPOSITIONS = {"a", "à", "para", "de", "com", "por", "sem", "contra", "entre", "sobre", "perante"}
+# Words before the noun gosto: o gosto, tem gosto, com muito gosto.
+NOUN_BEFORE = PREPOSITIONS | {"o", "um", "este", "esse", "aquele", "meu", "teu", "seu", "nosso", "bom", "mau", "mesmo",
+                              "pouco", "muito", "tanto", "outro", "qualquer", "cada", "tenho", "tens", "tem", "temos",
+                              "têm", "tinha", "ter", "dá", "dar"}
 
 
 def without_de(m: re.Match) -> str:
     """Portuguese: a finite form of gostar rewritten as the dative construction (gosto de > me gosta)."""
     subject, negation, verb, adverb, liked = m.groups()
-    before = (re.search(r"(\w*)\W*$", m.string[:m.start()])[1]).lower()
-    if subject and before in PREPOSITIONS or verb.lower() == "gosto" and not subject and not negation and before \
-            and before not in CLAUSE_OPENERS:
-        return m[0]                             # a eli gosta: not a subject; o gosto, tem gosto: the noun
+    before = re.search(r"(?<![\w-])(\w*)\s*$", m.string[:m.start()])[1].lower()     # the word just before, if any
+    if subject and before in PREPOSITIONS or verb.lower() == "gosto" and not subject and not negation and \
+            (before in NOUN_BEFORE or not liked):
+        return m[0]                     # a eli gosta: not a subject; o gosto, tem gosto, gosto é gosto: the noun
     pronoun, form = GOSTAR[verb.lower()]
-    default = "me" if form in ("gostava", "gostaria") else "lhe"
+    default = "me" if form in ("gostava", "gostaria") and not before else "lhe"    # gostava de saber; o avô gostava
     tonic, subject_pronoun = LIKER.get((subject or "").lower(), ("", default))
     if before in ("me", "te", "lhe", "nos", "lhes"):
         pronoun = subject_pronoun = ""                               # que tanto lhe gostava
-    liked = "" if (liked or "e").lower() == "e" else liked
+    liked = "" if (liked or "e").lower() in ("e", "ele", "ela", "eles", "elas") else liked
     words = [tonic, negation, pronoun or subject_pronoun, form, (adverb or "").strip(), liked]
     out = " ".join(w for w in words if w)
     return out[0].upper() + out[1:] if m[0][0].isupper() else out
@@ -342,7 +345,8 @@ def without_de(m: re.Match) -> str:
 # u lençu. Only the 1st and 3rd person singular are rewritten: their endings tell the person, while a 3rd person
 # plural in -aram, -eram or -iram can be a present (preparam, esperam, retiram).
 ONGOING = re.compile(r"\b(?:hoje|est[ea] (?:ano|semana|mês|manhã|tarde|noite))\b", re.IGNORECASE)
-FINISHED = re.compile(r"\b(?:ontem|anteontem|antigamente|outrora|passad[ao])\b", re.IGNORECASE)
+FINISHED = re.compile(r"\b(?:ontem|anteontem|antigamente|outrora|passad[ao]|em \d{3,4}|há \w+ (?:anos?|meses|séculos?))\b",
+                      re.IGNORECASE)
 IRREGULAR_PRETERITE = {"fiz": ("tenho", "feito"), "fez": ("tem", "feito"), "vi": ("tenho", "visto"),
                        "viu": ("tem", "visto"), "dei": ("tenho", "dado"), "deu": ("tem", "dado"),
                        "pus": ("tenho", "posto"), "pôs": ("tem", "posto"), "vim": ("tenho", "vindo"),
@@ -352,9 +356,9 @@ IRREGULAR_PRETERITE = {"fiz": ("tenho", "feito"), "fez": ("tem", "feito"), "vi":
                        "li": ("tenho", "lido"), "leu": ("tem", "lido")}
 IRREGULAR_PRETERITE.update({"descobri": ("tenho", "descoberto"), "descobriu": ("tem", "descoberto"),
                             "cobri": ("tenho", "coberto"), "cobriu": ("tem", "coberto")})
-# -arei, -erei and -irei are left out: they are also the 1sg future (farei, comprarei), so a preterite such as parei
+# -arei, -erei, -irei and -orei are left out: they are also the 1sg future (farei, comprarei), so a preterite such as parei
 # stays as it is.
-REGULAR_PRETERITE = re.compile(r"^(\w*[aeiou]\w*?)((?<![aei]r)ei|ou|(?<=[cdtnsrlmvgbp])i|eu|iu)$")
+REGULAR_PRETERITE = re.compile(r"^(\w*[aeiou]\w*?)((?<![aeio]r)ei|ou|(?<=[cdtnsrlmvgbp])i|eu|iu)$")
 NOT_PRETERITE = {"aqui", "ali", "daqui", "dali", "sei", "hei", "lei", "rei", "sou", "vou", "estou", "dou", "museu",
                  "europeu", "liceu", "judeu", "ateu", "coliseu", "apogeu", "teu", "seu", "meu"}
 
@@ -363,8 +367,8 @@ def perfect(m: re.Match) -> str:
     """Portuguese: a 1st or 3rd person singular preterite rewritten as ter + participle (comprei > tenho comprado)."""
     verb, clitic = m[1], m[2] or ""
     low = verb.lower()
-    if verb != low:
-        return m[0]                                                  # a name: Henri, Saudi
+    if verb != low or re.search(r"\b(?:o|a|os|as|um|uma|uns|umas)\s+$", m.string[:m.start()], re.IGNORECASE):
+        return m[0]                                                  # a name: Henri; a noun: um colibri
     if low in IRREGULAR_PRETERITE:
         aux, participle = IRREGULAR_PRETERITE[low]
     elif low not in NOT_PRETERITE | NOUNS.keys() and not any(c in ACCENTED for c in low) and \
@@ -388,12 +392,13 @@ def ongoing_perfect(clause: str) -> str:
     if not m or FINISHED.search(clause):
         return clause
     start = re.search(r"(?:[\w-]+\s+)?$", clause[:m.start()]).start()
-    stop = re.search(r"\b(?:que|porque|quando|se|mas|embora|como)\b", clause[m.end():])
+    stop = re.search(r"(?<![\w-])(?:que|porque|quando|se|mas|embora|como)\b|(?<=\w),", clause[m.end():])
     end = m.end() + stop.start() if stop else len(clause)
     span = clause[start:end]
-    first = not clause[:start].strip() and span[:1].isupper() and not span[:2].isupper()
+    first = not clause[:start].strip() and span[:1].isupper() and not span[:2].isupper() and \
+        re.match(rf"\w+(?:ei|ou)\b|(?:{'|'.join(IRREGULAR_PRETERITE)})\b", span, re.IGNORECASE)
     if first:
-        span = span[0].lower() + span[1:]                            # Acordei hoje: a verb, not a name
+        span = span[0].lower() + span[1:]                            # Acordei hoje: a verb; Romeu hoje: a name
     span = re.sub(r"\b(\w+)(-(?:me|te|se|nos|vos|lhe|lhes|o|a|os|as))?\b(?!-)", perfect, span)
     return clause[:start] + (span[0].upper() + span[1:] if first else span) + clause[end:]
 
@@ -403,19 +408,22 @@ def translate(text: str) -> str:
     if text.isupper():
         return translate(text.lower()).upper()
     # de que ... gostava: the relative clause speaks of someone else, so the ambiguous form takes lhe.
-    text = re.sub(r"\b([Dd])e (que|quem) ((?:\w+ ){0,2})(?=(gost\w*))",
+    text = re.sub(r"(?<!certeza )(?<!ideia )(?<!medo )(?<!facto )(?<!receio )\b([Dd])e (que|quem) ((?:\w+ ){0,2})"
+                  r"(?=(gost\w*)(?!\s+(?:muito\s+)?d))",
                   lambda m: (m[2][0].upper() + m[2][1:] if m[1] == "D" else m[2]) + " " + m[3] +
                   ("lhe " if m[4].lower() in ("gostava", "gostaria") and not LIKER.keys() & set(m[3].lower().split())
                    else ""), text)
     text = GOSTAR_PHRASE.sub(without_de, text)
     text = "".join(ongoing_perfect(clause) for clause in re.split(r"([.;:!?]+)", text))
     # Impersonal faz + an amount of time takes haver, Convenção 3.1: poih, que ai binti anu. After a subject, faz is
-    # fazer (u Joãu fah trinta anu), and without an amount it is the weather or a birthday (faz bom tempo, faz anos).
+    # fazer (u Joãu fah trinta anu). The span of time ends the phrase or opens a que clause; otherwise faz is the
+    # weather, a birthday or a habit (faz um dia lindo, faz anos o João, faz duas horas de ginástica).
     text = re.sub(r"(^|[^\w\s]\s*|\b(?:que|pois|já|e|mas|porque|quase|agora|hoje|ainda)\s+)([Ff])az "
-                  r"(?=(?:\d+|um|uma|dois|duas|três|quatro|cinco|seis|sete|oito|nove|dez|onze|doze|quinze|vinte|"
-                  r"trinta|quarenta|cinquenta|cem|muit[oa]s?|pouc[oa]s?|algu(?:m|ns)|algumas|uns|umas|vári[oa]s|"
-                  r"bastantes?|tant[oa]s?|mais|menos) (?:\w+ )?(?:anos?|mês|meses|semanas?|dias?|horas?|minutos?|"
-                  r"tempo)\b)",
+                  r"(?=(?:(?:já|quase|cerca de|mais de|menos de|uns|umas) )?(?:\d+|um|uma|meia|dois|duas|três|quatro|"
+                  r"cinco|seis|sete|oito|nove|dez|onze|doze|quinze|vinte|trinta|quarenta|cinquenta|cem|muit[oa]s?|"
+                  r"pouc[oa]s?|algu(?:m|ns)|algumas|vári[oa]s|bastantes?|tant[oa]s?|mais|menos) (?:\w+ )?"
+                  r"(?:anos?|mês|meses|semanas?|dias?|horas?|minutos?|tempo)\b"
+                  r"(?=\s*(?:$|[^\w\s]|que\b|desde\b|atrás\b|e\b))|anos que\b)",
                   lambda m: m[1] + ("H" if m[2] == "F" else "h") + "á ", text, flags=re.IGNORECASE)
     # Periphrases, Gramática IV 1.3 and Convenção 3.1. A pronoun on the infinitive climbs before the auxiliary
     # (me bô a labá, nuh ehtá bendu); estar a + infinitive takes the gerund; ir + infinitive takes a (bô a fazê).
