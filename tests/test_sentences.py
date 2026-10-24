@@ -82,6 +82,11 @@ CASES = {
     "Gostei daquele filme": "Me gohtô aqueli filmi",
     "com muito gosto": "con muntu gohtu",
     "gosto muito de ti": "gohtu muntu de ti",
+    # faz + a span of time takes haver (Convenção 3.1); faz + an object stays fazer.
+    "pois faz vinte anos": "poih ai binti anu",
+    "Faz muito tempo": "Ai muntu tempu",
+    "faz o almoço": "fah u almoçu",
+    "O João faz trinta anos": "U Joãu fah trinta anu",
     # Case.
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",

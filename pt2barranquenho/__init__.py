@@ -330,6 +330,11 @@ def translate(text: str) -> str:
         return translate(text.lower()).upper()
     text = re.sub(r"\bde (que|quem) ((?:\w+ ){0,2})(?=gost)", r"\1 \2", text, flags=re.IGNORECASE)
     text = GOSTAR_PHRASE.sub(without_de, text)
+    # Impersonal faz + a span of time takes haver, Convenção 3.1: poih, que ai binti anu. After a subject, faz is
+    # fazer: u Joãu fah trinta anu.
+    text = re.sub(r"(^|[^\w\s]\s*|\b(?:que|pois|já|e|mas|porque|quase|agora|hoje|ainda)\s+)([Ff])az "
+                  r"(?=(?:\w+ ){0,3}(?:anos?|mês|meses|semanas?|dias?|horas?|minutos?|tempo)\b)",
+                  lambda m: m[1] + ("H" if m[2] == "F" else "h") + "á ", text, flags=re.IGNORECASE)
     # Periphrases, Gramática IV 1.3 and Convenção 3.1. A pronoun on the infinitive climbs before the auxiliary
     # (me bô a labá, nuh ehtá bendu); estar a + infinitive takes the gerund; ir + infinitive takes a (bô a fazê).
     def climb(aux: str, verb: str, pronoun: str) -> str:
