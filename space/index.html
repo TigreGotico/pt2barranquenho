@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Português → Barranquenho</title>
+<style>
+  :root { --bg: #fbf8f3; --fg: #222; --muted: #666; --card: #fff; --line: #ddd5c8; --accent: #a8432a; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1b1a18; --fg: #eee; --muted: #aaa; --card: #262421; --line: #3d3934; --accent: #e07a5f; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, sans-serif; }
+  main { max-width: 960px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { margin: 0 0 8px; font-size: 1.6rem; }
+  p { color: var(--muted); max-width: 70ch; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+  label { display: block; font-weight: 600; margin-bottom: 4px; }
+  textarea { width: 100%; min-height: 180px; padding: 12px; font: inherit; color: var(--fg); background: var(--card);
+             border: 1px solid var(--line); border-radius: 8px; resize: vertical; }
+  textarea:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button { font: inherit; border-radius: 8px; cursor: pointer; }
+  #go { margin-top: 12px; padding: 10px 20px; border: 0; background: var(--accent); color: #fff; font-weight: 600; }
+  #go:disabled { opacity: .5; cursor: wait; }
+  #status { margin-left: 12px; color: var(--muted); }
+  .examples { margin-top: 24px; }
+  .examples button { margin: 4px 4px 0 0; padding: 6px 10px; border: 1px solid var(--line); background: var(--card);
+                     color: var(--fg); text-align: left; }
+  footer { margin-top: 32px; font-size: .9rem; color: var(--muted); }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Português → Barranquenho</h1>
+  <p>Barranquenho is the language of Barrancos, on the Portuguese border with Spain. This page converts European
+  Portuguese into Barranquenho with hand-written rules from the <em>Convenção Ortográfica do Barranquenho</em> and
+  the <em>Gramática Básica de Barranquenho</em> (Gonçalves, Navas, Correia; Universidade de Évora, 2025).</p>
+  <p>The output follows the spelling and grammar rules of the two books. It is not a native translation: no speaker
+  has reviewed it, and Barranquenho has words and turns of phrase that rules cannot predict. Each line is converted
+  on its own, in your browser.</p>
+  <div class="grid">
+    <div>
+      <label for="src">Português</label>
+      <textarea id="src" placeholder="Escreva uma frase em português europeu."></textarea>
+    </div>
+    <div>
+      <label for="out">Barranquenho</label>
+      <textarea id="out" readonly aria-live="polite"></textarea>
+    </div>
+  </div>
+  <button id="go" disabled>Converter</button><span id="status" role="status">A carregar…</span>
+  <div class="examples" id="examples"><strong>Exemplos</strong><br></div>
+  <footer>Code, rules and tests:
+    <a href="https://github.com/TigreGotico/pt2barranquenho">TigreGotico/pt2barranquenho</a> (Apache-2.0).</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<script>
+const EXAMPLES = [
+  "A minha mãe disse-me que o leite estava frio.",
+  "Ontem fomos à feira e comprámos três quilos de feijão.",
+  "Não consigo encontrar nenhum alarme.",
+  "O tempo amanhã vai estar nublado com aguaceiros.",
+  "Eu não gosto do mar.",
+  "Hoje cheguei tarde e ele saiu.",
+  "Faz vinte anos que vivo em Barrancos.",
+  "Lembra-me de comprar pão às cinco horas.",
+];
+const src = document.getElementById("src"), out = document.getElementById("out");
+const go = document.getElementById("go"), status = document.getElementById("status");
+let translate = null;
+
+function convert() {
+  if (translate) out.value = src.value.split("\n").map(line => translate(line)).join("\n");
+}
+
+for (const text of EXAMPLES) {
+  const b = document.createElement("button");
+  b.textContent = text;
+  b.addEventListener("click", () => { src.value = text; convert(); });
+  document.getElementById("examples").appendChild(b);
+}
+go.addEventListener("click", convert);
+src.addEventListener("keydown", e => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) convert(); });
+
+(async () => {
+  try {
+    const pyodide = await loadPyodide();
+    pyodide.FS.mkdir("pt2barranquenho");
+    for (const name of ["__init__.py", "version.py"]) {
+      const code = await (await fetch(`pt2barranquenho/${name}`)).text();
+      pyodide.FS.writeFile(`pt2barranquenho/${name}`, code);
+    }
+    pyodide.runPython("import sys; sys.path.insert(0, '.')");
+    translate = pyodide.pyimport("pt2barranquenho").translate;
+    go.disabled = false;
+    status.textContent = "";
+    if (src.value) convert();
+  } catch (err) {
+    status.textContent = "Não foi possível carregar o tradutor: " + err;
+  }
+})();
+</script>
+</body>
+</html>

@@ -6,6 +6,8 @@
 
 ## Install and use
 
+A demo runs in the browser at [huggingface.co/spaces/TigreGotico/pt2barranquenho](https://huggingface.co/spaces/TigreGotico/pt2barranquenho). The page in `space/` loads the package with Pyodide, so no server runs the rules.
+
 ```bash
 uv pip install -e .
 echo "A minha mãe disse-me que o leite estava frio." | pt2barranquenho
