@@ -73,6 +73,9 @@ CASES = {
     "Eu sou {name}": "Eu sô {name}",
     "para o seu {kind}": "para u sê {kind}",
     "Prioridade ajustada para {num}.": "Prioridadi ajuhtada para {num}.",
+    # A spoken u after q or g: cu and gü (Convenção 2.4, 2.5).
+    "os pinguins": "uh pingüin",
+    "a sequência": "a secuência",
     # Case.
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",

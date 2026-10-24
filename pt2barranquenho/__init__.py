@@ -122,7 +122,9 @@ TONIC_POSSESSIVE = {"meu": "meu", "teu": "teu", "seu": "seu", "meus": "meuh", "t
 LABIOVELAR = {"cinquent": "cincuent", "frequent": "frecuent", "frequênc": "frecuênc", "tranquil": "trancuil",
               "delinquent": "delincuent", "eloquent": "elocuent", "consequent": "consecuent",
               "consequênc": "consecuênc", "sequestr": "secuestr", "aguent": "agüent", "linguíst": "lingüíst",
-              "ungu": "ungü", "pinguim": "pingüim", "ensanguent": "ensangüent", "arguir": "argüir"}
+              "ungu": "ungü", "pinguin": "pingüin", "ensanguent": "ensangüent", "arguir": "argüir",
+              "sequênc": "secuênc", "subsequent": "subsecuent", "bilingue": "bilingüe", "ambiguidad": "ambigüidad",
+              "equestr": "ecuestr"}
 # Monosyllables that keep the final -l, Convenção 2.6.
 KEEP_L = {"mal", "tal", "qual"}
 VINTE = {"um": "un", "uma": "uma", "dois": "doi", "duas": "dua", "três": "tré", "quatro": "cuatru", "cinco": "cincu",
