@@ -135,6 +135,9 @@ PSEUDO_REFLEXIVE = re.compile(r"^(?:cas(?:ou|aram|ei|aste)|ca(?:iu|íram|í|íst
                               r"sa(?:iu|íram|í|íste)|dorm(?:iu|iram)|foram)$")
 PLURAL_DETERMINERS = {"os", "as", "estes", "estas", "esses", "essas", "aqueles", "aquelas", "meus", "teus", "seus",
                       "minhas", "tuas", "suas", "nossos", "nossas"}
+# Letters and sequences Portuguese spelling does not use: a word with one is imported and keeps its spelling,
+# Gramática II 2 (Valverde keeps its v).
+FOREIGN = re.compile(r"[kwyäëïöüåøñłčšžăőűæœß]|([bdfgpt])\1|l{2}|sh|th|ph|gh|tz|[^aeiouáéíóúâêôãõblrsmnxz]$")
 MOTION = {"a", "à", "ao", "aos", "às", "para", "pra", "embora"}
 # Portuguese: the pronoun se and the conjunction se are spelt alike, and the Convenção writes them se and si
 # (Convenção 1.1). pt-PT never opens a clause with an atonic pronoun, so se at the start of a clause is the
@@ -248,7 +251,7 @@ def word(w: str) -> str:
     w = w.replace("ei", "e")                                         # Convenção 1.8.3: fejãu
     # A final -l, -r or -z after the stressed vowel is silent and the vowel takes an accent: Convenção 2.6 (ehpanhó),
     # Convenção 2.7 (cantá, senhô), Convenção 1.2 (colhê, azú). Monosyllables keep -l (mal, tal) and -z.
-    m = re.search(r"([aeiouêô])([lrz])$", w)
+    m = re.search(r"([aeiouáéíóúêô])([lrz])$", w)
     if m and final_stress and not (mono and (m.group(2) == "z" or orig in KEEP_L)):
         v, c = m.groups()
         closed = {"e": "ê", "o": "ô"} if c == "r" and not STRONG_FUTURE.match(orig) else {"ê": "ê"}
@@ -309,8 +312,9 @@ def translate(text: str) -> str:
             prev, prev_src = None, ""
         before = parts[prev].lower() if prev is not None else ""
         next_src = parts[i + 2].lower() if i + 2 < len(parts) and not parts[i + 1].strip() else ""
-        if any(c.isdigit() for c in tok) or re.fullmatch(r"[IVXLCDM]+", tok) or (len(tok) > 1 and tok.isupper()):
-            prev, prev_src = i, low                                      # numbers, Roman numerals, acronyms
+        if any(c.isdigit() for c in tok) or re.fullmatch(r"[IVXLCDM]+", tok) or (len(tok) > 1 and tok.isupper()) \
+                or "-" not in low and FOREIGN.search(low):
+            prev, prev_src = i, low                              # numbers, Roman numerals, acronyms, imported words
             continue
         verb, *clitics = low.split("-")
         if clitics and all(c in CLITICS for c in clitics):
@@ -344,7 +348,7 @@ def translate(text: str) -> str:
                 flipped = ARTICLE_FLIP[gender][before]
                 parts[prev] = flipped[0].upper() + flipped[1:] if parts[prev][0].isupper() else flipped
         else:
-            res = "-".join(word(t) for t in low.split("-"))
+            res = "-".join(t if FOREIGN.search(t.lower()) else word(t.lower()) for t in tok.split("-"))
             if before in ("tú", "te") and second_singular(low, res):
                 res += "h"                                                # Convenção 2.1: tú labah, ela laba
             if PSEUDO_REFLEXIVE.match(low) and before not in CLITIC_OUTPUT and (low != "foram" or next_src in MOTION):

@@ -63,6 +63,10 @@ CASES = {
     "vinte javalis": "binti jabardu",
     "Tenho cócegas": "Tenhu cohquilha",
     "o advogado": "u abogadu",
+    # Imported words keep their spelling (Gramática II 2); a Portuguese part of a compound changes.
+    "o primeiro membro não-Ford": "u primêru membru nãu-Ford",
+    "William Shakespeare": "William Shakespeare",
+    "Manuel e Raúl": "Manué i Raú",
     # Case.
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",
