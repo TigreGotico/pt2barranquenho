@@ -96,3 +96,5 @@ lexicon: Spanish loans	Gramática	V 1.2	g45	example	São empréstimos do espanho
 lexicon: pessegueiro > melacatonêru	Gramática	V 1.2	g45	example	às árvores de fruto	pessegueiro	melacatonêru
 lexicon: terçol > terzuelu	Gramática	V 1.3	g45	example	formas sincréticas espanholas e portuguesas	terçol	terzuelu
 imported words keep their spelling	Gramática	II 2	g17	rule	em palavras importadas como topónimos		
+open final o in calor	Gramática	II 2	g18	example	pedra, tibi, caló, porcu	calor	caló
+open final o in mor	Convenção	Aplicação	c38;c39	example	Na capela-mó, cuberta pur abóbada	capela-mor	capela-mó

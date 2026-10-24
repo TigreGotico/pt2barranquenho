@@ -50,6 +50,9 @@ CLOSED = {
     # Numerals, Gramática III 1.1.8.
     # outrem is oxytone: otrén, Gramática III 1.1.6.
     "outrem": "otrén",
+    # Nouns in -or with an open final vowel, which the Portuguese spelling does not show: caló, Gramática II 2;
+    # capela-mó, Convenção Aplicação.
+    "calor": "caló", "mor": "mó",
     "dois": "doih", "duas": "duah", "três": "trêh", "seis": "seih", "dez": "déh", "dezasseis": "dezassei",
     "dezassete": "dezasseti",
     # Prepositions and conjunctions, Gramática III 1.2.6; e > i, Convenção 1.3; ou > o, Convenção 1.7; por > pur,
