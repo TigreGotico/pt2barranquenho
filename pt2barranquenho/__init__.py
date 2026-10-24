@@ -288,10 +288,48 @@ def word(w: str) -> str:
     return w
 
 
+# gostar takes no preposition, and the person who likes takes a dative pronoun before a 3sg verb, Gramática IV 1.2
+# (que tantu le gohtaba) and Convenção 3.1 (A min me gohta comunicá). Each finite form gives its pronoun and the 3sg
+# form of its tense; None is a 3sg form, or a 1sg form that only a subject tells apart (gostava).
+GOSTAR = {"gosto": ("me", "gosta"), "gostas": ("te", "gosta"), "gosta": (None, "gosta"), "gostamos": ("nos", "gosta"),
+          "gostam": ("lhes", "gosta"), "gostava": (None, "gostava"), "gostavas": ("te", "gostava"),
+          "gostávamos": ("nos", "gostava"), "gostavam": ("lhes", "gostava"), "gostei": ("me", "gostou"),
+          "gostaste": ("te", "gostou"), "gostou": (None, "gostou"), "gostámos": ("nos", "gostou"),
+          "gostaram": ("lhes", "gostou"), "gostaria": (None, "gostaria"), "gostarias": ("te", "gostaria"),
+          "gostaríamos": ("nos", "gostaria"), "gostariam": ("lhes", "gostaria"), "gostarei": ("me", "gostará"),
+          "gostarás": ("te", "gostará"), "gostará": (None, "gostará"), "gostaremos": ("nos", "gostará"),
+          "gostarão": ("lhes", "gostará")}
+# A subject pronoun becomes a + the tonic pronoun: A min me gohta.
+LIKER = {"eu": ("a mim", "me"), "tu": ("a ti", "te"), "ele": ("a ele", "lhe"), "ela": ("a ela", "lhe"),
+         "você": ("a você", "lhe"), "nós": ("a nós", "nos"), "eles": ("a eles", "lhes"), "elas": ("a elas", "lhes"),
+         "vocês": ("a vocês", "lhes")}
+# A person liked stays as Portuguese has it: gostas de mim.
+LIKED = "e|o|a|os|as|um|uma|uns|umas|est[eao]s?|ess[eao]s?|aquel[ea]s?|aquilo|isto|isso"
+DEGREE = "muito|mais|tanto|bastante|imenso|pouco|menos"
+GOSTAR_PHRASE = re.compile(rf"\b(?:({'|'.join(LIKER)})\s+)?(?:(não|nunca|já|também)\s+)?({'|'.join(GOSTAR)})\b(?!-)"
+                           rf"(?!(?:\s+(?:{DEGREE}))?\s+(?:de\s+(?:mim|ti|si|nós|você|vocês)|del[ea]s?)\b)"
+                           rf"(\s+(?:{DEGREE}))?(?:\s+d({LIKED})\b)?", re.IGNORECASE)
+
+
+def without_de(m: re.Match) -> str:
+    """Portuguese: a finite form of gostar rewritten as the dative construction (gosto de > me gosta)."""
+    subject, negation, verb, adverb, liked = m.groups()
+    if verb.lower() == "gosto" and not (subject or negation or adverb or liked):
+        return m[0]                                                  # the noun: com muito gosto
+    pronoun, form = GOSTAR[verb.lower()]
+    tonic, subject_pronoun = LIKER.get((subject or "").lower(), ("", "lhe"))
+    liked = "" if (liked or "e").lower() == "e" else liked
+    words = [tonic, negation, pronoun or subject_pronoun, form, (adverb or "").strip(), liked]
+    out = " ".join(w for w in words if w)
+    return out[0].upper() + out[1:] if m[0][0].isupper() else out
+
+
 def translate(text: str) -> str:
     """Translate pt-PT text to Barranquenho, one sentence or line at a time. Spacing and punctuation are kept."""
     if text.isupper():
         return translate(text.lower()).upper()
+    text = re.sub(r"\bde (que|quem) ((?:\w+ ){0,2})(?=gost)", r"\1 \2", text, flags=re.IGNORECASE)
+    text = GOSTAR_PHRASE.sub(without_de, text)
     # Periphrases, Gramática IV 1.3 and Convenção 3.1. A pronoun on the infinitive climbs before the auxiliary
     # (me bô a labá, nuh ehtá bendu); estar a + infinitive takes the gerund; ir + infinitive takes a (bô a fazê).
     def climb(aux: str, verb: str, pronoun: str) -> str:

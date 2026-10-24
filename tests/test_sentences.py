@@ -76,6 +76,12 @@ CASES = {
     # A spoken u after q or g: cu and gü (Convenção 2.4, 2.5).
     "os pinguins": "uh pingüin",
     "a sequência": "a secuência",
+    # gostar takes no de and a dative pronoun (Gramática IV 1.2, Convenção 3.1); a person liked keeps de.
+    "gosta de tomar umas chispas": "le gohta tomá umah chihpa",
+    "Eu não gosto do mar": "A min nãu me gohta u má",
+    "Gostei daquele filme": "Me gohtô aqueli filmi",
+    "com muito gosto": "con muntu gohtu",
+    "gosto muito de ti": "gohtu muntu de ti",
     # Case.
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",
