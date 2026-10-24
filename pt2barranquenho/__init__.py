@@ -324,12 +324,62 @@ def without_de(m: re.Match) -> str:
     return out[0].upper() + out[1:] if m[0][0].isupper() else out
 
 
+# A preterite in a span of time that still goes on takes ter + participle, Gramática III 1.2.5.1: oji me tenhu atadu
+# u lençu. Only the 1st and 3rd person singular are rewritten: their endings tell the person, while a 3rd person
+# plural in -aram, -eram or -iram can be a present (preparam, esperam, retiram).
+ONGOING = re.compile(r"\b(?:hoje|est[ea] (?:ano|semana|mês|manhã|tarde|noite))\b", re.IGNORECASE)
+FINISHED = re.compile(r"\b(?:ontem|anteontem|antigamente|outrora|passad[ao])\b", re.IGNORECASE)
+IRREGULAR_PRETERITE = {"fiz": ("tenho", "feito"), "fez": ("tem", "feito"), "vi": ("tenho", "visto"),
+                       "viu": ("tem", "visto"), "dei": ("tenho", "dado"), "deu": ("tem", "dado"),
+                       "pus": ("tenho", "posto"), "pôs": ("tem", "posto"), "vim": ("tenho", "vindo"),
+                       "veio": ("tem", "vindo"), "tive": ("tenho", "tido"), "teve": ("tem", "tido"),
+                       "estive": ("tenho", "estado"), "esteve": ("tem", "estado"), "escrevi": ("tenho", "escrito"),
+                       "escreveu": ("tem", "escrito"), "abri": ("tenho", "aberto"), "abriu": ("tem", "aberto"),
+                       "li": ("tenho", "lido"), "leu": ("tem", "lido")}
+REGULAR_PRETERITE = re.compile(r"^(\w{2,}?)(ei|ou|(?<=[cdtnsrlmvgbp])i|eu|iu)$")
+NOT_PRETERITE = {"aqui", "ali", "daqui", "dali", "sei", "hei", "lei", "rei", "sou", "vou", "estou", "dou", "museu",
+                 "europeu", "liceu", "judeu", "ateu", "coliseu", "apogeu", "teu", "seu", "meu"}
+
+
+def perfect(m: re.Match) -> str:
+    """Portuguese: a 1st or 3rd person singular preterite rewritten as ter + participle (comprei > tenho comprado)."""
+    verb, clitic = m[1], m[2] or ""
+    low = verb.lower()
+    if verb != low:
+        return m[0]                                                  # a name: Henri, Saudi
+    if low in IRREGULAR_PRETERITE:
+        aux, participle = IRREGULAR_PRETERITE[low]
+    elif low not in NOT_PRETERITE and (form := REGULAR_PRETERITE.match(low)):
+        stem, ending = form.groups()
+        if ending in ("ei", "ou"):
+            stem = re.sub(r"c$", "ç", re.sub(r"gu$", "g", stem)) if ending == "ei" else stem
+            participle = re.sub(r"qu$", "c", stem) + "ado"
+        else:
+            participle = stem + ("ído" if stem[-1] in "aeiou" else "ido")                        # saído, construído
+        aux = "tenho" if ending in ("ei", "i") else "tem"
+    else:
+        return m[0]
+    return f"{aux}{clitic} {participle}"
+
+
+def ongoing_perfect(clause: str) -> str:
+    """Portuguese: the preterites next to hoje or este ano (the word before, the six words after) as ter + participle."""
+    m = ONGOING.search(clause)
+    if not m or FINISHED.search(clause):
+        return clause
+    start = re.search(r"(?:[\w-]+\s+)?$", clause[:m.start()]).start()
+    end = m.end() + re.match(r"(?:\W+[\w-]+){0,6}", clause[m.end():]).end()
+    span = re.sub(r"\b(\w+)(-(?:me|te|se|nos|vos|lhe|lhes|o|a|os|as))?\b(?!-)", perfect, clause[start:end])
+    return clause[:start] + span + clause[end:]
+
+
 def translate(text: str) -> str:
     """Translate pt-PT text to Barranquenho, one sentence or line at a time. Spacing and punctuation are kept."""
     if text.isupper():
         return translate(text.lower()).upper()
     text = re.sub(r"\bde (que|quem) ((?:\w+ ){0,2})(?=gost)", r"\1 \2", text, flags=re.IGNORECASE)
     text = GOSTAR_PHRASE.sub(without_de, text)
+    text = "".join(ongoing_perfect(clause) for clause in re.split(r"([.;:!?]+)", text))
     # Impersonal faz + a span of time takes haver, Convenção 3.1: poih, que ai binti anu. After a subject, faz is
     # fazer: u Joãu fah trinta anu.
     text = re.sub(r"(^|[^\w\s]\s*|\b(?:que|pois|já|e|mas|porque|quase|agora|hoje|ainda)\s+)([Ff])az "

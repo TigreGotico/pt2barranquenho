@@ -87,6 +87,12 @@ CASES = {
     "Faz muito tempo": "Ai muntu tempu",
     "faz o almoço": "fah u almoçu",
     "O João faz trinta anos": "U Joãu fah trinta anu",
+    # A preterite in a time that still goes on takes ter + participle (Gramática III 1.2.5.1); ontem is finished.
+    "Hoje atei-me o lenço": "Oji me tenhu atadu u lençu",
+    "Hoje cheguei tarde e ele saiu": "Oji tenhu chegadu tardi i eli ten saídu",
+    "Esta semana fiz o almoço": "Ehta semana tenhu fêtu u almoçu",
+    "Ontem comprei pão": "Onten comprê pãu",
+    "Hoje sei que ele partiu ontem": "Oji sê que eli partiu onten",
     # Case.
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",
