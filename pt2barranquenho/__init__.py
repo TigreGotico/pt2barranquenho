@@ -312,6 +312,8 @@ def translate(text: str) -> str:
             prev, prev_src = None, ""
         before = parts[prev].lower() if prev is not None else ""
         next_src = parts[i + 2].lower() if i + 2 < len(parts) and not parts[i + 1].strip() else ""
+        if parts[i - 1].endswith("{") and parts[i + 1].startswith("}"):
+            continue                                                     # a template slot: {location}
         if any(c.isdigit() for c in tok) or re.fullmatch(r"[IVXLCDM]+", tok) or (len(tok) > 1 and tok.isupper()) \
                 or "-" not in low and FOREIGN.search(low):
             prev, prev_src = i, low                              # numbers, Roman numerals, acronyms, imported words

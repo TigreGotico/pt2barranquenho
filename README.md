@@ -20,7 +20,7 @@ translate("Ontem fomos à feira e comprámos três quilos de feijão.")
 word("espanhol")   # 'ehpanhó'
 ```
 
-`translate` takes one sentence or line. `word` converts one lowercase word with no context.
+`translate` takes one sentence or line. It leaves template slots such as `{name}` as they are, so it can convert OVOS dialog files. `word` converts one lowercase word with no context.
 
 ## Sources
 
