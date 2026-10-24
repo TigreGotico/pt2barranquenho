@@ -1,6 +1,6 @@
 # Rule citations
 
-`citations.tsv` gives the source of each rule in `pt2barranquenho`. It has 95 rows: 54 cite the *Convenção Ortográfica do Barranquenho* and 41 cite the *Gramática Básica de Barranquenho*.
+`citations.tsv` gives the source of each rule in `pt2barranquenho`. It has 101 rows: 56 cite the *Convenção Ortográfica do Barranquenho* and 45 cite the *Gramática Básica de Barranquenho*.
 
 | Column | Content |
 | --- | --- |
@@ -15,7 +15,7 @@
 Three checks keep the ledger and the code together:
 
 - `scripts/verify_citations.py` checks that the quote and the example pair appear on a cited page.
-- `tests/test_citations.py` translates each of the 73 example pairs and expects the printed Barranquenho.
+- `tests/test_citations.py` translates each of the 77 example pairs and expects the printed Barranquenho.
 - The same test checks both directions between code and ledger. Every section the ledger names must appear in a code comment. Every "Convenção" or "Gramática" section a comment names must appear in the ledger.
 
 ```bash
@@ -30,6 +30,11 @@ Some rules come from Portuguese grammar, not from the books, and the code commen
 - `SUBJECTS`, `PROCLISIS`, `CONJUNCTION_NEXT`, `QUESTION_VERBS` and `SUBJUNCTIVE` tell the pronoun *se* from the conjunction *se*. The Convenção writes them differently (*se*, *si*). The Portuguese input does not mark the difference, so the code decides from the neighbouring words: pt-PT never opens a clause with an atonic pronoun.
 - `IR_PAST_AFTER` decides when *foi* + infinitive is *ir* and not *ser*, and `MOTION` when *foram* is a verb of motion.
 - An enclitic *-lo* restores the verb's lost *-r* or *-s* (*fazê-lo* > *fazer*).
+- `FOREIGN` finds imported words by letters and sequences Portuguese spelling does not use. The Gramática keeps the spelling of imported names (II 2), but its own example *Valverde* has no such letter and still changes.
+- Initials, names with an apostrophe or an inner capital, and template slots such as `{name}` pass through unchanged.
+- `GOSTAR`, `LIKER` and `CLAUSE_OPENERS` decide when *gosto* is the verb and who likes. Without a subject, *gostava* and *gostaria* take the polite 1st person of pt-PT.
+- The *faz* + time rule needs an amount (*faz vinte anos*), because *faz anos* and *faz bom tempo* are a birthday and the weather.
+- `ongoing_perfect` rewrites only singular preterites after *hoje* or *este ano*, up to a subordinate clause, and leaves out the *-arei*, *-erei* and *-irei* forms, which can be futures.
 
 The nouns in `LEXICON` come from the Gramática examples. The *Dicionário de Barranquenho* (2025) has an entry for each one with the same Portuguese gloss, and its corrected edition is the Hugging Face dataset `TigreGotico/dicionario_barranquenho`. Words that the dictionary glosses broadly (*barquinaçu*: queda, rombo, solavanco) are left out.
 

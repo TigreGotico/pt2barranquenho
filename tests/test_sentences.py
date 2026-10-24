@@ -42,6 +42,8 @@ CASES = {
     "circuito": "circuitu",
     # An unstressed open final vowel before a lost -l or -r takes the grave accent (Convenção 1.1).
     "Vítor": "Bitò",
+    # A polysyllable loses its final -s with no -h: apó (Convenção 2.1); atrás is not a future.
+    "atrás": "atrá",
     # -ãos takes the plural -õi of the nouns in -ãu (Gramática III 1.2.3).
     "irmãos": "irmõi",
     # A noun whose gender differs from the Portuguese one flips its determiner, in the singular and the plural, and
@@ -69,6 +71,7 @@ CASES = {
     "Manuel e Raúl": "Manué i Raú",
     "Joseph E. Johnston e Alfred O'Keeffe": "Joseph E. Johnston i Alfred O'Keeffe",
     "Stefan e William McMaster": "Stefan i William McMaster",
+    "ele disse 'leite'": "eli dissi 'lêti'",
     # Template slots stay as they are.
     "Eu sou {name}": "Eu sô {name}",
     "para o seu {kind}": "para u sê {kind}",
@@ -81,18 +84,30 @@ CASES = {
     "Eu não gosto do mar": "A min nãu me gohta u má",
     "Gostei daquele filme": "Me gohtô aqueli filmi",
     "com muito gosto": "con muntu gohtu",
-    "gosto muito de ti": "gohtu muntu de ti",
+    "porque gostamos dela": "porqui nuh gohta ela",
+    "Gostava de saber isso": "Me gohtaba sabê issu",
+    "De que gostas?": "Que te gohta?",
+    "O gosto do vinho é bom": "U gohtu du binhu é bon",
+    "tem gosto de limão": "ten gohtu de limãu",
+    "Semelhante a ela gosta": "Semelhanti a ela gohta",
     # faz + a span of time takes haver (Convenção 3.1); faz + an object stays fazer.
     "pois faz vinte anos": "poih ai binti anu",
     "Faz muito tempo": "Ai muntu tempu",
     "faz o almoço": "fah u almoçu",
     "O João faz trinta anos": "U Joãu fah trinta anu",
+    "Hoje faz anos o João": "Oji fah anu u Joãu",
+    "Hoje faz bom tempo": "Oji fah bon tempu",
+    "Que faz todos os dias?": "Que fah todu uh dia?",
     # A preterite in a time that still goes on takes ter + participle (Gramática III 1.2.5.1); ontem is finished.
     "Hoje atei-me o lenço": "Oji me tenhu atadu u lençu",
     "Hoje cheguei tarde e ele saiu": "Oji tenhu chegadu tardi i eli ten saídu",
     "Esta semana fiz o almoço": "Ehta semana tenhu fêtu u almoçu",
     "Ontem comprei pão": "Onten comprê pãu",
     "Hoje sei que ele partiu ontem": "Oji sê que eli partiu onten",
+    "Hoje sei que ela nasceu em Barrancos": "Oji sê que ela nahceu en Barrancu",
+    "Hoje farei isso": "Oji farê issu",
+    "Hoje vi um javali e descobri o pneu": "Oji tenhu bihtu un jabardu i tenhu dehcobertu u pneu",
+    "Acordei hoje": "Tenhu acordadu oji",
     # Case.
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",

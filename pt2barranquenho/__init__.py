@@ -68,7 +68,7 @@ CLOSED = {
     "somos": "semu", "és": "eri", "sou": "sô", "estou": "tô", "estive": "ehtubi", "andei": "andubi", "há": "ai",
     "quer": "què", "vir": "bi",
     # 3pl presents that keep their nasal, Gramática III 1.2.5: tenhen, ponhen, benhen.
-    "têm": "tenhen", "põem": "ponhen", "vêm": "benhen", "veem": "benhen",
+    "têm": "tenhen", "põem": "ponhen", "vêm": "benhen",
     # The tables of ser, estar, haver and ter, Gramática III 1.2.5.4: the 2sg keeps its -h (Convenção 2.1) in forms
     # no noun shares, and haver drops its h.
     "hei": "ê", "hás": "áh", "estás": "ehtáh", "tinhas": "tinhah", "havias": "abiah", "sejas": "sejah",
@@ -145,8 +145,8 @@ PSEUDO_REFLEXIVE = re.compile(r"^(?:cas(?:ou|aram|ei|aste)|ca(?:iu|íram|í|íst
                               r"sa(?:iu|íram|í|íste)|dorm(?:iu|iram)|foram)$")
 PLURAL_DETERMINERS = {"os", "as", "estes", "estas", "esses", "essas", "aqueles", "aquelas", "meus", "teus", "seus",
                       "minhas", "tuas", "suas", "nossos", "nossas"}
-# Letters and sequences Portuguese spelling does not use: a word with one is imported and keeps its spelling,
-# Gramática II 2 (Valverde keeps its v).
+# Gramática II 2 keeps the spelling of imported names (Valverde). The Portuguese input does not mark them, so the code
+# finds only the words with letters and sequences Portuguese spelling does not use.
 FOREIGN = re.compile(r"[kwyäëïöüåøñłčšžăőűæœß]|([bdfgpt])\1|l{2}|[^\Wcln]h|tz|^s[^aeiouáéíóúâêôãõ]|[^aeiouáéíóúâêôãõblrsmnxz]$")
 MOTION = {"a", "à", "ao", "aos", "às", "para", "pra", "embora"}
 # Portuguese: the pronoun se and the conjunction se are spelt alike, and the Convenção writes them se and si
@@ -266,7 +266,7 @@ def word(w: str) -> str:
         v, c = m.groups()
         closed = {"e": "ê", "o": "ô"} if c == "r" and not STRONG_FUTURE.match(orig) else {"ê": "ê"}
         w = w[:m.start()] + closed.get(v, ACUTE.get(v, v))
-    elif m and not final_stress and m.group(1) in "aeo" and m.group(2) in "lr":
+    elif m and not final_stress and (m.group(1) in "ae" and m.group(2) in "lr" or m.groups() == ("o", "r")):
         # Convenção 1.1 and Convenção 4: an unstressed open final vowel before a lost -l or -r takes the grave
         # accent, and it carries no other accent (açucà, amabè, Bitò).
         w = strip_accents(w[:m.start()]) + {"a": "à", "e": "è", "o": "ò"}[m.group(1)]
@@ -274,7 +274,7 @@ def word(w: str) -> str:
         w = strip_accents(w[:-1])                                    # Gramática III 1.2.3: difici
     w = re.sub(f"n?[sz](?=[^{VOWELS}s])", "h", w)                    # Convenção 2.1: Lihboa, ihtrumentu
     if w.endswith(("s", "z")):
-        if mono and (w.endswith("z") or any(c in ACCENTED for c in w)) or orig.endswith("rás"):
+        if mono and (w.endswith("z") or any(c in ACCENTED for c in w)) or orig.endswith("rás") and not orig.endswith("trás"):
             w = w[:-1] + "h"                       # Convenção 2.1: trêh, Deuh; the 2sg future, Gramática amaráh
         else:
             w = w[:-1]                                               # Convenção 2.1: Barrancu, ehpanhói
@@ -290,7 +290,8 @@ def word(w: str) -> str:
 
 # gostar takes no preposition, and the person who likes takes a dative pronoun before a 3sg verb, Gramática IV 1.2
 # (que tantu le gohtaba) and Convenção 3.1 (A min me gohta comunicá). Each finite form gives its pronoun and the 3sg
-# form of its tense; None is a 3sg form, or a 1sg form that only a subject tells apart (gostava).
+# form of its tense; None is a form whose person only a subject tells apart. Without a subject, gosta, gostou and
+# gostará are 3sg, and gostava and gostaria are the polite 1sg of pt-PT (gostava de saber).
 GOSTAR = {"gosto": ("me", "gosta"), "gostas": ("te", "gosta"), "gosta": (None, "gosta"), "gostamos": ("nos", "gosta"),
           "gostam": ("lhes", "gosta"), "gostava": (None, "gostava"), "gostavas": ("te", "gostava"),
           "gostávamos": ("nos", "gostava"), "gostavam": ("lhes", "gostava"), "gostei": ("me", "gostou"),
@@ -303,21 +304,31 @@ GOSTAR = {"gosto": ("me", "gosta"), "gostas": ("te", "gosta"), "gosta": (None, "
 LIKER = {"eu": ("a mim", "me"), "tu": ("a ti", "te"), "ele": ("a ele", "lhe"), "ela": ("a ela", "lhe"),
          "você": ("a você", "lhe"), "nós": ("a nós", "nos"), "eles": ("a eles", "lhes"), "elas": ("a elas", "lhes"),
          "vocês": ("a vocês", "lhes")}
-# A person liked stays as Portuguese has it: gostas de mim.
-LIKED = "e|o|a|os|as|um|uma|uns|umas|est[eao]s?|ess[eao]s?|aquel[ea]s?|aquilo|isto|isso"
+# The thing liked loses de (gostamos dela > nuh guhtô). The books print no form for a 1st or 2nd person liked, so
+# gostas de mim keeps de.
+LIKED = "e|o|a|os|as|um|uma|uns|umas|est[eao]s?|ess[eao]s?|aquel[ea]s?|aquilo|isto|isso|el[ea]s?"
 DEGREE = "muito|mais|tanto|bastante|imenso|pouco|menos"
 GOSTAR_PHRASE = re.compile(rf"\b(?:({'|'.join(LIKER)})\s+)?(?:(não|nunca|já|também)\s+)?({'|'.join(GOSTAR)})\b(?!-)"
-                           rf"(?!(?:\s+(?:{DEGREE}))?\s+(?:de\s+(?:mim|ti|si|nós|você|vocês)|del[ea]s?)\b)"
+                           rf"(?!(?:\s+(?:{DEGREE}))?\s+de\s+(?:mim|ti|si|nós|você|vocês)\b)"
                            rf"(\s+(?:{DEGREE}))?(?:\s+d({LIKED})\b)?", re.IGNORECASE)
+
+
+PREPOSITIONS = {"a", "à", "para", "de", "com", "por", "sem", "contra", "entre", "sobre", "até", "perante"}
+CLAUSE_OPENERS = {"que", "e", "mas", "porque", "se", "também", "já", "ainda", "não", "pois", "quando", "eu"}
 
 
 def without_de(m: re.Match) -> str:
     """Portuguese: a finite form of gostar rewritten as the dative construction (gosto de > me gosta)."""
     subject, negation, verb, adverb, liked = m.groups()
-    if verb.lower() == "gosto" and not (subject or negation or adverb or liked):
-        return m[0]                                                  # the noun: com muito gosto
+    before = (re.search(r"(\w*)\W*$", m.string[:m.start()])[1]).lower()
+    if subject and before in PREPOSITIONS or verb.lower() == "gosto" and not subject and not negation and before \
+            and before not in CLAUSE_OPENERS:
+        return m[0]                             # a eli gosta: not a subject; o gosto, tem gosto: the noun
     pronoun, form = GOSTAR[verb.lower()]
-    tonic, subject_pronoun = LIKER.get((subject or "").lower(), ("", "lhe"))
+    default = "me" if form in ("gostava", "gostaria") else "lhe"
+    tonic, subject_pronoun = LIKER.get((subject or "").lower(), ("", default))
+    if before in ("me", "te", "lhe", "nos", "lhes"):
+        pronoun = subject_pronoun = ""                               # que tanto lhe gostava
     liked = "" if (liked or "e").lower() == "e" else liked
     words = [tonic, negation, pronoun or subject_pronoun, form, (adverb or "").strip(), liked]
     out = " ".join(w for w in words if w)
@@ -336,7 +347,11 @@ IRREGULAR_PRETERITE = {"fiz": ("tenho", "feito"), "fez": ("tem", "feito"), "vi":
                        "estive": ("tenho", "estado"), "esteve": ("tem", "estado"), "escrevi": ("tenho", "escrito"),
                        "escreveu": ("tem", "escrito"), "abri": ("tenho", "aberto"), "abriu": ("tem", "aberto"),
                        "li": ("tenho", "lido"), "leu": ("tem", "lido")}
-REGULAR_PRETERITE = re.compile(r"^(\w{2,}?)(ei|ou|(?<=[cdtnsrlmvgbp])i|eu|iu)$")
+IRREGULAR_PRETERITE.update({"descobri": ("tenho", "descoberto"), "descobriu": ("tem", "descoberto"),
+                            "cobri": ("tenho", "coberto"), "cobriu": ("tem", "coberto")})
+# -arei, -erei and -irei are left out: they are also the 1sg future (farei, comprarei), so a preterite such as parei
+# stays as it is.
+REGULAR_PRETERITE = re.compile(r"^(\w*[aeiou]\w*?)((?<![aei]r)ei|ou|(?<=[cdtnsrlmvgbp])i|eu|iu)$")
 NOT_PRETERITE = {"aqui", "ali", "daqui", "dali", "sei", "hei", "lei", "rei", "sou", "vou", "estou", "dou", "museu",
                  "europeu", "liceu", "judeu", "ateu", "coliseu", "apogeu", "teu", "seu", "meu"}
 
@@ -349,7 +364,8 @@ def perfect(m: re.Match) -> str:
         return m[0]                                                  # a name: Henri, Saudi
     if low in IRREGULAR_PRETERITE:
         aux, participle = IRREGULAR_PRETERITE[low]
-    elif low not in NOT_PRETERITE and (form := REGULAR_PRETERITE.match(low)):
+    elif low not in NOT_PRETERITE | NOUNS.keys() and not any(c in ACCENTED for c in low) and \
+            (form := REGULAR_PRETERITE.match(low)):
         stem, ending = form.groups()
         if ending in ("ei", "ou"):
             stem = re.sub(r"c$", "ç", re.sub(r"gu$", "g", stem)) if ending == "ei" else stem
@@ -363,27 +379,40 @@ def perfect(m: re.Match) -> str:
 
 
 def ongoing_perfect(clause: str) -> str:
-    """Portuguese: the preterites next to hoje or este ano (the word before, the six words after) as ter + participle."""
+    """Portuguese: the preterites next to hoje or este ano (the word before, the words after up to a subordinate
+    clause) as ter + participle."""
     m = ONGOING.search(clause)
     if not m or FINISHED.search(clause):
         return clause
     start = re.search(r"(?:[\w-]+\s+)?$", clause[:m.start()]).start()
-    end = m.end() + re.match(r"(?:\W+[\w-]+){0,6}", clause[m.end():]).end()
-    span = re.sub(r"\b(\w+)(-(?:me|te|se|nos|vos|lhe|lhes|o|a|os|as))?\b(?!-)", perfect, clause[start:end])
-    return clause[:start] + span + clause[end:]
+    stop = re.search(r"\b(?:que|porque|quando|se|mas|embora|como)\b", clause[m.end():])
+    end = m.end() + stop.start() if stop else len(clause)
+    span = clause[start:end]
+    first = not clause[:start].strip() and span[:1].isupper() and not span[:2].isupper()
+    if first:
+        span = span[0].lower() + span[1:]                            # Acordei hoje: a verb, not a name
+    span = re.sub(r"\b(\w+)(-(?:me|te|se|nos|vos|lhe|lhes|o|a|os|as))?\b(?!-)", perfect, span)
+    return clause[:start] + (span[0].upper() + span[1:] if first else span) + clause[end:]
 
 
 def translate(text: str) -> str:
     """Translate pt-PT text to Barranquenho, one sentence or line at a time. Spacing and punctuation are kept."""
     if text.isupper():
         return translate(text.lower()).upper()
-    text = re.sub(r"\bde (que|quem) ((?:\w+ ){0,2})(?=gost)", r"\1 \2", text, flags=re.IGNORECASE)
+    # de que ... gostava: the relative clause speaks of someone else, so the ambiguous form takes lhe.
+    text = re.sub(r"\b([Dd])e (que|quem) ((?:\w+ ){0,2})(?=(gost\w*))",
+                  lambda m: (m[2][0].upper() + m[2][1:] if m[1] == "D" else m[2]) + " " + m[3] +
+                  ("lhe " if m[4].lower() in ("gostava", "gostaria") and not LIKER.keys() & set(m[3].lower().split())
+                   else ""), text)
     text = GOSTAR_PHRASE.sub(without_de, text)
     text = "".join(ongoing_perfect(clause) for clause in re.split(r"([.;:!?]+)", text))
-    # Impersonal faz + a span of time takes haver, Convenção 3.1: poih, que ai binti anu. After a subject, faz is
-    # fazer: u Joãu fah trinta anu.
+    # Impersonal faz + an amount of time takes haver, Convenção 3.1: poih, que ai binti anu. After a subject, faz is
+    # fazer (u Joãu fah trinta anu), and without an amount it is the weather or a birthday (faz bom tempo, faz anos).
     text = re.sub(r"(^|[^\w\s]\s*|\b(?:que|pois|já|e|mas|porque|quase|agora|hoje|ainda)\s+)([Ff])az "
-                  r"(?=(?:\w+ ){0,3}(?:anos?|mês|meses|semanas?|dias?|horas?|minutos?|tempo)\b)",
+                  r"(?=(?:\d+|um|uma|dois|duas|três|quatro|cinco|seis|sete|oito|nove|dez|onze|doze|quinze|vinte|"
+                  r"trinta|quarenta|cinquenta|cem|muit[oa]s?|pouc[oa]s?|algu(?:m|ns)|algumas|uns|umas|vári[oa]s|"
+                  r"bastantes?|tant[oa]s?|mais|menos) (?:\w+ )?(?:anos?|mês|meses|semanas?|dias?|horas?|minutos?|"
+                  r"tempo)\b)",
                   lambda m: m[1] + ("H" if m[2] == "F" else "h") + "á ", text, flags=re.IGNORECASE)
     # Periphrases, Gramática IV 1.3 and Convenção 3.1. A pronoun on the infinitive climbs before the auxiliary
     # (me bô a labá, nuh ehtá bendu); estar a + infinitive takes the gerund; ir + infinitive takes a (bô a fazê).
@@ -420,7 +449,7 @@ def translate(text: str) -> str:
         next_src = parts[i + 2].lower() if i + 2 < len(parts) and parts[i + 1].strip() in ("", "{") else ""
         if parts[i - 1].endswith("{") and parts[i + 1].startswith("}"):
             continue                                                     # a template slot: {location}
-        name_part = tok.isupper() and parts[i + 1].startswith(".") or "'" in (parts[i - 1][-1:], parts[i + 1][:1]) \
+        name_part = tok.isupper() and parts[i + 1].startswith(".") or tok[0].isupper() and "'" in (parts[i - 1][-1:], parts[i + 1][:1]) \
             or not tok.isupper() and any(c.isupper() for t in tok.split("-") for c in t[1:])
         if any(c.isdigit() for c in tok) or re.fullmatch(r"[IVXLCDM]+", tok) or (len(tok) > 1 and tok.isupper()) \
                 or "-" not in low and FOREIGN.search(low) or name_part:
