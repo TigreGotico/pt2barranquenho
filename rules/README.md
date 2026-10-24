@@ -32,9 +32,10 @@ Some rules come from Portuguese grammar, not from the books, and the code commen
 - An enclitic *-lo* restores the verb's lost *-r* or *-s* (*fazê-lo* > *fazer*).
 - `FOREIGN` finds imported words by letters and sequences Portuguese spelling does not use. The Gramática keeps the spelling of imported names (II 2), but its own example *Valverde* has no such letter and still changes.
 - Initials, names with an apostrophe or an inner capital, and template slots such as `{name}` pass through unchanged.
-- `GOSTAR`, `LIKER` and `CLAUSE_OPENERS` decide when *gosto* is the verb and who likes. Without a subject, *gostava* and *gostaria* take the polite 1st person of pt-PT.
-- The *faz* + time rule needs an amount (*faz vinte anos*), because *faz anos* and *faz bom tempo* are a birthday and the weather.
-- `ongoing_perfect` rewrites only singular preterites after *hoje* or *este ano*, up to a subordinate clause, and leaves out the *-arei*, *-erei* and *-irei* forms, which can be futures.
+- `GOSTAR`, `LIKER` and `NOUN_BEFORE` decide when *gosto* is the verb and who likes. At the start of a clause, *gostava* and *gostaria* take the polite 1st person of pt-PT; after a noun, the 3rd person.
+- The *faz* + time rule needs an amount (*faz vinte anos*) that ends the phrase or opens a *que* clause, because *faz anos o João*, *faz bom tempo* and *faz duas horas de ginástica* are a birthday, the weather and a habit.
+- `ongoing_perfect` rewrites only singular preterites next to *hoje* or *este ano*, up to a comma or a subordinate clause. It skips a clause dated with *ontem*, *há* + time or a year, a word after an article, and the *-arei*, *-erei*, *-irei* and *-orei* forms, which can be futures.
+- `OPEN_R` lists the words whose final stressed *e* or *o* is open in pt-PT (*mulhé*, *melhó*). The Portuguese spelling does not show the quality.
 
 The nouns in `LEXICON` come from the Gramática examples. The *Dicionário de Barranquenho* (2025) has an entry for each one with the same Portuguese gloss, and its corrected edition is the Hugging Face dataset `TigreGotico/dicionario_barranquenho`. Words that the dictionary glosses broadly (*barquinaçu*: queda, rombo, solavanco) are left out.
 

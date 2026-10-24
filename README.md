@@ -26,6 +26,8 @@ word("espanhol")   # 'ehpanhó'
 
 ## Sources
 
+The [documentation](docs/index.md) explains how the rules work, the constructions they handle, the evaluation and how to add a rule.
+
 The rules follow two books. Each rule in the code names the section it comes from, and `rules/citations.tsv` quotes that section with its page; `rules/README.md` explains the checks and lists the places where the two books disagree.
 
 - Gonçalves, M. F., Navas, M. V. and Correia, V. M. D. (2025). *Convenção Ortográfica do Barranquenho*. Évora: Universidade de Évora. ISBN 978-972-778-463-9.
