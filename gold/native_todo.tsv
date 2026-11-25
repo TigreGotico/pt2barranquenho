@@ -1,0 +1,151 @@
+id	pt	rules	barr	area	source
+n001	coloca a dar música que gosto	coloca a dá música que gohtu		gostar	ocp-pipeline
+n002	eu gosto de tirar fotos	a min me gohta tirá fotu		gostar	ovos-skill-camera
+n003	gostaria de ouvir as notícias de última hora	me gohtaria obí ah notícia de última ora		gostar	ovos-skill-news
+n004	Eu gosto de ser um papagaio	A min me gohta sê un papagaiu		gostar	ovos-skill-parrot
+n005	Com voz reservada, diz ele: «Obrigado. É um gosto tê-lo connosco no lançamento para a Lua de hoje.»	Con boh reserbada, dih eli: «Obrigadu. É un gohtu tê-lu connóh nu lançamentu para a Lua de oji.»		gostar	ovos-skill-moon-game
+n006	mete a dar canções que gosto	meti a dá cançõi que gohtu		gostar	ocp-pipeline
+n007	«Obrigado», diz ele em tom reservado. «É um gosto tê-lo connosco no lançamento para a Lua.»	«Obrigadu», dih eli en ton reserbadu. «É un gohtu tê-lu connóh nu lançamentu para a Lua.»		gostar	ovos-skill-moon-game
+n008	Não nasci na posse do conhecimento; Sou alguém que gosta da antiguidade e é sincero em procurá-lo lá.	Nãu nahcí na possi du conhecimentu; Sô alguén que le gohta a antiguidadi i é sinceru en procurá-lu lá.		gostar	ovos-skill-confucius-quotes
+n009	Com qual gostarias de interagir	Con cual te gohtaria interagí		gostar	ovos-persona
+n010	faz tempo que não te vejo	fah tempu que nãu te beju		faz	ovos-skill-hello-world
+n011	«Senhor, não vou pedir outra vez, mostre a sua identificação», diz o guarda com firmeza.	«Senhô, nãu bô a pedí otra beh, mohtri a sua identificaçãu», dih u guarda con firmeza.		periphrasis	ovos-skill-moon-game
+n012	Tem de me dar um intervalo de tempo. Pode ser um dia ou um período de tempo mais curto.	Ten de me dá un interbalu de tempu. Podi sê un dia o un períodu de tempu maih curtu.		periphrasis	t5834-into-328
+n013	quais são as datas para domingo que está a chegar	quaih sãu ah data para domingu que ehtá chegandu		periphrasis	ovos-skill-date-time
+n014	O homem que fica em pé na colina com a boca aberta vai esperar muito tempo para o pato assado cair.	U omen que fica en pé na colina con a boca aberta bai a ehperá muntu tempu para u patu assadu caí.		periphrasis	ovos-skill-confucius-quotes
+n015	O guarda, em tom severo, diz: «Senhor, apresente a sua identificação. Não vou pedir outra vez.»	U guarda, en ton seberu, dih: «Senhô, apresenti a sua identificaçãu. Nãu bô a pedí otra beh.»		periphrasis	ovos-skill-moon-game
+n016	em que idioma me estou a exprimir	en que idioma me tô ehprimindu		periphrasis	ovos-skill-diagnostics
+n017	Concentra-te no que estás a fazer.	Te concentra nu que ehtáh fazendu.		periphrasis	ovos-skill-moon-game
+n018	tens de introduzir 1 algarismo de cada vez	ten que introduzí 1 algarihmu de cada beh		periphrasis	ovos-skill-moon-game
+n019	Não faço a mínima ideia do que estás a falar!	Nãu façu a mínima idêa du que ehtáh falandu!		periphrasis	ovos-skill-moon-game
+n020	Não sei do que estás a falar!	Nãu sê du que ehtáh falandu!		periphrasis	ovos-skill-moon-game
+n021	O guarda fala com severidade: «Senhor, apresente já a sua identificação. Não vou pedir outra vez.»	U guarda fala con seberidadi: «Senhô, apresenti já a sua identificaçãu. Nãu bô a pedí otra beh.»		periphrasis	ovos-skill-moon-game
+n022	Que alívio, obrigado por me acalmares. Vamos trazer aqueles rapazes de volta, diz ele.	Que alíbiu, obrigadu pur m'acalmari. Bamu a trazê aquelih rapazi de bolta, dih eli.		periphrasis	ovos-skill-moon-game
+n023	Não consegui encontrar nenhuma persona ativa, então vou interagir como o meu eu padrão	Nãu conseguí encontrá nenhuma persona atiba, entãu bô a interagí comu u meu eu padrãu		periphrasis	ovos-persona
+n024	Só posso definir lembretes áudio com um máximo de 24 horas de antecedência, pelo que vou criar um evento de calendário.	Só possu definí lembreti áudiu con un máximu de 24 ora de antecedência, pelu que bô a criá un ebentu de calendáriu.		periphrasis	t5834-into-328
+n025	Não tenho a certeza, mas estou a fazer o meu melhor para aprender.	Nãu tenhu a certeza, mah tô fazendu u mê melhó para aprendê.		periphrasis	ovos-skill-fallback-unknown
+n026	Não estou a ditar neste momento	Nãu tô ditandu nehti momentu		periphrasis	ovos-skill-dictation
+n027	estou a ficar sem espaço em disco	tô ficandu sen ehpaçu en dihcu		periphrasis	ovos-skill-diagnostics
+n028	O leitor multimédia não está a funcionar.	U letô multimédia nãu ehtá funcionandu.		periphrasis	t5834-into-328
+n029	Nenhuma persona ativa, estou a usar a minha personalidade base	Nenhuma persona atiba, tô usandu a minha personalidadi basi		periphrasis	ovos-persona
+n030	Parece que não há nenhuma persona ativa no momento, então vou responder como eu mesmo	Pareci que nãu ai nenhuma persona atiba nu momentu, entãu bô a rehpondê comu eu mehmu		periphrasis	ovos-persona
+n031	qual a versão do kernel que está a usar	cual a bersãu du kernel que ehtá usandu		periphrasis	ovos-skill-diagnostics
+n032	está a usar uma GPU	ehtá usandu uma GPU		periphrasis	ovos-skill-diagnostics
+n033	Eu vou repetir tudo que disseres	Eu bô a repetí tudu que disseri		periphrasis	ovos-skill-parrot
+n034	que idioma estou a usar	que idioma tô usandu		periphrasis	ovos-skill-diagnostics
+n035	diga-me a língua que estamos a falar	me diga a língua que ehtemu falandu		periphrasis	ovos-skill-diagnostics
+n036	Vou parar de repetir o que dizes	Bô a pará de repetí u que dizi		periphrasis	ovos-skill-parrot
+n037	o que está a acontecer nas notícias	u que ehtá acontecendu nah notícia		periphrasis	ovos-skill-news
+n038	Dá-me a previsão do tempo	Me dá a prebisãu du tempu		pronoun	ovos-skill-weather
+n039	dizer-me o dia da semana	dizê-me u dia da semana		pronoun	ovos-skill-date-time
+n040	diga-me o uso do meu disco	me diga u usu du mê dihcu		pronoun	ovos-skill-diagnostics
+n041	poderia dizer-me em que mês estamos?	poderia dizê-me en que mêh ehtemu?		pronoun	ovos-skill-date-time
+n042	lembra-se da data do último domingo	se lembra da data du últimu domingu		pronoun	ovos-skill-date-time
+n043	As credenciais DAV estão em falta. Adicione-as ao ficheiro skeleton na pasta do sistema de ficheiros de competências.	Ah credenciai DAV ehtãu en falta. Ah adicioni ò fichêru skeleton na pahta du sihtema de fichêru de competência.		pronoun	t5834-into-328
+n044	Diz-me a previsão do tempo	Me dih a prebisãu du tempu		pronoun	ovos-skill-weather
+n045	diga-me a data de hoje	me diga a data de oji		pronoun	ovos-skill-date-time
+n046	diz-me as notícias de hoje	me dih ah notícia de oji		pronoun	ovos-skill-news
+n047	devo preparar-me para uma tempestade	debu prepará-me para uma tempehtadi		pronoun	ovos-skill-weather
+n048	Não percebi a que data se refere.	Nãu percebí a que data se referi.		pronoun	ovos-skill-date-time
+n049	dê-me a data do calendário	me dê a data du calendáriu		pronoun	ovos-skill-date-time
+n050	diga-me o data completa com ano	me diga u data completa con anu		pronoun	ovos-skill-date-time
+n051	pode dar-me o data completa com ano	podi dá-me u data completa con anu		pronoun	ovos-skill-date-time
+n052	leia-me as notícias de hoje	me lêa ah notícia de oji		pronoun	ovos-skill-news
+n053	dar-me o data completa com ano	dá-me u data completa con anu		pronoun	ovos-skill-date-time
+n054	lembra-me todas as manhãs úteis de tomar o medicamento às 8	me lembra toda ah manhã úti de tomá u medicamentu àh 8		pronoun	t5834-into-328
+n055	diz-me o que ouviste	me dih u que obihti		pronoun	ovos-skill-parrot
+n056	lembra-me de regar as plantas nas manhãs de fim de semana às 8	me lembra de regá ah planta nah manhã de fin de semana àh 8		pronoun	t5834-into-328
+n057	Desculpe, o seu pedido não estava claro. Por favor, repita-o.	Dehculpi, u sê pedidu nãu ehtaba claru. Pur fabô, u repita.		pronoun	ovos-transcription-validator
+n058	A que horas se põe o sol hoje	A que ora se põe u só oji		pronoun	ovos-skill-weather
+n059	Posso dizer-vos a previsão para os próximos sete dias.	Possu dizê-buh a prebisãu para uh próximu seti dia.		pronoun	ovos-skill-weather
+n060	Aprenda como se nunca fosse capaz de dominar; segure como se tivesse medo de perder.	Aprenda comu si nunca fossi capá de dominá; seguri comu si tibessi medu de perdê.		pronoun	ovos-skill-confucius-quotes
+n061	As pessoas podem ser levadas a seguir um caminho de ação, mas não podem ser levadas a entendê-lo.	Ah pessoa poden sê lebada a seguí un caminhu de açãu, mah nãu poden sê lebada a entendê-lu.		pronoun	ovos-skill-confucius-quotes
+n062	atualize-me com as notícias	m'atualizi con ah notícia		pronoun	ovos-skill-news
+n063	explique-me as notícias de hoje	m'ehpliqui ah notícia de oji		pronoun	ovos-skill-news
+n064	Não tenha vergonha dos erros e, assim, torne-os crimes.	Nãu tenha bergonha duh erru i, assin, uh torni crimi.		pronoun	ovos-skill-confucius-quotes
+n065	Desculpe, não entendi. Importa-se de repetir?	Dehculpi, nãu entendí. S'importa de repetí?		pronoun	ovos-transcription-validator
+n066	Não me disseste sobre que Pokémon queres saber!	Nãu me dissehti sobri que Pokémon queri sabê!		pronoun	ovos-skill-pokepedia
+n067	informe-me as notícias de última hora	m'informi ah notícia de última ora		pronoun	ovos-skill-news
+n068	começar a contar até 14 com números ordinais em escala longa	começá a contá ahta 14 con númeru ordinai en ehcala longa		spelling	ovos-skill-count
+n069	contar até 90 com números cardinais em escala longa	contá ahta 90 con númeru cardinai en ehcala longa		spelling	ovos-skill-count
+n070	que lembretes é que me escaparam	que lembreti é que m'ehcaparon		spelling	t5834-into-328
+n071	O prazer é meu	U prazê é meu		spelling	ovos-skill-hello-world
+n072	De segunda a sexta-feira	De segunda a sehta-fêra		spelling	t5834-into-328
+n073	diz as notícias de última hora	dih ah notícia de última ora		spelling	ovos-skill-news
+n074	Parece haver um problema. Não consigo consultar o volume atual.	Pareci abê un problema. Nãu consigu consultá u bolumi atuá.		spelling	ovos-skill-volume
+n075	Enumerar os elementos que devem ser retirados, um a um.	Enumerá uh elementu que deben sê retiradu, un a un.		spelling	t5834-into-328
+n076	entra no modo de suspensão	entra nu modu de suhpensãu		spelling	ovos-skill-naptime
+n077	Tenha a fidelidade e a sinceridade como primeiros princípios.	Tenha a fidelidadi i a sinceridadi comu primêru princípiu.		spelling	ovos-skill-confucius-quotes
+n078	preciso de me vestir para o tempo chuvoso	precisu de me behtí para u tempu chubosu		spelling	ovos-skill-weather
+n079	tentei pesquisar no wiki how mas não encontrei nada	tentê pehquisá nu wiki how mah nãu encontrê nada		spelling	ovos-skill-wikihow
+n080	Quem é que o criou?	Quén é que u criô?		spelling	wt-personal-ovoscope
+n081	devo tomar precauções em caso de chuva	debu tomá precauçõi en casu de chuba		spelling	ovos-skill-weather
+n082	Não há nada armazenado neste período de tempo.	Nãu ai nada armazenadu nehti períodu de tempu.		spelling	t5834-into-328
+n083	qual o seu uso de memória	cual u sê usu de memória		spelling	ovos-skill-diagnostics
+n084	contar infinitamente com números ordinais em escala longa	contá infinitamenti con númeru ordinai en ehcala longa		spelling	ovos-skill-count
+n085	A virtude é algo remoto? Eu desejo ser virtuoso, e eis que a virtude está à mão.	A birtudi é algu remotu? Eu deseju sê birtuosu, i êh que a birtudi ehtá à mãu.		spelling	ovos-skill-confucius-quotes
+n086	fala mais do que uma língua	fala maih du que uma língua		spelling	ovos-skill-diagnostics
+n087	A nossa maior glória não está em nunca cair, mas em nos levantarmos sempre que caímos.	A nossa maió glória nãu ehtá en nunca caí, mah en nuh lebantarmu sempri que caímu.		spelling	ovos-skill-confucius-quotes
+n088	data de nascimento de confúcio	data de nahcimentu de confúciu		spelling	ovos-skill-confucius-quotes
+n089	volta a pôr a anterior	bolta a pô a anteriô		spelling	ocp-pipeline
+n090	repete o que disseste	repeti u que dissehti		spelling	ovos-skill-parrot
+n091	é provável que chova hoje	é probabè que choba oji		spelling	ovos-skill-weather
+n092	Eu preciso de um número entre 0 e 255	Eu precisu de un númeru entri 0 i 255		spelling	ovos-skill-mark1-ctrl
+n093	Eu sou um software inteligente para comunicação com máquinas	Eu sô un software inteligenti para comunicaçãu con máquina		spelling	wt-personal-ovoscope
+n094	Não consegui encontrar esse Pokémon agora. Tenta de novo mais tarde!	Nãu conseguí encontrá essi Pokémon agora. Tenta de nobu maih tardi!		spelling	ovos-skill-pokepedia
+n095	vai para o próximo som	bai para u próximu son		spelling	ocp-pipeline
+n096	Poderia dizer isso mais uma vez para mim?	Poderia dizê issu maih uma beh para min?		spelling	ovos-transcription-validator
+n097	Não, acho que não te ouvi	Nãu, achu que nãu t'obí		spelling	ovos-skill-parrot
+n098	Não percebi a que palavra te referes	Nãu percebí a que palabra te referih		spelling	ovos-skill-wordnet
+n099	O silêncio é o verdadeiro amigo que nunca trai.	U silênciu é u berdadêru amigu que nunca trai.		spelling	ovos-skill-confucius-quotes
+n100	Lamento muito. De momento, não consigo obter boletins meteorológicos.	Lamentu muntu. De momentu, nãu consigu obtê boletin meteorológicu.		spelling	ovos-skill-weather
+n101	relatório de notícias de última hora	relatóriu de notícia de última ora		spelling	ovos-skill-news
+n102	Não tenho a certeza	Nãu tenhu a certeza		spelling	ovos-skill-wikihow
+n103	Eu não sei quem é.	Eu nãu sê quen é.		spelling	ovos-skill-fallback-unknown
+n104	devo estar preparado para a chuva	debu ehtá preparadu para a chuba		spelling	ovos-skill-weather
+n105	Que volume? 0 a 100 é possível.	Que bolumi? 0 a 100 é possibè.		spelling	ovos-skill-volume
+n106	qual é o meu endereço IP visto de fora na internet	cual é u mê endereçu IP bihtu de fora na internet		spelling	ovos-skill-ip
+n107	põe as notícias de última hora	põe ah notícia de última ora		spelling	ovos-skill-news
+n108	contar para sempre com números ordinais em escala curta	contá para sempri con númeru ordinai en ehcala curta		spelling	ovos-skill-count
+n109	Não consigo aceder a câmara	Nãu consigu acedê a câmara		spelling	ovos-skill-camera
+n110	põe a dar o próximo som	põe a dá u próximu son		spelling	ocp-pipeline
+n111	falha na captura de ecrã	falha na captura de ecrán		spelling	ovos-skill-screenshot
+n112	Desculpe, houve um erro ao definir a cor	Dehculpi, obi un erru ò definí a cô		spelling	ovos-skill-mark1-ctrl
+n113	Não, não tenho um G P U	Nãu, nãu tenhu un G P U		spelling	ovos-skill-diagnostics
+n114	Como nenhuma persona está ativa, continuo a usar a minha personalidade padrão por enquanto	Comu nenhuma persona ehtá atiba, continuu a usá a minha personalidadi padrãu pur encuantu		spelling	ovos-persona
+n115	Hmm, não tenho a certeza se ouvi bem. Pode repetir?	Hmm, nãu tenhu a certeza s'obí ben. Podi repetí?		spelling	ovos-transcription-validator
+n116	Eu sou bom a repetir coisas	Eu sô bon a repetí coisa		spelling	ovos-skill-parrot
+n117	abra o catálogo de vídeo	abra u catálogu de bídeu		spelling	ocp-pipeline
+n118	Volume atualizado para o nível máximo	Bolumi atualizadu para u nibè máximu		spelling	ovos-skill-volume
+n119	Não sei como responder a isso.	Nãu sê comu rehpondê a issu.		spelling	ovos-skill-fallback-unknown
+n120	Onde é que tu foste feito?	Ondi é que tú fohti fêtu?		spelling	wt-personal-ovoscope
+n121	A ler o último ditado	A lê u últimu ditadu		spelling	ovos-skill-dictation
+n122	abrir o menu de vídeo	abrí u menú de bídeu		spelling	ocp-pipeline
+n123	O que devo reproduzir a seguir?	U que debu reproduzí a seguí?		spelling	ocp-pipeline
+n124	o lobo não sabe a resposta	u lobu nãu sabi a rehpohta		spelling	ovos-skill-wolfie
+n125	ok, estou pronto para o ditado	ok, tô prontu para u ditadu		spelling	ovos-skill-dictation
+n126	Volume já definido para o nível máximo	Bolumi já definidu para u nibè máximu		spelling	ovos-skill-volume
+n127	diz o meu endereço IP externo visível de fora	dih u mê endereçu IP ehternu bisibè de fora		spelling	ovos-skill-ip
+n128	Desculpe, eu não entendi esse nível de brilho.	Dehculpi, eu nãu entendí essi nibè de brilhu.		spelling	ovos-skill-mark1-ctrl
+n129	Não consigo encontrar um artigo relacionado na Wikipédia	Nãu consigu encontrá un artigu relacionadu na Wikipédia		spelling	ovos-skill-wikipedia
+n130	põe o volume no máximo	põe u bolumi nu máximu		spelling	ovos-skill-volume
+n131	A câmara está pronta para uso.	A câmara ehtá pronta para usu.		spelling	ovos-skill-camera
+n132	Ocorreu um erro, não consegui executar um teste rápido... peço desculpa.	Ocorreu un erru, nãu conseguí executá un tehti rápidu... peçu dehculpa.		spelling	ovos-skill-speedtest
+n133	A Iniciar speedtest agora, voltarei com os resultados daqui a pouco.	A Iniciá speedtest agora, boltarê con uh resultadu daquí a pocu.		spelling	ovos-skill-speedtest
+n134	Eu não estou no modo papagaio	Eu nãu tô nu modu papagaiu		spelling	ovos-skill-parrot
+n135	Diga o nome de uma cor para testar.	Diga u nomi de uma cô para tehtá.		spelling	ovos-skill-mark1-ctrl
+n136	É bom ser um papagaio	É bon sê un papagaiu		spelling	ovos-skill-parrot
+n137	Não encontrei uma resposta no DuckDuckGo.	Nãu encontrê uma rehpohta nu DuckDuckGo.		spelling	ovos-skill-ddg
+n138	Não consegui perceber até que número queria que eu contasse	Nãu conseguí percebê ahta que númeru queria que eu contassi		spelling	ovos-skill-count
+n139	Agora eu preciso de outro valor para o verde	Agora eu precisu de otru balô para u berdi		spelling	ovos-skill-mark1-ctrl
+n140	qual IP os outros veem na internet	cual IP uh otru been na internet		spelling	ovos-skill-ip
+n141	É tudo o que sei	É tudu u que sê		spelling	ovos-skill-wikipedia
+n142	Não, eu não te ouvi	Nãu, eu nãu t'obí		spelling	ovos-skill-parrot
+n143	Não sei a palavra do dia	Nãu sê a palabra du dia		spelling	ovos-skill-word-of-the-day
+n144	Queres definir esta como a tua cor de olhos predefinida?	Queri definí ehta comu a tua cô de olhu predefinida?		spelling	ovos-skill-mark1-ctrl
+n145	Em seguida eu preciso do valor para o verde	En seguida eu precisu du balô para u berdi		spelling	ovos-skill-mark1-ctrl
+n146	Não consegui tirar a captura de ecrã	Nãu conseguí tirá a captura de ecrán		spelling	ovos-skill-screenshot
+n147	quão forte está o meu sinal de wifi	quãu forti ehtá u mê siná de wifi		spelling	ovos-skill-ip
+n148	Essa não é uma cor com que eu esteja familiarizado.	Essa nãu é uma cô con que eu ehteja familiarizadu.		spelling	ovos-skill-mark1-ctrl
+n149	Um último número entre 0 e 255 para o azul	Un últimu númeru entri 0 i 255 para u azú		spelling	ovos-skill-mark1-ctrl
+n150	podes ter que dizer isso de uma maneira diferente para eu entender.	podi tê que dizê issu de uma manêra diferenti para eu entendê.		spelling	ovos-skill-fallback-unknown
