@@ -1,0 +1,26 @@
+[
+ {
+  "set": "books",
+  "rows": 321,
+  "copy": 40.3112,
+  "rules": 85.1323
+ },
+ {
+  "set": "convention_text",
+  "rows": 8,
+  "copy": 59.1364,
+  "rules": 94.8482
+ },
+ {
+  "set": "external_respelled",
+  "rows": 34,
+  "copy": 34.2144,
+  "rules": 61.7479
+ },
+ {
+  "set": "external",
+  "rows": 36,
+  "copy": 37.0517,
+  "rules": 40.8045
+ }
+]

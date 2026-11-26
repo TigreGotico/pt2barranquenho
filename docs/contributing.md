@@ -26,3 +26,6 @@ Some sentences need a choice the books do not make: *gosto de ti*, the vowel qua
 ## Words from the dictionary
 
 A noun goes into `LEXICON` only when the Gramática prints the Barranquenho word in place of the Portuguese one and the 2025 dictionary gives the same gloss. Used as a word list, the dictionary lowers the scores, because most entries sit beside a Portuguese cognate that speakers also use.
+
+---
+[← Evaluation](evaluation.md) · [Home](index.md)
