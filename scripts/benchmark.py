@@ -34,7 +34,7 @@ def main():
             for system, h in hyps.items():
                 exact, chrf = score([rows[i] for i in idx], [h[i] for i in idx])
                 cell[f"{system}_exact"] = round(exact, 4)
-                cell[f"{system}_chrf2"] = round(chrf, 2)
+                cell[f"{system}_chrf2"] = round(chrf, 4)
             results[name][group] = cell
     out = ROOT / "benchmarks" / "results.json"
     out.parent.mkdir(exist_ok=True)

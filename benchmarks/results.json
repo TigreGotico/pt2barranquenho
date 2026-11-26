@@ -3,148 +3,148 @@
   "all": {
    "rows": 321,
    "copy_exact": 0.0872,
-   "copy_chrf2": 40.31,
+   "copy_chrf2": 40.3112,
    "rules_exact": 0.8411,
-   "rules_chrf2": 85.13
+   "rules_chrf2": 85.1323
   },
   "kind=word": {
    "rows": 213,
    "copy_exact": 0.1221,
-   "copy_chrf2": 44.17,
+   "copy_chrf2": 44.1669,
    "rules_exact": 0.9249,
-   "rules_chrf2": 88.05
+   "rules_chrf2": 88.0519
   },
   "class=lexical": {
    "rows": 33,
    "copy_exact": 0.0,
-   "copy_chrf2": 25.3,
+   "copy_chrf2": 25.2999,
    "rules_exact": 0.3939,
-   "rules_chrf2": 52.41
+   "rules_chrf2": 52.4094
   },
   "kind=phrase": {
    "rows": 49,
    "copy_exact": 0.0408,
-   "copy_chrf2": 36.57,
+   "copy_chrf2": 36.5694,
    "rules_exact": 0.8776,
-   "rules_chrf2": 94.5
+   "rules_chrf2": 94.5024
   },
   "class=regular": {
    "rows": 236,
    "copy_exact": 0.1186,
-   "copy_chrf2": 44.5,
+   "copy_chrf2": 44.5036,
    "rules_exact": 0.9534,
-   "rules_chrf2": 96.71
+   "rules_chrf2": 96.7131
   },
   "kind=sentence": {
    "rows": 59,
    "copy_exact": 0.0,
-   "copy_chrf2": 39.62,
+   "copy_chrf2": 39.6212,
    "rules_exact": 0.5085,
-   "rules_chrf2": 81.13
+   "rules_chrf2": 81.1338
   },
   "class=syntax": {
    "rows": 49,
    "copy_exact": 0.0,
-   "copy_chrf2": 40.57,
+   "copy_chrf2": 40.5673,
    "rules_exact": 0.6531,
-   "rules_chrf2": 85.96
+   "rules_chrf2": 85.9599
   },
   "class=idiom": {
    "rows": 3,
    "copy_exact": 0.0,
-   "copy_chrf2": 28.9,
+   "copy_chrf2": 28.9022,
    "rules_exact": 0.0,
-   "rules_chrf2": 30.81
+   "rules_chrf2": 30.8059
   }
  },
  "convention_text": {
   "all": {
    "rows": 8,
    "copy_exact": 0.0,
-   "copy_chrf2": 59.14,
+   "copy_chrf2": 59.1364,
    "rules_exact": 0.25,
-   "rules_chrf2": 94.85
+   "rules_chrf2": 94.8482
   },
   "kind=phrase": {
    "rows": 1,
    "copy_exact": 0.0,
-   "copy_chrf2": 59.59,
+   "copy_chrf2": 59.5927,
    "rules_exact": 0.0,
-   "rules_chrf2": 84.49
+   "rules_chrf2": 84.494
   },
   "class=text": {
    "rows": 8,
    "copy_exact": 0.0,
-   "copy_chrf2": 59.14,
+   "copy_chrf2": 59.1364,
    "rules_exact": 0.25,
-   "rules_chrf2": 94.85
+   "rules_chrf2": 94.8482
   },
   "kind=sentence": {
    "rows": 7,
    "copy_exact": 0.0,
-   "copy_chrf2": 59.12,
+   "copy_chrf2": 59.1214,
    "rules_exact": 0.2857,
-   "rules_chrf2": 95.16
+   "rules_chrf2": 95.159
   }
  },
  "external_respelled": {
   "all": {
    "rows": 34,
    "copy_exact": 0.0,
-   "copy_chrf2": 34.21,
+   "copy_chrf2": 34.2144,
    "rules_exact": 0.1176,
-   "rules_chrf2": 61.75
+   "rules_chrf2": 61.7479
   },
   "kind=sentence": {
    "rows": 29,
    "copy_exact": 0.0,
-   "copy_chrf2": 34.61,
+   "copy_chrf2": 34.614,
    "rules_exact": 0.069,
-   "rules_chrf2": 61.43
+   "rules_chrf2": 61.4331
   },
   "class=respelled": {
    "rows": 34,
    "copy_exact": 0.0,
-   "copy_chrf2": 34.21,
+   "copy_chrf2": 34.2144,
    "rules_exact": 0.1176,
-   "rules_chrf2": 61.75
+   "rules_chrf2": 61.7479
   },
   "kind=phrase": {
    "rows": 5,
    "copy_exact": 0.0,
-   "copy_chrf2": 26.38,
+   "copy_chrf2": 26.3817,
    "rules_exact": 0.4,
-   "rules_chrf2": 68.03
+   "rules_chrf2": 68.0331
   }
  },
  "external": {
   "all": {
    "rows": 36,
    "copy_exact": 0.0,
-   "copy_chrf2": 37.05,
+   "copy_chrf2": 37.0517,
    "rules_exact": 0.0,
-   "rules_chrf2": 40.8
+   "rules_chrf2": 40.8045
   },
   "kind=sentence": {
    "rows": 31,
    "copy_exact": 0.0,
-   "copy_chrf2": 37.46,
+   "copy_chrf2": 37.4589,
    "rules_exact": 0.0,
-   "rules_chrf2": 40.87
+   "rules_chrf2": 40.8684
   },
   "class=external": {
    "rows": 36,
    "copy_exact": 0.0,
-   "copy_chrf2": 37.05,
+   "copy_chrf2": 37.0517,
    "rules_exact": 0.0,
-   "rules_chrf2": 40.8
+   "rules_chrf2": 40.8045
   },
   "kind=phrase": {
    "rows": 5,
    "copy_exact": 0.0,
-   "copy_chrf2": 27.38,
+   "copy_chrf2": 27.3841,
    "rules_exact": 0.0,
-   "rules_chrf2": 39.01
+   "rules_chrf2": 39.0127
   }
  }
 }
