@@ -1,0 +1,150 @@
+{
+ "books": {
+  "all": {
+   "rows": 321,
+   "copy_exact": 0.0872,
+   "copy_chrf2": 40.31,
+   "rules_exact": 0.8411,
+   "rules_chrf2": 85.13
+  },
+  "kind=word": {
+   "rows": 213,
+   "copy_exact": 0.1221,
+   "copy_chrf2": 44.17,
+   "rules_exact": 0.9249,
+   "rules_chrf2": 88.05
+  },
+  "class=lexical": {
+   "rows": 33,
+   "copy_exact": 0.0,
+   "copy_chrf2": 25.3,
+   "rules_exact": 0.3939,
+   "rules_chrf2": 52.41
+  },
+  "kind=phrase": {
+   "rows": 49,
+   "copy_exact": 0.0408,
+   "copy_chrf2": 36.57,
+   "rules_exact": 0.8776,
+   "rules_chrf2": 94.5
+  },
+  "class=regular": {
+   "rows": 236,
+   "copy_exact": 0.1186,
+   "copy_chrf2": 44.5,
+   "rules_exact": 0.9534,
+   "rules_chrf2": 96.71
+  },
+  "kind=sentence": {
+   "rows": 59,
+   "copy_exact": 0.0,
+   "copy_chrf2": 39.62,
+   "rules_exact": 0.5085,
+   "rules_chrf2": 81.13
+  },
+  "class=syntax": {
+   "rows": 49,
+   "copy_exact": 0.0,
+   "copy_chrf2": 40.57,
+   "rules_exact": 0.6531,
+   "rules_chrf2": 85.96
+  },
+  "class=idiom": {
+   "rows": 3,
+   "copy_exact": 0.0,
+   "copy_chrf2": 28.9,
+   "rules_exact": 0.0,
+   "rules_chrf2": 30.81
+  }
+ },
+ "convention_text": {
+  "all": {
+   "rows": 8,
+   "copy_exact": 0.0,
+   "copy_chrf2": 59.14,
+   "rules_exact": 0.25,
+   "rules_chrf2": 94.85
+  },
+  "kind=phrase": {
+   "rows": 1,
+   "copy_exact": 0.0,
+   "copy_chrf2": 59.59,
+   "rules_exact": 0.0,
+   "rules_chrf2": 84.49
+  },
+  "class=text": {
+   "rows": 8,
+   "copy_exact": 0.0,
+   "copy_chrf2": 59.14,
+   "rules_exact": 0.25,
+   "rules_chrf2": 94.85
+  },
+  "kind=sentence": {
+   "rows": 7,
+   "copy_exact": 0.0,
+   "copy_chrf2": 59.12,
+   "rules_exact": 0.2857,
+   "rules_chrf2": 95.16
+  }
+ },
+ "external_respelled": {
+  "all": {
+   "rows": 34,
+   "copy_exact": 0.0,
+   "copy_chrf2": 34.21,
+   "rules_exact": 0.1176,
+   "rules_chrf2": 61.75
+  },
+  "kind=sentence": {
+   "rows": 29,
+   "copy_exact": 0.0,
+   "copy_chrf2": 34.61,
+   "rules_exact": 0.069,
+   "rules_chrf2": 61.43
+  },
+  "class=respelled": {
+   "rows": 34,
+   "copy_exact": 0.0,
+   "copy_chrf2": 34.21,
+   "rules_exact": 0.1176,
+   "rules_chrf2": 61.75
+  },
+  "kind=phrase": {
+   "rows": 5,
+   "copy_exact": 0.0,
+   "copy_chrf2": 26.38,
+   "rules_exact": 0.4,
+   "rules_chrf2": 68.03
+  }
+ },
+ "external": {
+  "all": {
+   "rows": 36,
+   "copy_exact": 0.0,
+   "copy_chrf2": 37.05,
+   "rules_exact": 0.0,
+   "rules_chrf2": 40.8
+  },
+  "kind=sentence": {
+   "rows": 31,
+   "copy_exact": 0.0,
+   "copy_chrf2": 37.46,
+   "rules_exact": 0.0,
+   "rules_chrf2": 40.87
+  },
+  "class=external": {
+   "rows": 36,
+   "copy_exact": 0.0,
+   "copy_chrf2": 37.05,
+   "rules_exact": 0.0,
+   "rules_chrf2": 40.8
+  },
+  "kind=phrase": {
+   "rows": 5,
+   "copy_exact": 0.0,
+   "copy_chrf2": 27.38,
+   "rules_exact": 0.0,
+   "rules_chrf2": 39.01
+  }
+ }
+}
