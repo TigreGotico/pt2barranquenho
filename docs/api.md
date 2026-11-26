@@ -42,3 +42,6 @@ word("três")       # 'trêh'
 ## Command `pt2barranquenho`
 
 The command reads standard input and prints `translate(line)` for each line, with the line's outer whitespace removed.
+
+---
+[← Quickstart](quickstart.md) · [Home](index.md) · [How it works →](how-it-works.md)
