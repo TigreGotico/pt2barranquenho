@@ -1,12 +1,19 @@
 # Changelog
 
+## [0.1.1a3](https://github.com/TigreGotico/pt2barranquenho/tree/0.1.1a3) (2026-11-26)
+
+[Full Changelog](https://github.com/TigreGotico/pt2barranquenho/compare/0.1.1a2...0.1.1a3)
+
+**Merged pull requests:**
+
+- test: store chrF2 at 4 decimals so a table rounds it once [\#8](https://github.com/TigreGotico/pt2barranquenho/pull/8) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.1.1a2](https://github.com/TigreGotico/pt2barranquenho/tree/0.1.1a2) (2026-11-26)
 
 [Full Changelog](https://github.com/TigreGotico/pt2barranquenho/compare/0.1.1a1...0.1.1a2)
 
 **Merged pull requests:**
 
-- test: store chrF2 at 4 decimals so a table rounds it once [\#8](https://github.com/TigreGotico/pt2barranquenho/pull/8) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 - test: write gold-set scores to benchmarks/results.json [\#7](https://github.com/TigreGotico/pt2barranquenho/pull/7) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
 ## [0.1.1a1](https://github.com/TigreGotico/pt2barranquenho/tree/0.1.1a1) (2026-10-24)
