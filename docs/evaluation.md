@@ -2,6 +2,13 @@
 
 Four gold files test the translator. `gold/README.md` describes their columns and how each was built.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="img/chrf-dark.svg">
+  <img alt="chrF2 from copying the Portuguese to the rules: books 40.3 to 85.1, convention_text 59.1 to 94.8, external_respelled 34.2 to 61.7, external 37.1 to 40.8." src="img/chrf.svg">
+</picture>
+
+`img/plot_chrf.py` makes this figure from `benchmarks/results.json`, which `scripts/benchmark.py` writes. `books` is a development set: the rules come from the same books.
+
 | Set | Rows | What it is | Copy the Portuguese: chrF2 | Rules: exact | Rules: chrF2 |
 | --- | ---: | --- | ---: | ---: | ---: |
 | `gold/books.tsv` | 321 | the examples of the two books, each checked on its page | 40.3 | 0.841 | 85.1 |
@@ -46,3 +53,6 @@ python scripts/verify_gold.py gold/books.tsv convencao=<Convenção PDF> gramati
 ```bash
 uv run --with pytest --with sacrebleu --with-editable . python -m pytest -q
 ```
+
+---
+[← Constructions](constructions.md) · [Home](index.md) · [Contributing →](contributing.md)

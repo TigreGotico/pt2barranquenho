@@ -55,3 +55,6 @@ The text is split into words and separators. For each word, the loop decides fro
 | a stressed final *i* or *u* takes the acute | *aqui* > *aquí* | Convenção 1.2 |
 
 A final stressed *e* or *o* before a lost *-r* keeps its Portuguese quality: closed *ê*, *ô* (*fazê*, *senhô*), and open *é*, *ó* in a short list of words that are open in pt-PT (*mulhé*, *melhó*). The spelling of Portuguese does not show the quality, so the list is lexical (Convenção 1.2).
+
+---
+[← API](api.md) · [Home](index.md) · [Constructions →](constructions.md)

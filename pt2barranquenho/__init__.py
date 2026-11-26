@@ -405,6 +405,8 @@ def ongoing_perfect(clause: str) -> str:
 
 def translate(text: str) -> str:
     """Translate pt-PT text to Barranquenho, one sentence or line at a time. Spacing and punctuation are kept."""
+    if "\n" in text:
+        return "\n".join(translate(line) for line in text.split("\n"))
     if text.isupper():
         return translate(text.lower()).upper()
     # de que ... gostava: the relative clause speaks of someone else, so the ambiguous form takes lhe.

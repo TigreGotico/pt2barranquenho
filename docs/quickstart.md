@@ -47,3 +47,6 @@ translate("O PS e o PCP")        # 'U PS i u PCP'
 ## Browser demo
 
 The Hugging Face Space [TigreGotico/pt2barranquenho](https://huggingface.co/spaces/TigreGotico/pt2barranquenho) runs the same package in the browser with Pyodide. The page is `space/index.html` in this repository. It loads `pt2barranquenho/__init__.py` from the Space files, so a new version of the package needs a new upload of that file.
+
+---
+[Home](index.md) · [API →](api.md)

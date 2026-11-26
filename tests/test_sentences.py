@@ -141,9 +141,15 @@ CASES = {
     "ÉS TU?": "ERI TÚ?",
     "Pedro-Miguel": "Pedru-Migué",
     "O PS e o PCP": "U PS i u PCP",
+    "Eu gosto de ti.\nESTOU A VER-TE.": "Eu gohtu de ti.\nTE TÔ BENDU.",
 }
 
 
 @pytest.mark.parametrize("pt", CASES)
 def test_sentence(pt):
     assert translate(pt) == CASES[pt]
+
+
+def test_each_line_is_translated_on_its_own():
+    lines = ["Eu gosto de ti.", "ESTOU A VER-TE.", "", "Ainda hoje são amigos"]
+    assert translate("\n".join(lines)) == "\n".join(translate(line) for line in lines)

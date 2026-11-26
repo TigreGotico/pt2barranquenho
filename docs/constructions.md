@@ -90,3 +90,6 @@ The change reaches the determiner just before the noun, not an adjective or a po
 ## Words from the books
 
 Thirteen nouns take the Barranquenho word the Gramática prints in place of the Portuguese one, each also in the 2025 dictionary: *Tenho cócegas* > *Tenhu cohquilha*, *nos seixos* > *nah china*. The dictionary lists many more words beside their Portuguese cognates, but context decides which one a speaker uses, so the rules use only these.
+
+---
+[← How it works](how-it-works.md) · [Home](index.md) · [Evaluation →](evaluation.md)
